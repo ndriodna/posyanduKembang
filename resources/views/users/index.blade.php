@@ -32,7 +32,7 @@
                         @method('DELETE')
                 <a href="{{route('user.edit',$data->id)}}" class="btn btn-warning"><i class="fas fa-pen-square"></i></a>
                 @foreach($data->getRoleNames() as $role)
-                    @if($role == "super admin")
+                    @if($role == "Admin")
                     @else
                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                     @endif
