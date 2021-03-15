@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid" style="margin-top: -150px; margin-bottom: 50px;">
-        <div class="p-2 bg-white rounded">
-        <a href="{{route('user.create')}}" class="btn btn-success m-3"><i class="fas fa-plus-square"></i> Tambah mahasiswa</a>
+<div class="container-fluid">
+    <div class="p-2 bg-white rounded">
+        <a href="{{route('user.create')}}" class="btn btn-success m-3"><i class="fas fa-plus-square"></i> Tambah</a>
             
     <div style="overflow-x: auto;">
      <table class="table table-striped table-bordered data-table bg-white tex-dark">
@@ -32,7 +32,7 @@
                         @method('DELETE')
                 <a href="{{route('user.edit',$data->id)}}" class="btn btn-warning"><i class="fas fa-pen-square"></i></a>
                 @foreach($data->getRoleNames() as $role)
-                    @if($role == "super admin")
+                    @if($role == "Admin")
                     @else
                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                     @endif

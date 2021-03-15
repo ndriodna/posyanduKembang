@@ -1,29 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Top navbar -->
-<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('dashboard') }}">{{ __('Mahasiswa') }}</a>
-    </div>
-</nav>
-    <div class="bg-gradient-primary pb-8 pt-5 pt-md-8">
-</div>
-    <div class="container-fluid" style="margin-top: -150px">
-     <form action="{{route('users.store')}}" method="POST" class="bg-white rounded p-6 shadow-lg mb-5">
+     <form action="{{route('user.store')}}" method="POST" class="bg-white rounded p-6 shadow-lg mb-5" enctype="multipart/form-data">
          @csrf
-	    
-	    <div class="form-group">
-	        <label class="form-control-label">Pilih Mahasiswa</label>
-	        <select name="kode_user" class="form-control">
-	        @foreach($mahasiswa as $data)
-	       <option value="{{$data->nim}}">
-	           {{$data->nim}} - {{$data->nama}}
-	       </option>
-	       @endforeach
-	        </select>
-         <p class="text-danger">{{ $errors->first('kode_user') }}</p>
-	    </div>
 	    <div class="form-group">
 	         <label class="form-control-label">Nama</label>
 	         <input class="form-control" type="text" name="name" required>
@@ -49,6 +29,13 @@
 	       @endforeach
 	        </select>
          <p class="text-danger">{{ $errors->first('role') }}</p>
+	    </div>
+	    <div class="form-group">
+    	<div class="custom-file">
+        <input type="file" class="custom-file-input" name="img">
+        <label class="custom-file-label" for="customFileLang">Pilih Gambar </label>
+	    </div>
+         <p class="text-danger">{{ $errors->first('img') }}</p>
 	    </div>
 	    <div class="form-group">
 	    	<button type="submit" class="btn btn-success">Simpan</button>

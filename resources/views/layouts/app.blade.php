@@ -36,8 +36,9 @@
 
         <div class="main-content">
             @include('layouts.navbars.navbar')
-    <div class="bg-primary pb-8 pt-5 pt-md-8"></div>
 
+    <div class="bg-primary pb-8 pt-5 pt-md-8"></div>
+            <div style="margin-top: -150px;"></div>
             @yield('content')
         </div>
 
