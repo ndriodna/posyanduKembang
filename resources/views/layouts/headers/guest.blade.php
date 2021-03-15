@@ -1,4 +1,4 @@
-<div class="header bg-gradient-primary py-7 py-lg-8">
+{{-- <div class="header bg-gradient-primary py-7 py-lg-8">
     <div class="container">
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
@@ -13,4 +13,4 @@
             <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
         </svg>
     </div>
-</div>
+</div> --}}

@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::resource('residents', ResidentController::class);
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/dashboard-user', 'HomeController@user');
