@@ -104,7 +104,9 @@
                         </ul>
                     </div>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('residents.index')}}">
+                        <i class="ni ni-planet text-blue"></i> Data Warga
                 {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
