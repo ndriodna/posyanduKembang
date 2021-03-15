@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<div class="">
+=======
 {{-- <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+>>>>>>> 95e7315c74f5ecaf5333f424ca6161cd629cc6ae
     <div class="container-fluid">
         <div class="header-body">
             <!-- Card stats -->
