@@ -4,7 +4,7 @@
   @include('layouts.headers.cards')
 
     <div class="container-fluid mt--7">
-        tutturuu
+        asdasd
 
         @include('layouts.footers.auth')
     </div>
