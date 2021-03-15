@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
+    "content-hash": "3b6a09a2e4f417b5d752e9a0a017c348",
+=======
     "content-hash": "f1e21c7a39cdc2e1ed45d9cb920089ff",
+>>>>>>> 7189296922e4aa54c96d564263af159e3b69fd06
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -712,6 +716,8 @@
             "time": "2020-09-30T07:37:11+00:00"
         },
         {
+<<<<<<< HEAD
+=======
             "name": "laravel-frontend-presets/argon",
             "version": "v1.1.0",
             "source": {
@@ -755,6 +761,7 @@
             "time": "2020-03-18T20:47:28+00:00"
         },
         {
+>>>>>>> 7189296922e4aa54c96d564263af159e3b69fd06
             "name": "laravel/framework",
             "version": "v7.30.4",
             "source": {
@@ -1910,6 +1917,16 @@
                 "interactive",
                 "shell"
             ],
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/bobthecow/psysh/issues",
+                "source": "https://github.com/bobthecow/psysh/tree/v0.10.7"
+            },
+>>>>>>> d47ded6579bd52d26bbf3c64b4c411eeac52de7b
+>>>>>>> 95e7315c74f5ecaf5333f424ca6161cd629cc6ae
             "time": "2021-03-14T02:14:56+00:00"
         },
         {
@@ -2162,6 +2179,22 @@
                 "security",
                 "spatie"
             ],
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/4.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+>>>>>>> 7189296922e4aa54c96d564263af159e3b69fd06
+>>>>>>> 95e7315c74f5ecaf5333f424ca6161cd629cc6ae
             "time": "2021-01-27T23:03:34+00:00"
         },
         {

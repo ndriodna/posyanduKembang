@@ -89,7 +89,11 @@
         <input type="text" class="form-control" name="tempat_tgl_lahir" placeholder="Tempat, Tanggal Lahir">
       </div>
       <div class="form-group">
+<<<<<<< HEAD
         <select class="selectpicker" data-style="btn btn-info" name="jenis_kelamin">
+=======
+        <select class="selectpicker" data-style="btn btn-info" name="jenis_kelamin" >
+>>>>>>> 95e7315c74f5ecaf5333f424ca6161cd629cc6ae
           <option value="laki-laki">Laki-laki</option>
           <option value="perempuan">Perempuan</option>
         </select>
