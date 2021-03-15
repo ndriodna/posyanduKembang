@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -31,7 +32,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return viw('users.create',compact('roles'));
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -40,9 +41,38 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function saveFile($name,$img)
+    {
+        $setName = $name.'.'.$img->getClientOriginalExtension();
+        $path = $img->storeAs('avatar',$setName);
+        return $path;
+    }
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|unique:users',
+            'password' => 'required|min:6',
+            'role' => 'required|string|exists:roles,name',
+            'img' => 'nullable|image|mimes:jpg,png,jpeg'
+        ]);
+        try {
+            if ($request->hasFile('img')) {
+                $img = $this->saveFile($request->name,$request->file('img'));
+            }
+           $user = User::firstOrCreate([
+                'email' => $request->email
+            ],
+            [
+                'name' => $request->name,
+                'password' => bcrypt($request->password),
+                'img' => $img
+            ]);
+            $user->assignRole($request->role);
+            return redirect()->route('user.index');
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -53,7 +83,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.show',compact('user'));
     }
 
     /**
@@ -64,7 +95,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.edit',compact('user'));
     }
 
     /**
@@ -76,7 +108,30 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|unique:users',
+            'password' => 'nullable|min:6',
+            'img' => 'nullable|image|mimes:jpg,png,jpeg'
+        ]);
+        try {
+            $user = User::findOrFail($id);
+            $password = !empty($request->password) ? bcrypt($request->password) : $user->password;
+            $img = $user->img;
+            if ($request->hasFile('img')) {
+                Storage::delete($img);
+                $imgs = $this->saveFile($request->name,$request->file('img'));
+            }
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'kode_user' => $request->kode_user,
+                'password' => $password
+            ]);
+            return redirect(route('user.index'));
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -87,6 +142,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        Storage::delete($user->img);
+        $user->delete();
+        return redirect(route('user.index'));
     }
 }
