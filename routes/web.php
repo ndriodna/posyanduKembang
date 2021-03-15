@@ -22,7 +22,11 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 Route::resource('residents', ResidentController::class);
+=======
+
+>>>>>>> 7189296922e4aa54c96d564263af159e3b69fd06
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/dashboard-user', 'HomeController@user');
