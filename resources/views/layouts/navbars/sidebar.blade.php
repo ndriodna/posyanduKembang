@@ -21,6 +21,7 @@
                 </ul>
               </li>
               <li class=""><a class="nav-link" href="{{route('residents.index')}}"><i class="far fa-square"></i> <span>Data Warga</span></a></li>
+              <li class=""><a class="nav-link" href="{{route('families.index')}}"><i class="far fa-square"></i> <span>Data Keluarga</span></a></li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Item</span></a>
                 <ul class="dropdown-menu">

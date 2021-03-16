@@ -17,7 +17,9 @@
             <table class="table" id="residentTable">
               <thead>
                 <th>NIK</th>
+                <th>No KK</th>
                 <th>Nama</th>
+                <th>Foto</th>
                 <th>Tempat, Tanggal Lahir</th>
                 <th>Jenis Kelamin</th>
                 <th>Alamat</th>
@@ -33,7 +35,11 @@
                 @foreach ($residents as $resident)
                 <tr>
                   <td>{{$resident->nik}}</td>
+                  <td>{{$resident->family['no_kk']}}</td>
                   <td>{{$resident->nama}}</td>
+                  <td>
+                    <img src="{{url('storage/images/foto/'.$resident->foto)}}" alt="responsive image" class="img-fluid">
+                  </td>
                   <td>{{$resident->tempat_tgl_lahir}}</td>
                   <td>{{$resident->jenis_kelamin}}</td>
                   <td>{{$resident->alamat}}</td>
@@ -83,7 +89,27 @@
           <input type="number" class="form-control" name="nik" placeholder="NIK">
       </div>
       <div class="form-group">
+        <label for="">No KK</label><br>
+        <select class="selectpicker" data-style="btn btn-info" name="no_kk" data-live-search="true">
+          @foreach($families as $familie)
+            <option value="{{$familie->id}}">{{$familie->no_kk}} - {{$familie->kepala['nama']}}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="form-group">
           <input type="text" class="form-control" name="nama" placeholder="Nama">
+      </div>
+      <div class="form-group">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+          <label>Foto</label>
+          <div class="fileinput-new img-thumbnail" >
+          </div>
+          <div class="fileinput-preview fileinput-exists img-thumbnail" ></div>
+          <div>
+            <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Pilih Foto</span><span class="fileinput-exists">Ganti</span><input type="file" name="foto"></span>
+            <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Buang</a>
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <input type="text" class="form-control" name="tempat_tgl_lahir" placeholder="Tempat, Tanggal Lahir">

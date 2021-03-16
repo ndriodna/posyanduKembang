@@ -16,10 +16,12 @@ class ResidentsTable extends Migration
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
             $table->string('nik', 20);
+            $table->integer('no_kk')->nullable();
             $table->string('nama', 50);
+            $table->text('foto')->nullable();
             $table->text('tempat_tgl_lahir');
             $table->enum('jenis_kelamin',['laki-laki','perempuan']);
-            $table->text('alamat');
+            $table->text('alamat')->nullable();
             $table->string('rt_rw', 20)->nullable();
             $table->string('kel_desa', 50)->nullable();
             $table->string('kecamatan', 50)->nullable();

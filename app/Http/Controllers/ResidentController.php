@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Familie;
 use App\Resident;
+use File;
 use Illuminate\Http\Request;
 
 class ResidentController extends Controller
@@ -15,7 +17,8 @@ class ResidentController extends Controller
     public function index()
     {
         $residents = Resident::all();
-        return view('residents.index', compact('residents'));
+        $families = Familie::all();
+        return view('residents.index', compact('residents','families'));
     }
 
     /**
@@ -36,10 +39,17 @@ class ResidentController extends Controller
      */
     public function store(Request $request)
     {
-
+      try {
+        $img = $request->foto;
+        if ($request->file('foto')) {
+          $img = $request->foto->getClientOriginalName();
+          $request->foto->storeAs('images/foto', $img);
+        }
         $residents = Resident::create([
           'nik' => $request->nik,
+          'no_kk' => $request->no_kk,
           'nama' => $request->nama,
+          'foto' => $img,
           'tempat_tgl_lahir' => $request->tempat_tgl_lahir,
           'jenis_kelamin' => $request->jenis_kelamin,
           'alamat' => $request->alamat,
@@ -51,6 +61,11 @@ class ResidentController extends Controller
           'pekerjaan' => $request->pekerjaan,
         ]);
         return redirect()->route('residents.index')->with('success', 'Data Berhasil di Tambahkan');
+      } catch (Exception $e) {
+        return redirect()->back()->with(['error'=>$e->getMessage()]);
+
+      }
+
     }
 
     /**
@@ -84,9 +99,20 @@ class ResidentController extends Controller
      */
     public function update(Request $request, Resident $resident)
     {
+      try {
+        $img = $resident->foto;
+        if ($request->file('image')) {
+          File::delete(public_path('storage/images/foto/'.$resident->foto));
+          $img1 = $request->foto->getClientOriginalName();
+          $request->foto->storeAs('images/foto/', $img);
+       }
+
+
       $residents->update([
         'nik' => $request->nik,
+        'no_kk' => $request->no_kk,
         'nama' => $request->nama,
+        'foto' => $img,
         'tempat_tgl_lahir' => $request->tempat_tgl_lahir,
         'jenis_kelamin' => $request->jenis_kelamin,
         'alamat' => $request->alamat,
@@ -98,6 +124,9 @@ class ResidentController extends Controller
         'pekerjaan' => $request->pekerjaan,
       ]);
       return redirect()->route('residents.index')->with('success', 'Data Berhasil di Ubah');
+      } catch (Exception $e) {
+        return redirect()->back()->with(['error'=>$e->getMessage()]);
+      }
     }
 
     /**
@@ -109,6 +138,9 @@ class ResidentController extends Controller
     public function destroy($id)
     {
         $residents = Resident::FindOrFail($id);
+        if (!empty($residents->foto)) {
+            File::delete(public_path('storage/images/foto/'.$residents->foto));
+        }
         $residents->delete();
 
         return redirect()->route('residents.index')->with('success', 'Data Berhasil di Hapus');
