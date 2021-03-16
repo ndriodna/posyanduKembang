@@ -110,7 +110,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|unique:users',
+            'email' => 'required|string|exists:users,email',
             'password' => 'nullable|min:6',
             'img' => 'nullable|image|mimes:jpg,png,jpeg'
         ]);
@@ -125,7 +125,7 @@ class UserController extends Controller
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'kode_user' => $request->kode_user,
+                'img' => $imgs,
                 'password' => $password
             ]);
             return redirect(route('user.index'));
