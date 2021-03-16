@@ -1,7 +1,4 @@
-
-
-
-      <div class="main-sidebar">
+<div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="{{route('home')}}">Ambulung</a>
@@ -16,8 +13,8 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>Account</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="#">User Profile</a></li>
-                  <li><a class="nav-link" href="#">User Management </a></li>
+                  <li><a class="nav-link" href="{{route('user.show',auth()->user()->id)}}">User Profile</a></li>
+                  <li><a class="nav-link" href="{{route('user.index')}}">User Management </a></li>
                 </ul>
               </li>
               <li class=""><a class="nav-link" href="{{route('residents.index')}}"><i class="far fa-square"></i> <span>Data Warga</span></a></li>
@@ -41,4 +38,3 @@
             </ul>
         </aside>
       </div>
->>>>>>> c4849064efeaadd221cfd9521ade7c3284554de2
