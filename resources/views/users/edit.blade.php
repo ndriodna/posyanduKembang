@@ -36,7 +36,7 @@
        	    </div> --}}
              <div class="form-group">
                <div class="fileinput fileinput-new" data-provides="fileinput">
-                 <div class="fileinput-preview thumbnail" data-trigger="fileinput"<img src="{{asset('storage/'.$user->img)}}" alt="" width="100" height="100" class="p-2">
+                 <div class="fileinput-preview thumbnail" data-trigger="fileinput"><img src="{{url('storage/'.$user->img)}}" alt="" width="100" height="100" class="p-2">
                    <p class="text-danger">{{ $errors->first('img') }}</p>
                  </div>
                  <div>

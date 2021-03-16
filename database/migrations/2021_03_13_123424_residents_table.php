@@ -15,7 +15,7 @@ class ResidentsTable extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
-            $table->integer('nik')->unsigned();
+            $table->string('nik', 20);
             $table->string('nama', 50);
             $table->text('tempat_tgl_lahir');
             $table->enum('jenis_kelamin',['laki-laki','perempuan']);
