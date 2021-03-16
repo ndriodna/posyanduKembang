@@ -25,18 +25,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/user/show','UserController@showAuthUser')->name('user.showAuthUser');
 
 	Route::group(['middleware' => ['role:Admin']], function (){
-<<<<<<< HEAD
 
     Route::resource('residents', 'ResidentController');
 	  Route::resource('families', 'FamilieController');
 		Route::resource('user', 'UserController');
 		Route::resource('roles', 'RoleController');
 
-=======
-	  Route::resource('residents', 'ResidentController');
-		Route::resource('user', 'UserController');
-		Route::resource('roles', 'RoleController');
->>>>>>> c687cbed311dd2941abf45468fb6af58a217b09c
 	});
 
 });
