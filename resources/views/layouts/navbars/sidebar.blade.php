@@ -15,6 +15,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="{{route('user.show',auth()->user()->id)}}">User Profile</a></li>
                   <li><a class="nav-link" href="{{route('user.index')}}">User Management </a></li>
+                  <li><a class="nav-link" href="{{route('roles.index')}}">Role</a></li>
                 </ul>
               </li>
               <li class=""><a class="nav-link" href="{{route('residents.index')}}"><i class="far fa-square"></i> <span>Data Warga</span></a></li>

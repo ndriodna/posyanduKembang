@@ -5,6 +5,7 @@
      <form action="{{route('user.update',$user->id)}}" method="POST" class="bg-white rounded p-6 shadow-lg mb-5" enctype="multipart/form-data">
          @csrf
          @method('PUT')
+      <div class="p-2">
 	    <div class="form-group">
 	         <label class="form-control-label">Nama</label>
 	         <input class="form-control" type="text" name="name" value="{{$user->name}}" required>
@@ -29,6 +30,7 @@
 	    </div>
 	    <div class="form-group">
 	    	<button type="submit" class="btn btn-success">Simpan</button>
+	    </div>
 	    </div>
 	     </form>
  </div>

@@ -25,5 +25,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/dashboard-user', 'HomeController@user');
 	Route::resource('user', 'UserController');
+	Route::resource('roles', 'RoleController');
   Route::resource('residents', ResidentController::class);
 });

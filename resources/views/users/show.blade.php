@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid mb-5">
        <h3 class="text-white">User Detail</h3>
-   <div class="bg-white rounded shadow-lg  p-6">
+   <div class="bg-white rounded shadow-lg">
     @if(!empty($user->img))
     <div class="form-row p-2">
         <img src="{{asset('storage/'.$user->img)}}" alt="" width="100" height="100">
