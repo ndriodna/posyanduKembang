@@ -87,6 +87,12 @@ class UserController extends Controller
         return view('users.show',compact('user'));
     }
 
+    public function showAuthUser()
+    {
+        $user = Auth::user();
+        return view('users.show',compact('user'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

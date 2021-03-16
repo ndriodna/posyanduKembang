@@ -90,44 +90,4 @@ class RoleController extends Controller
         Role::findOrFail($id)->delete();
         return redirect()->back();
     }
-
-    // permission
-    public function rolePermission(Request $request)
-    {
-        $role = $request->get('role');
-
-        $permission = null;
-        $hasPermission = null;
-
-        $roles = Role::all()->pluck('name');
-
-        if (!empty($role)) {
-            $getRole = Role::findByName($role);
-
-            $hasPermission = DB::table('role_has_permissions')
-            ->select('permissions.name')
-            ->join('permissions','role_has_permissions.permission_id', '=','permissions.id')
-            ->where('role_id',$getRole->id)->get()->pluck('name')->all();
-            $permission = Permission::all()->pluck('name');
-        }
-        return view('roles.role-permission',compact('roles','permission','hasPermission'));
-    }
-
-    public function addPermission(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|unique:permissions'
-        ]);
-        $permission = Permission::firstOrCreate([
-            'name' => $request->name
-        ]);
-        return redirect()->back();
-    }
-
-    public function setRolePermission(Request $request, $role)
-    {
-        $roles = Role::findByName($role);
-        $roles->syncPermissions($request->permission);
-        return redirect()->back();
-    }
 }
