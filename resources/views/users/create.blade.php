@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="container-fluid">
-     <form action="{{route('user.store')}}" method="POST" class="bg-white rounded p-6 shadow-lg mb-5" enctype="multipart/form-data">
+     <form action="{{route('user.store')}}" method="POST" class="bg-white rounded shadow-lg mb-5" enctype="multipart/form-data">
          @csrf
+     <div class="p-2">
 	    <div class="form-group">
 	         <label class="form-control-label">Nama</label>
 	         <input class="form-control" type="text" name="name" required>
@@ -40,6 +41,7 @@
 	    <div class="form-group">
 	    	<button type="submit" class="btn btn-success">Simpan</button>
 	    </div>
+     </div>
 	     </form>
  </div>
 @endsection
