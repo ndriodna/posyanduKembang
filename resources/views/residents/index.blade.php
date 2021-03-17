@@ -35,10 +35,12 @@
                 @foreach ($residents as $resident)
                 <tr>
                   <td>{{$resident->nik}}</td>
-                  <td>{{$resident->family['no_kk']}}</td>
+                  @if(!empty($resident->family->no_kk))
+                  <td>{{$resident->family->no_kk}}</td>
+                  @else <td></td> @endif
                   <td>{{$resident->nama}}</td>
                   <td>
-                    <img src="{{url('storage/images/foto/'.$resident->foto)}}" alt="responsive image" class="img-fluid">
+                    <img src="{{asset('storage/'.$resident->foto)}}" alt="responsive image" class="img-fluid">
                   </td>
                   <td>{{$resident->tempat_tgl_lahir}}</td>
                   <td>{{$resident->jenis_kelamin}}</td>
@@ -52,7 +54,7 @@
                   <td class="col-1">
                     <div class="btn-group">
                       <a href="#" class="btn btn-info">Lihat</a>
-                      <a href="#" class="btn btn-warning">Ubah</a>
+                      <a href="{{route('residents.edit',$resident)}}" class="btn btn-warning">Ubah</a>
                       <form id="delete-form-{{$resident->id}}" action="{{ route('residents.destroy',$resident->id) }}" method="POST">
                        @csrf
                        @method('DELETE')

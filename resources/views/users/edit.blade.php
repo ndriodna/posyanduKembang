@@ -8,7 +8,7 @@
           <div class="card-header">
             <h5 class="card-title">Edit User</h5>
           </div>
-          <div class="card-body shadow-lg">
+          <div class="card-body">
             <form action="{{route('user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')

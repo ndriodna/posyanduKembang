@@ -6,6 +6,7 @@ use App\Familie;
 use App\Resident;
 use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ResidentController extends Controller
 {
@@ -37,13 +38,17 @@ class ResidentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function saveFile($name,$img)
+    {
+      $getName = $name.'.'.$img->getClientOriginalExtension();
+      $path = $img->storeAs('images/foto/',$getName);
+      return $path;
+    }
     public function store(Request $request)
     {
       try {
-        $img = $request->foto;
-        if ($request->file('foto')) {
-          $img = $request->foto->getClientOriginalName();
-          $request->foto->storeAs('images/foto', $img);
+        if ($request->hasFile('foto')) {
+          $img = $this->saveFile($request->nama,$request->file('foto'));
         }
         $residents = Resident::create([
           'nik' => $request->nik,
@@ -76,7 +81,7 @@ class ResidentController extends Controller
      */
     public function show(Resident $resident)
     {
-        return view('residents.show', compact('resident'));
+        // return view('residents.show', compact('resident'));
     }
 
     /**
@@ -87,7 +92,8 @@ class ResidentController extends Controller
      */
     public function edit(Resident $resident)
     {
-      return view('residents.edit', compact('resident'));
+      $families = Familie::all();
+      return view('residents.edit', compact('resident','families'));
     }
 
     /**
@@ -101,14 +107,11 @@ class ResidentController extends Controller
     {
       try {
         $img = $resident->foto;
-        if ($request->file('image')) {
-          File::delete(public_path('storage/images/foto/'.$resident->foto));
-          $img1 = $request->foto->getClientOriginalName();
-          $request->foto->storeAs('images/foto/', $img);
+        if ($request->hasFile('foto')) {
+          Storage::delete($img);
+          $img = $this->saveFile($request->nama,$request->file('foto'));
        }
-
-
-      $residents->update([
+      $resident->update([
         'nik' => $request->nik,
         'no_kk' => $request->no_kk,
         'nama' => $request->nama,
@@ -138,9 +141,7 @@ class ResidentController extends Controller
     public function destroy($id)
     {
         $residents = Resident::FindOrFail($id);
-        if (!empty($residents->foto)) {
-            File::delete(public_path('storage/images/foto/'.$residents->foto));
-        }
+        Storage::delete($residents->foto);
         $residents->delete();
 
         return redirect()->route('residents.index')->with('success', 'Data Berhasil di Hapus');
