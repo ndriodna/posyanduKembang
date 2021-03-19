@@ -50,7 +50,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|min:3|unique:users',
             'email' => 'required|string|unique:users',
             'password' => 'required|min:6',
             'role' => 'required|string|exists:roles,name',
@@ -115,7 +115,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|min:3|exists:users,name',
             'email' => 'required|string|exists:users,email',
             'password' => 'nullable|min:6',
             'img' => 'nullable|image|mimes:jpg,png,jpeg'
