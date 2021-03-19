@@ -10,10 +10,10 @@
           <h4 class="card-title">Data Keluarga</h4>
         </div>
         <div class="card-body">
-          <div class="table-responsive">
             <div class="col-sm-4">
               <a href="{{route('families.index')}}" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
             </div><br>
+          <div class="table-responsive">
             <table class="table" id="residentTable">
               <thead>
                 <th>No KK</th>

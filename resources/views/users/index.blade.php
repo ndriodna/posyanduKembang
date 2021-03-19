@@ -13,7 +13,7 @@
             <div class="col-sm-4">
 							<a href="{{route('user.create')}}" class="btn btn-success m-3"><i class="fas fa-plus-square"></i> Tambah</a>
             </div><br>
-            <table class="table table-striped table-bordered data-table bg-white tex-dark">
+            <table class="table table-striped table-bordered data-table bg-white tex-dark" id="residentTable">
 							<thead>
 								<tr>
 									<th>Name</th>

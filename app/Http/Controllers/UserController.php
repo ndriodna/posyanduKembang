@@ -90,7 +90,7 @@ class UserController extends Controller
     public function showAuthUser()
     {
         $user = Auth::user();
-        return view('users.show',compact('user'));
+        return view('users.edit',compact('user'));
     }
 
     /**

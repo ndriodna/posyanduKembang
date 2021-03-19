@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-12 md-6 sm-4">
+    <div class="col-lg-12 md-6 sm-12">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title">Edit User</h5>

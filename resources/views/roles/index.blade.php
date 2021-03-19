@@ -24,7 +24,7 @@
   <div class="col-lg-8 col-md-4 col-sm-12">
     <div class="card rounded shadow-lg">
       <div class="table-responsive">
-     <table class="table table-striped table-bordered data-table bg-white text-dark card-body">
+     <table class="table table-striped table-bordered data-table bg-white text-dark card-body" id="residentTable">
       <thead>
         <tr>
           <th>#</th>
