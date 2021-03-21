@@ -25,6 +25,14 @@
 							<p class="text-danger">{{ $errors->first('password') }}</p>
 						</div>
 						<div class="form-group">
+                  <label for="">No KK</label><br>
+                  <select class="selectpicker" data-style="btn btn-info" name="no_kk" data-live-search="true">
+                    @foreach($families as $familie)
+                    <option value="{{$familie->id}}">{{$familie->no_kk}} - {{$familie->kepala->nama}}</option>
+                    @endforeach
+                  </select>
+                </div>
+						<div class="form-group">
 							<label class="form-control-label">Role</label><br>
 							<select name="role" class="selectpicker" data-style="btn btn-info">
 								@foreach($roles as $data)

@@ -14,4 +14,8 @@ class Familie extends Model
   public function kepala(){
       return $this->belongsTo('App\Resident','kepala_keluarga');
   }
+  public function user()
+  {
+  	return $this->belongsToMany('App\User');
+  }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Familie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -31,8 +32,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        $families = Familie::all();
         $roles = Role::all();
-        return view('users.create',compact('roles'));
+        return view('users.create',compact('families','roles'));
     }
 
     /**
@@ -69,6 +71,10 @@ class UserController extends Controller
                 'img' => $img
             ]);
             $user->assignRole($request->role);
+
+            if ($request->has('no_kk')) {
+            $user->familie()->attach($request->no_kk);
+            }
             return redirect()->route('user.index');
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
