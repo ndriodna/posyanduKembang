@@ -10,14 +10,13 @@
           <h4 class="card-title">Data Keluarga</h4>
         </div>
         <div class="card-body">
-            <div class="col-sm-4">
+            {{-- <div class="col-sm-4">
               <a href="{{route('families.index')}}" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
-            </div><br>
+            </div><br> --}}
           <div class="table-responsive">
             <table class="table" id="residentTable">
               <thead>
                 <th>No KK</th>
-                <th>Kepala Keluarga</th>
                 <th>Anggota Keluarga</th>
                 <th>Action</th>
               </thead>
@@ -25,7 +24,6 @@
                 @foreach ($families as $familie)
                 <tr>
                   <td>{{$familie->no_kk}}</td>
-                  <td>{{$familie->kepala['nama']}}</td>
                   <td>@foreach($familie->resident as $pp)
                     {{$pp->nama}}
                   @endforeach
