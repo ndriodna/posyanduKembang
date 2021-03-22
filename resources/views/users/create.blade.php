@@ -27,6 +27,7 @@
 						<div class="form-group">
                   <label for="">No KK</label><br>
                   <select class="selectpicker" data-style="btn btn-info" name="no_kk" data-live-search="true">
+                  	<option value=""></option>
                     @foreach($families as $familie)
                     <option value="{{$familie->id}}">{{$familie->no_kk}} - {{$familie->kepala->nama}}</option>
                     @endforeach
@@ -34,7 +35,8 @@
                 </div>
 						<div class="form-group">
 							<label class="form-control-label">Role</label><br>
-							<select name="role" class="selectpicker" data-style="btn btn-info">
+							<select name="role" class="selectpicker" data-style="btn btn-info" required>
+								<option value=""></option>
 								@foreach($roles as $data)
 								<option value="{{$data->name}}">
 									{{$data->name}}
