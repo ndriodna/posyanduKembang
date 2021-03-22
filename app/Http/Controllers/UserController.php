@@ -89,8 +89,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        $families = Familie::all();
         $user = User::find($id);
-        return view('users.show',compact('user'));
+        return view('users.show',compact('user','families'));
     }
 
     public function showAuthUser()
@@ -121,8 +122,8 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255|min:3|exists:users,name',
-            'email' => 'required|string|exists:users,email',
+            'name' => 'required|string|max:255|min:3',
+            'email' => 'required|string',
             'password' => 'nullable|min:6',
             'img' => 'nullable|image|mimes:jpg,png,jpeg'
         ]);
@@ -132,12 +133,12 @@ class UserController extends Controller
             $img = $user->img;
             if ($request->hasFile('img')) {
                 Storage::delete($img);
-                $imgs = $this->saveFile($request->name,$request->file('img'));
+                $img = $this->saveFile($request->name,$request->file('img'));
             }
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'img' => $imgs,
+                'img' => $img,
                 'password' => $password
             ]);
             return redirect(route('user.index'));

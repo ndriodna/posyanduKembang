@@ -29,7 +29,7 @@
                   <select class="selectpicker" data-style="btn btn-info" name="no_kk" data-live-search="true">
                   	<option value=""></option>
                     @foreach($families as $familie)
-                    <option value="{{$familie->id}}">{{$familie->no_kk}} - {{$familie->kepala->nama}}</option>
+                    <option value="{{$familie->id}}">{{$familie->no_kk}} -</option>
                     @endforeach
                   </select>
                 </div>
