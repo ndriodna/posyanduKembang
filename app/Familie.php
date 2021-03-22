@@ -17,4 +17,8 @@ class Familie extends Model
   return $this->belongsToMany('App\Resident');
   }
 
+  public function user()
+  {
+  	return $this->belongsToMany('App\User');
+  }
 }

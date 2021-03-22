@@ -27,6 +27,14 @@
      @endforeach
      </div>
     </div>
+    <div class="form-row p-2">
+     <div class="col-md-4">Pengguna Akun</div>
+     <div class="col-md-8">
+         @foreach($user->familie as $pp)
+         {{$pp->nama}}
+         @endforeach
+     </div>
+    </div>
    </div>
  </div>
 @endsection
