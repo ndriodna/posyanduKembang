@@ -60,7 +60,6 @@ class ResidentController extends Controller
         $residents = Resident::create([
           'nik' => $request->nik,
           'slug' => SlugService::createSlug(Resident::class, 'slug',$request->nik),
-          'no_kk' => $request->no_kk,
           'nama' => $request->nama,
           'foto' => $img,
           'tempat_tgl_lahir' => $request->tempat_tgl_lahir,
@@ -129,7 +128,6 @@ class ResidentController extends Controller
       $resident->update([
         'nik' => $request->nik,
         'slug' => null,
-        'no_kk' => $request->no_kk,
         'nama' => $request->nama,
         'foto' => $img,
         'tempat_tgl_lahir' => $request->tempat_tgl_lahir,
