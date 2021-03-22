@@ -16,7 +16,7 @@ class ResidentsTable extends Migration
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
             $table->string('nik', 20);
-            $table->integer('no_kk')->nullable();
+            $table->string('slug', 20);
             $table->string('nama', 50);
             $table->text('foto')->nullable();
             $table->text('tempat_tgl_lahir');

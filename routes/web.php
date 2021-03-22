@@ -20,13 +20,17 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/residents/kk/{id}', 'ResidentController@kk')->name('kk');
+  Route::get('residents/pilih_kk/{slug}', 'ResidentController@selectkk')->name('selectkk');
+	Route::get('residents/buat_kk/{id}', 'ResidentController@buatkk')->name('buatkk');
 	Route::get('/dashboard-user', 'HomeController@user');
 	Route::get('/user/show','UserController@showAuthUser')->name('user.showAuthUser');
 
 	Route::group(['middleware' => ['role:Admin']], function (){
 
     Route::resource('residents', 'ResidentController');
+    Route::resource('test', 'TestController');
 	  Route::resource('families', 'FamilieController');
 		Route::resource('user', 'UserController');
 		Route::resource('roles', 'RoleController');

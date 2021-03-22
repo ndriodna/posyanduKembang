@@ -16,7 +16,8 @@ class CreateFamiliesTable extends Migration
         Schema::create('families', function (Blueprint $table) {
             $table->id();
             $table->string('no_kk', 20);
-            $table->foreignId('kepala_keluarga')->nullable()->constrained('residents');
+            $table->string('slug', 20);
+            $table->integer('kepala_keluarga')->nullable();
             $table->text('alamat');
             $table->string('rt_rw');
             $table->string('kode_pos', 10);

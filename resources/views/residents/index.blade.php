@@ -36,7 +36,7 @@
                 <tr>
                   <td>{{$resident->nik}}</td>
                   <td>@forelse($resident->familie as $pp)
-                    {{$pp->no_kk}}
+                    <span class="badge badge-info">{{$pp->no_kk}}</span>
                     @empty
                     <span>Belum Terdaftar KK</span>
                     @endforelse
@@ -55,16 +55,46 @@
                   <td>{{$resident->status_perkawinan}}</td>
                   <td>{{$resident->pekerjaan}}</td>
                   <td class="col-1">
-                    <div class="btn-group">
-                      <a href="#" class="btn btn-info">Lihat</a>
-                      <a href="{{route('residents.edit',$resident)}}" class="btn btn-warning">Ubah</a>
-                      <form id="delete-form-{{$resident->id}}" action="{{ route('residents.destroy',$resident->id) }}" method="POST">
-                       @csrf
-                       @method('DELETE')
-                       <a href="#" class="btn btn-danger" onclick="deleteItem({{$resident->id}})">Hapus</a>
-                     </form>
-                   </div>
-                 </td>
+                      <div class="btn-group">
+                        <div class="dropdown ">
+                          @if ($resident->familie->isEmpty())
+                          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-plus-square fa-lg"></i>
+                          </button>
+                          @endif
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton ">
+                              <a href="{{route('buatkk',$resident->id)}}" class="dropdown-item">Buat</a>
+                              <a href="{{route('selectkk',$resident->slug)}}" class="dropdown-item" >Pilih KK</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="btn-group">
+                        <div class="dropdown">
+                          <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-pen-square fa-lg"></i>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                          </div>
+
+                        </div>
+                      </div>
+                          <a class=" btn btn-info" href="#"><i class="fa fa-eye fa-lg"></i></a>
+                      <div class="btn-group">
+                        <div class="dropdown ">
+                          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-trash fa-lg"></i>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <form id="delete-form-{{$resident->id}}" action="{{ route('residents.destroy',$resident->id) }}" method="POST" >
+                             @csrf
+                             @method('DELETE')
+                             <a href="#" class="dropdown-item" onclick="deleteItem({{$resident->id}})">Hapus</a>
+                           </form>
+                          </div>
+                        </div>
+                      </div>
+                  </td>
                </tr>
                @endforeach
              </tbody>
@@ -92,14 +122,6 @@
               <div class="col-12">
                 <div class="form-group">
                   <input type="number" class="form-control" name="nik" placeholder="NIK">
-                </div>
-                <div class="form-group">
-                  <label for="">No KK</label><br>
-                  <select class="selectpicker" data-style="btn btn-info" name="no_kk" data-live-search="true">
-                    @foreach($families as $familie)
-                    <option value="{{$familie->id}}">{{$familie->no_kk}} - {{$familie->kepala['nama']}}</option>
-                    @endforeach
-                  </select>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" name="nama" placeholder="Nama">

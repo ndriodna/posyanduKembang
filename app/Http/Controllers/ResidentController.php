@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Familie;
 use App\Resident;
 use File;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,6 +33,12 @@ class ResidentController extends Controller
         return view('residents.create');
     }
 
+    public function buatkk($id)
+    {
+        $residents = Resident::FindOrFail($id);
+        $families = Familie::all();
+        return view('residents.kk',compact('residents','families'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -52,6 +59,7 @@ class ResidentController extends Controller
         }
         $residents = Resident::create([
           'nik' => $request->nik,
+          'slug' => SlugService::createSlug(Resident::class, 'slug',$request->nik),
           'no_kk' => $request->no_kk,
           'nama' => $request->nama,
           'foto' => $img,
@@ -65,6 +73,7 @@ class ResidentController extends Controller
           'status_perkawinan' => $request->status_perkawinan,
           'pekerjaan' => $request->pekerjaan,
         ]);
+
         return redirect()->route('residents.index')->with('success', 'Data Berhasil di Tambahkan');
       } catch (Exception $e) {
         return redirect()->back()->with(['error'=>$e->getMessage()]);
@@ -96,6 +105,12 @@ class ResidentController extends Controller
       return view('residents.edit', compact('resident','families'));
     }
 
+    public function selectkk($slug)
+    {
+        $resident = Resident::where('slug',$slug)->first();
+        $families = Familie::all();
+        return view('residents.select',compact('resident','families'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -113,6 +128,7 @@ class ResidentController extends Controller
        }
       $resident->update([
         'nik' => $request->nik,
+        'slug' => null,
         'no_kk' => $request->no_kk,
         'nama' => $request->nama,
         'foto' => $img,
@@ -126,6 +142,8 @@ class ResidentController extends Controller
         'status_perkawinan' => $request->status_perkawinan,
         'pekerjaan' => $request->pekerjaan,
       ]);
+      $resident->familie()->sync($request->kk);
+
       return redirect()->route('residents.index')->with('success', 'Data Berhasil di Ubah');
       } catch (Exception $e) {
         return redirect()->back()->with(['error'=>$e->getMessage()]);
