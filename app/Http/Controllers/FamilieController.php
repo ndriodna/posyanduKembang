@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Familie;
 use App\Resident;
+use App\User;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -53,6 +54,13 @@ class FamilieController extends Controller
           'provinsi' => $request->provinsi,
         ]);
         $families->resident()->attach($request->kk);
+
+        $users = User::create([
+          'name' => $request->name,
+          'email' => $request->email,
+          'password' => $request->password,
+        ]);
+
         return redirect()->route('families.index')->with('success', 'Berhasil');
     }
 
