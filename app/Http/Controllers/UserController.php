@@ -59,6 +59,7 @@ class UserController extends Controller
             'img' => 'nullable|image|mimes:jpg,png,jpeg'
         ]);
         try {
+            $img = null;
             if ($request->hasFile('img')) {
                 $img = $this->saveFile($request->name,$request->file('img'));
             }

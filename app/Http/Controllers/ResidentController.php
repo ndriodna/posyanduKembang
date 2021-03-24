@@ -54,6 +54,7 @@ class ResidentController extends Controller
     public function store(Request $request)
     {
       try {
+        $img = null;
         if ($request->hasFile('foto')) {
           $img = $this->saveFile($request->nama,$request->file('foto'));
         }
