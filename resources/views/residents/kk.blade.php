@@ -25,12 +25,6 @@
                 <input type="number" class="form-control" name="name" placeholder="Confrim No KK">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" name="email" value="test" hidden>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="password" value="default" hidden>
-            </div>
-            <div class="form-group">
                <textarea class="form-control" name="alamat" placeholder="Alamat" rows="4"></textarea>
             </div>
             <div class="form-group">

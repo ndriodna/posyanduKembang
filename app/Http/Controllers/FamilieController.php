@@ -7,6 +7,7 @@ use App\Resident;
 use App\User;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Spatie\Permission\Models\Role;
 
 class FamilieController extends Controller
 {
@@ -41,6 +42,13 @@ class FamilieController extends Controller
      */
     public function store(Request $request)
     {
+       $users = User::create([
+          'name' => $request->name,
+          'email' => $request->name.'.'."@mail.com",
+          'password' => bcrypt('secret'),
+        ]);
+        $users->assignRole('warga');
+        
         $families = Familie::create([
           'no_kk' => $request->no_kk,
           'slug' => SlugService::createSlug(Familie::class, 'slug',$request->no_kk),
@@ -54,13 +62,6 @@ class FamilieController extends Controller
           'provinsi' => $request->provinsi,
         ]);
         $families->resident()->attach($request->kk);
-
-        $users = User::create([
-          'name' => $request->name,
-          'email' => $request->email,
-          'password' => $request->password,
-        ]);
-
         return redirect()->route('families.index')->with('success', 'Berhasil');
     }
 

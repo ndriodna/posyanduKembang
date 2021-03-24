@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Spatie\Permission\Traits\HasRoles;
 
 class Familie extends Model
 {
-  use Sluggable;
+  use Sluggable, HasRoles;
   protected $guarded = [];
 
   public function sluggable(){
