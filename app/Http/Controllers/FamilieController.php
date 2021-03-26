@@ -20,7 +20,8 @@ class FamilieController extends Controller
     {
       $families = Familie::all();
       $residents = Resident::all();
-      return view('families.index', compact('families','residents'));
+      $users = User::all();
+      return view('families.index', compact('families','residents','users'));
     }
 
     /**
@@ -47,8 +48,9 @@ class FamilieController extends Controller
           'email' => $request->name.'.'."@mail.com",
           'password' => bcrypt('secret'),
         ]);
+        // $users->familie()->attach($request->id); apa yg di attach?
         $users->assignRole('warga');
-        
+
         $families = Familie::create([
           'no_kk' => $request->no_kk,
           'slug' => SlugService::createSlug(Familie::class, 'slug',$request->no_kk),

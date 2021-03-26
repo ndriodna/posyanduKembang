@@ -18,6 +18,7 @@
               <thead>
                 <th>No KK</th>
                 <th>Anggota Keluarga</th>
+                <th>test</th>
                 <th>Action</th>
               </thead>
               <tbody>
@@ -27,17 +28,56 @@
                   <td>@foreach($familie->resident as $pp)
                     {{$pp->nama}}
                   @endforeach
+                </td>
+                  <td>
+                    @foreach($familie->user as $pp)
+                        {{$pp->id}}
+                      @endforeach
                   </td>
-                  <td class="">
-                    <div class="btn-group">
-                      <a href="#" class="btn btn-info">Lihat</a>
-                      <a href="#" class="btn btn-warning">Ubah</a>
-                      <form id="delete-form-{{$familie->id}}" action="{{ route('families.destroy',$familie->id) }}" method="POST">
-                       @csrf
-                       @method('DELETE')
-                      <a href="#" class="btn btn-danger" onclick="deleteItem({{$familie->id}})">Hapus</a>
-                     </form>
-                    </div>
+                  <td class="col-1">
+                      <div class="btn-group">
+                        <div class="dropdown ">
+                          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-plus-square fa-lg"></i>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton ">
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="btn-group">
+                        <div class="dropdown">
+                          <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-pen-square fa-lg"></i>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          </div>
+                        </div>
+                      </div>
+                          <a class=" btn btn-info" href="#"><i class="fa fa-eye fa-lg"></i></a>
+                      <div class="btn-group">
+                        <div class="dropdown ">
+                          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-trash fa-lg"></i>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <form id="delete-form-{{$familie->id}}" action="{{ route('families.destroy',$familie->id) }}" method="POST" >
+                             @csrf
+                             @method('DELETE')
+                             <a href="#" class="dropdown-item" onclick="deleteItem({{$familie->id}})">Hapus KK</a>
+                           </form>
+                           @foreach($users as $user)
+                             {{-- @foreach($users->familie as $qq) klo mau harusnya gini--}}
+
+                           <form id="delete-form-{{$user->id}}" action="{{ route('user.destroy',$user->id) }}" method="POST" >
+                            @csrf
+                            @method('DELETE')
+                            <a href="#" class="dropdown-item" onclick="deleteItem({{$user->id}})">Hapus - {{$user->name}}</a>
+                          </form>
+                        @endforeach
+                          </div>
+                        </div>
+                      </div>
                   </td>
                 </tr>
               @endforeach

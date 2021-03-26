@@ -22,7 +22,7 @@
                 <input type="number" class="form-control" name="no_kk" placeholder="No KK" required>
             </div>
             <div class="form-group">
-                <input type="number" class="form-control" name="name" placeholder="Confrim No KK">
+                <input type="number" class="form-control" name="name" placeholder="Confrim No KK" required>
             </div>
             <div class="form-group">
                <textarea class="form-control" name="alamat" placeholder="Alamat" rows="4"></textarea>
@@ -45,8 +45,6 @@
             <div class="form-group">
                 <input type="text" class="form-control" name="provinsi" placeholder="Provinsi">
             </div>
-
-
             <div class="form-group">
              <button type="submit" class="btn btn-success">Simpan</button>
            </div>
