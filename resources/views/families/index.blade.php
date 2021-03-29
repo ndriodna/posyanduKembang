@@ -61,18 +61,19 @@
                           <i class="fa fa-trash fa-lg"></i>
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
                             <form id="delete-form-{{$familie->id}}" action="{{ route('families.destroy',$familie->id) }}" method="POST" >
                              @csrf
                              @method('DELETE')
                              <a href="#" class="dropdown-item" onclick="deleteItem({{$familie->id}})">Hapus KK</a>
                            </form>
-                           @foreach($users as $user)
-                             {{-- @foreach($users->familie as $qq) klo mau harusnya gini--}}
 
-                           <form id="delete-form-{{$user->id}}" action="{{ route('user.destroy',$user->id) }}" method="POST" >
+                             @foreach($familie->user as $qq)
+
+                           <form id="delete-form-{{$qq->id}}" action="{{ route('user.destroy',$qq->id) }}" method="POST" >
                             @csrf
                             @method('DELETE')
-                            <a href="#" class="dropdown-item" onclick="deleteItem({{$user->id}})">Hapus - {{$user->name}}</a>
+                            <a href="#" class="dropdown-item" onclick="deleteItem({{$qq->id}})">Hapus - {{$qq->name}}</a>
                           </form>
                         @endforeach
                           </div>

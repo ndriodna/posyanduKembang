@@ -48,7 +48,7 @@ class FamilieController extends Controller
           'email' => $request->name.'.'."@mail.com",
           'password' => bcrypt('secret'),
         ]);
-        // $users->familie()->attach($request->id); apa yg di attach?
+        $users->familie()->attach($request->kk);
         $users->assignRole('warga');
 
         $families = Familie::create([
@@ -124,6 +124,7 @@ class FamilieController extends Controller
     {
       $families = Familie::FindOrFail($id);
       $families->resident()->detach();
+      $families->user()->detach();
       $families->delete();
         return redirect()->route('families.index');
     }

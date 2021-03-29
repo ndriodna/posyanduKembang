@@ -158,6 +158,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         Storage::delete($user->img);
+        $user->familie()->detach();
         $user->delete();
         return redirect(route('user.index'));
     }
