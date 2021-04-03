@@ -27,10 +27,8 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Item</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="#"></a></li>
-                  <li><a class="nav-link" href="#"></a></li>
-                  <li><a class="nav-link" href="#"></a></li>
-                  <li><a class="nav-link" href="#"></a></li>
+                  <li><a class="nav-link" href="{{route('brands.index')}}">Brand</a></li>
+
                 </ul>
               </li>
               {{-- <li class="menu-header">Content</li>

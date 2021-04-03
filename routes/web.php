@@ -19,7 +19,9 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-
+  Route::group(['prefix' => 'laravel-filemanager'], function () {
+      \UniSharp\LaravelFilemanager\Lfm::routes();
+  });
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/residents/kk/{id}', 'ResidentController@kk')->name('kk');
   Route::get('residents/pilih_kk/{slug}', 'ResidentController@selectkk')->name('selectkk');
@@ -30,8 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['middleware' => ['role:Admin']], function (){
 
     Route::resource('residents', 'ResidentController');
-    Route::resource('test', 'TestController');
-	  Route::resource('families', 'FamilieController');
+    Route::resource('families', 'FamilieController');
+	  Route::resource('brands', 'BrandController');
 		Route::resource('user', 'UserController');
 		Route::resource('roles', 'RoleController');
 

@@ -10,30 +10,21 @@
           <h4 class="card-title">Data Keluarga</h4>
         </div>
         <div class="card-body">
-            {{-- <div class="col-sm-4">
-              <a href="{{route('families.index')}}" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
-            </div><br> --}}
+            <div class="col-sm-4">
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
+            </div><br>
           <div class="table-responsive">
             <table class="table" id="residentTable">
               <thead>
-                <th>No KK</th>
-                <th>Anggota Keluarga</th>
-                <th>test</th>
+                <th>Title</th>
+                <th>Description</th>
                 <th>Action</th>
               </thead>
               <tbody>
-                @foreach ($families as $familie)
+                @foreach ($brands as $brand)
                 <tr>
-                  <td>{{$familie->no_kk}}</td>
-                  <td>@foreach($familie->resident as $pp)
-                    {{$pp->nama}}
-                  @endforeach
-                </td>
-                  <td>
-                    @foreach($familie->user as $pp)
-                        {{$pp->id}}
-                      @endforeach
-                  </td>
+                  <td>{{$brand->title}}</td>
+                  <td>{{$brand->desc}}</td>
                   <td class="col-1">
                       <div class="btn-group">
                         <div class="dropdown ">
@@ -41,7 +32,6 @@
                           <i class="fa fa-plus-square fa-lg"></i>
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton ">
-
                           </div>
                         </div>
                       </div>
@@ -61,21 +51,11 @@
                           <i class="fa fa-trash fa-lg"></i>
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                            <form id="delete-form-{{$familie->id}}" action="{{ route('families.destroy',$familie->id) }}" method="POST" >
+                            <form id="delete-form-{{$brand->id}}" action="{{ route('brands.destroy',$brand->id) }}" method="POST" >
                              @csrf
                              @method('DELETE')
-                             <a href="#" class="dropdown-item" onclick="deleteItem({{$familie->id}})">Hapus KK</a>
+                             <a href="#" class="dropdown-item" onclick="deleteItem({{$brand->id}})">Hapus KK</a>
                            </form>
-
-                             @foreach($familie->user as $qq)
-
-                           <form id="delete-form-{{$qq->id}}" action="{{ route('user.destroy',$qq->id) }}" method="POST" >
-                            @csrf
-                            @method('DELETE')
-                            <a href="#" class="dropdown-item" onclick="deleteItem({{$qq->id}})">Hapus - {{$qq->no_kk}}</a>
-                          </form>
-                        @endforeach
                           </div>
                         </div>
                       </div>
@@ -99,53 +79,20 @@
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
-<form class="form" method="POST" action="{{route('families.store')}}" enctype="multipart/form-data">
+<form class="form" method="POST" action="{{route('brands.store')}}" enctype="multipart/form-data">
 @csrf
 <h3 class="description text-center text-success">Input Data Keluarga</h3>
 <div class="card-body">
   <div class="row">
     <div class="col-12">
       <div class="form-group">
-          <input type="number" class="form-control" name="no_kk" placeholder="No KK" required>
+          <input type="text" class="form-control" name="familie_id" placeholder="ID Keluarga" required>
       </div>
       <div class="form-group">
-        <label for="">Kepala Keluarga</label><br>
-        <select class="selectpicker" data-style="btn btn-info" name="kepala_keluarga" data-live-search="true">
-          @foreach($residents as $resident)
-            @if($resident->jenis_kelamin == 'laki-laki')
-            <option value="{{$resident->id}}">{{$resident->nama}}</option>
-            @endif
-          @endforeach
-        </select>
+          <input type="text" class="form-control" name="title" placeholder="Nama Brand" required>
       </div>
       <div class="form-group">
-        <label for="">Anggota Keluarga</label><br>
-        <select multiple class="selectpicker" data-style="btn btn-info" name="anggota[]" data-live-search="true">
-          @foreach($residents as $resident)
-            <option value="{{$resident->id}}">{{$resident->nama}}</option>
-          @endforeach
-        </select>
-      </div>
-      <div class="form-group">
-         <textarea class="form-control" name="alamat" placeholder="Alamat" rows="4"></textarea>
-      </div>
-      <div class="form-group">
-          <input type="text" class="form-control" name="rt_rw" placeholder="RT/RW">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="kode_pos" placeholder="Kode Pos">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="kel_desa" placeholder="Kelurahan/Desa">
-      </div>
-      <div class="form-group">
-      <input type="text" class="form-control" name="kecamatan" placeholder="kecamatan">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="kab_kota" placeholder="Kabupaten/Kota">
-      </div>
-      <div class="form-group">
-          <input type="text" class="form-control" name="provinsi" placeholder="Provinsi">
+         <textarea class="form-control my-editor" name="desc" placeholder="Deskripsi" rows="4"></textarea>
       </div>
     </div>
   </div>

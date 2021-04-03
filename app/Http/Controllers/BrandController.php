@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Brand;
+use App\User;
 use App\Familie;
-use App\Resident;
+use Auth;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +18,8 @@ class TestController extends Controller
      */
     public function index()
     {
-        $families = Familie::all();
-        $residents = Resident::all();
-        return view('residents.index',compact('families','residents'));
+        $brands = Brand::all();
+        return view('brands.index', compact('brands'));
     }
 
     /**
@@ -37,16 +40,24 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $brands = Brand::create([
+          'user_id' => auth::id(),
+          'familie_id' => $request->familie_id,
+          'title' => $request->title,
+          'slug' => SlugService::createSlug(Brand::class, 'slug',$request->title),
+          'desc' => $request->desc,
+        ]);
+        return redirect()->route('brands.index')->with('success', 'Berhasil');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Brand $brand)
     {
         //
     }
@@ -54,24 +65,22 @@ class TestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Brand $brand)
     {
-      $families = Familie::all();
-      $residents = Resident::FindOrFail($id);
-      return view('families.edit',compact('families','residents'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Brand $brand)
     {
         //
     }
@@ -79,10 +88,10 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
         //
     }
