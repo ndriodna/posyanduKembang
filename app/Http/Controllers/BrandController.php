@@ -20,7 +20,7 @@ class BrandController extends Controller
     {
         $brands = Brand::all();
         $families = Familie::all();
-        $users = User::all();
+        $users = User::find(Auth::user()->id);
         return view('brands.index', compact('brands','families','users'));
     }
 

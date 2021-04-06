@@ -10,16 +10,14 @@
           <h4 class="card-title">Brand</h4>
         </div>
         <div class="card-body">
-          @foreach ($families as $familie)
-            User
-            @foreach ($familie->user as $user)
-              <h5>{{$user->name}}</h5>
-            @endforeach
-            Anggota
-            @foreach ($familie->resident as $resident)
-              <h5>{{$resident->nama}}</h5>
-            @endforeach
-          @endforeach
+          Username
+          <h5> {{$users->name}}</h5>
+         @foreach($users->familie as $families)
+         Anggota
+         @foreach($families->resident as $anggota)
+         <h5>{{$anggota->nama}}</h5>
+         @endforeach
+         @endforeach
             <div class="col-sm-4">
               <a href="{{route('brands.create')}}" class="btn btn-success">Buat</a>
             </div>
