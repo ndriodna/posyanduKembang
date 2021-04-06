@@ -11,8 +11,8 @@
         </div>
         <div class="card-body">
           <form class="" action="{{route('families.store')}}" method="post">
+            @csrf
             <div class="form-group">
-              @csrf
               <label>Nama</label><br>
                 <select class="selectpicker" data-style="btn btn-info" name="kk" >
                   <option value="{{$residents->id}}">{{$residents->nama}}</option>

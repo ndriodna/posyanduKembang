@@ -7,12 +7,23 @@
     <div class="col-lg-12 md-8 sm-4">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Data Keluarga</h4>
+          <h4 class="card-title">Brand</h4>
         </div>
         <div class="card-body">
+          @foreach ($families as $familie)
+            User
+            @foreach ($familie->user as $user)
+              <h5>{{$user->name}}</h5>
+            @endforeach
+            Anggota
+            @foreach ($familie->resident as $resident)
+              <h5>{{$resident->nama}}</h5>
+            @endforeach
+          @endforeach
             <div class="col-sm-4">
-              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
-            </div><br>
+              <a href="{{route('brands.create')}}" class="btn btn-success">Buat</a>
+            </div>
+            <br>
           <div class="table-responsive">
             <table class="table" id="residentTable">
               <thead>
@@ -69,41 +80,6 @@
       </div>
     </div>
   </div>
-</div>
-
-{{-- modal --}}
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg " role="document">
-<div class="modal-content">
-<div class="modal-body">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-<form class="form" method="POST" action="{{route('brands.store')}}" enctype="multipart/form-data">
-@csrf
-<h3 class="description text-center text-success">Input Data Keluarga</h3>
-<div class="card-body">
-  <div class="row">
-    <div class="col-12">
-      <div class="form-group">
-          <input type="text" class="form-control" name="familie_id" placeholder="ID Keluarga" required>
-      </div>
-      <div class="form-group">
-          <input type="text" class="form-control" name="title" placeholder="Nama Brand" required>
-      </div>
-      <div class="form-group">
-         <textarea class="form-control my-editor" name="desc" placeholder="Deskripsi" rows="4"></textarea>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<div class="modal-footer justify-content-center">
-<button type="submit" class="btn btn-primary">Submit</button>
-</div>
-</form>
-</div>
-</div>
 </div>
 
 @endsection

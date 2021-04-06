@@ -73,7 +73,7 @@
                            <form id="delete-form-{{$qq->id}}" action="{{ route('user.destroy',$qq->id) }}" method="POST" >
                             @csrf
                             @method('DELETE')
-                            <a href="#" class="dropdown-item" onclick="deleteItem({{$qq->id}})">Hapus - {{$qq->no_kk}}</a>
+                            <a href="#" class="dropdown-item" onclick="deleteItem({{$qq->id}})">Hapus - {{$qq->name}}</a>
                           </form>
                         @endforeach
                           </div>

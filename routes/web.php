@@ -28,12 +28,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('residents/buat_kk/{id}', 'ResidentController@buatkk')->name('buatkk');
 	Route::get('/dashboard-user', 'HomeController@user');
 	Route::get('/user/show','UserController@showAuthUser')->name('user.showAuthUser');
+  Route::resource('brands', 'BrandController');
 
 	Route::group(['middleware' => ['role:Admin']], function (){
 
     Route::resource('residents', 'ResidentController');
     Route::resource('families', 'FamilieController');
-	  Route::resource('brands', 'BrandController');
 		Route::resource('user', 'UserController');
 		Route::resource('roles', 'RoleController');
 

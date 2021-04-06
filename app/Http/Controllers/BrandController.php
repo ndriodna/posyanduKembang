@@ -19,7 +19,9 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::all();
-        return view('brands.index', compact('brands'));
+        $families = Familie::all();
+        $users = User::all();
+        return view('brands.index', compact('brands','families','users'));
     }
 
     /**
@@ -29,7 +31,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        $families = Familie::all();
+        return view('brands.create', compact('families'));
     }
 
     /**

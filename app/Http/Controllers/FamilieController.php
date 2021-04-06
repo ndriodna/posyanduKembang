@@ -48,7 +48,6 @@ class FamilieController extends Controller
           'email' => $request->name.'.'."@mail.com",
           'password' => bcrypt('secret'),
         ]);
-        $users->familie()->attach($request->kk);
         $users->assignRole('warga');
 
         $families = Familie::create([
@@ -63,6 +62,7 @@ class FamilieController extends Controller
           'kab_kota' => $request->kab_kota,
           'provinsi' => $request->provinsi,
         ]);
+        $families->user()->attach($users);
         $families->resident()->attach($request->kk);
         return redirect()->route('families.index')->with('success', 'Berhasil');
     }
