@@ -7,7 +7,7 @@
     <div class="col-lg-12 md-8 sm-4">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Data Warga</h4>
+          <h4 class="card-title">Pendaftaran</h4>
         </div>
         <div class="card-body">
             <div class="col-sm-4">
@@ -17,7 +17,7 @@
             <table class="table" id="residentTable">
               <thead>
                 <th>NIK</th>
-                <th>No KK</th>
+                <th>Phase 2</th>
                 <th>Nama</th>
                 <th>Foto</th>
                 <th>Tempat, Tanggal Lahir</th>
@@ -25,10 +25,6 @@
                 <th>Alamat</th>
                 <th>RT/RW</th>
                 <th>Kelurahan/Desa</th>
-                <th>Kecamatan</th>
-                <th>Agama</th>
-                <th>Status Perkawinan</th>
-                <th>Pekerjaan</th>
                 <th>Action</th>
               </thead>
               <tbody>
@@ -50,11 +46,7 @@
                   <td>{{$resident->alamat}}</td>
                   <td>{{$resident->rt_rw}}</td>
                   <td>{{$resident->kel_desa}}</td>
-                  <td>{{$resident->kecamatan}}</td>
-                  <td>{{$resident->agama}}</td>
-                  <td>{{$resident->status_perkawinan}}</td>
-                  <td>{{$resident->pekerjaan}}</td>
-                  <td class="col-1">
+                  <td class="col-auto">
                       <div class="btn-group">
                         <div class="dropdown ">
                           @if ($resident->familie->isEmpty())
@@ -63,7 +55,7 @@
                           </button>
                           @endif
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton ">
-                              <a href="{{route('buatkk',$resident->id)}}" class="dropdown-item">Buat</a>
+                              <a href="{{route('buatkk',$resident->id)}}" class="dropdown-item">Phase 2</a>
                               <a href="{{route('selectkk',$resident->slug)}}" class="dropdown-item" >Pilih KK</a>
                           </div>
                         </div>
