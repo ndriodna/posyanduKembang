@@ -14,26 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', function () {
-    return redirect('/home');
-});
+// Route::get('/', function () {
+//     return redirect('/home');
+// });
+  Route::get('/', 'FrontController@index');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::group(['prefix' => 'laravel-filemanager'], function () {
       \UniSharp\LaravelFilemanager\Lfm::routes();
   });
   Route::get('/home', 'HomeController@index')->name('home');
-  Route::get('/residents/kk/{id}', 'ResidentController@kk')->name('kk');
-  Route::get('residents/pilih_kk/{slug}', 'ResidentController@selectkk')->name('selectkk');
-	Route::get('residents/buat_kk/{id}', 'ResidentController@buatkk')->name('buatkk');
 	Route::get('/dashboard-user', 'HomeController@user');
 	Route::get('/user/show','UserController@showAuthUser')->name('user.showAuthUser');
-  Route::resource('brands', 'BrandController');
+  Route::resource('blog', 'BlogController');
 
 	Route::group(['middleware' => ['role:Admin']], function (){
 
-    Route::resource('residents', 'ResidentController');
-    Route::resource('families', 'FamilieController');
+    Route::resource('pengunjung', 'PengunjungController');
 		Route::resource('user', 'UserController');
 		Route::resource('roles', 'RoleController');
 

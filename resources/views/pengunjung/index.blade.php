@@ -14,49 +14,36 @@
               <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
             </div><br>
           <div class="table-responsive">
-            <table class="table" id="residentTable">
+            <table class="table" id="DataTable">
               <thead>
                 <th>NIK</th>
-                <th>Phase 2</th>
                 <th>Nama</th>
-                <th>Foto</th>
-                <th>Tempat, Tanggal Lahir</th>
+                <th>Tgl Lahir</th>
                 <th>Jenis Kelamin</th>
-                <th>Alamat</th>
+                <th>Kategori</th>
                 <th>RT/RW</th>
-                <th>Kelurahan/Desa</th>
                 <th>Action</th>
               </thead>
               <tbody>
-                @foreach ($residents as $resident)
+                @foreach ($pengunjungs as $pengunjung)
                 <tr>
-                  <td>{{$resident->nik}}</td>
-                  <td>@forelse($resident->familie as $pp)
-                    <span class="badge badge-info">{{$pp->no_kk}}</span>
-                    @empty
-                    <span>Belum Terdaftar KK</span>
-                    @endforelse
-                  </td>
-                  <td>{{$resident->nama}}</td>
-                  <td>
-                    <img src="{{asset('storage/'.$resident->foto)}}" alt="responsive image" class="img-fluid">
-                  </td>
-                  <td>{{$resident->tempat_tgl_lahir}}</td>
-                  <td>{{$resident->jenis_kelamin}}</td>
-                  <td>{{$resident->alamat}}</td>
-                  <td>{{$resident->rt_rw}}</td>
-                  <td>{{$resident->kel_desa}}</td>
+                  <td>{{$pengunjung->nik}}</td>
+                  <td>{{$pengunjung->nama}}</td>
+                  <td>{{$pengunjung->tgl_lahir}}</td>
+                  <td>{{$pengunjung->jenis_kelamin}}</td>
+                  <td>{{$pengunjung->kategori}}</td>
+                  <td>{{$pengunjung->rt_rw}}</td>
                   <td class="col-auto">
                       <div class="btn-group">
                         <div class="dropdown ">
-                          @if ($resident->familie->isEmpty())
+                        {{--   @if ($pengunjung->familie->isEmpty())
                           <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fa fa-plus-square fa-lg"></i>
                           </button>
-                          @endif
+                          @endif --}}
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton ">
-                              <a href="{{route('buatkk',$resident->id)}}" class="dropdown-item">Phase 2</a>
-                              <a href="{{route('selectkk',$resident->slug)}}" class="dropdown-item" >Pilih KK</a>
+                              {{-- <a href="{{route('buatkk',$pengunjung->id)}}" class="dropdown-item">Phase 2</a> --}}
+                              {{-- <a href="{{route('selectkk',$pengunjung->slug)}}" class="dropdown-item" >Pilih KK</a> --}}
                           </div>
                         </div>
                       </div>
@@ -66,7 +53,7 @@
                           <i class="fa fa-pen-square fa-lg"></i>
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
+                              <a href="{{route('pengunjung.edit',$pengunjung->id)}}" class="dropdown-item">Ubah Data</a>
                           </div>
 
                         </div>
@@ -78,10 +65,10 @@
                           <i class="fa fa-trash fa-lg"></i>
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <form id="delete-form-{{$resident->id}}" action="{{ route('residents.destroy',$resident->id) }}" method="POST" >
+                            <form id="delete-form-{{$pengunjung->id}}" action="{{ route('pengunjung.destroy',$pengunjung->id) }}" method="POST" >
                              @csrf
                              @method('DELETE')
-                             <a href="#" class="dropdown-item" onclick="deleteItem({{$resident->id}})">Hapus</a>
+                             <a href="#" class="dropdown-item" onclick="deleteItem({{$pengunjung->id}})">Hapus</a>
                            </form>
                           </div>
                         </div>
@@ -106,9 +93,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <form class="form" method="POST" action="{{route('residents.store')}}" enctype="multipart/form-data">
+        <form class="form" method="POST" action="{{route('pengunjung.store')}}" enctype="multipart/form-data">
           @csrf
-          <h3 class="description text-center text-success">Input Data Warga</h3>
+          <h3 class="description text-center text-success">Pendaftaran</h3>
           <div class="card-body">
             <div class="row">
               <div class="col-12">
@@ -119,24 +106,22 @@
                   <input type="text" class="form-control" name="nama" placeholder="Nama">
                 </div>
                 <div class="form-group">
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                    <label>Foto</label>
-                    <div class="fileinput-new img-thumbnail" >
-                    </div>
-                    <div class="fileinput-preview fileinput-exists img-thumbnail" ></div>
-                    <div>
-                      <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Pilih Foto</span><span class="fileinput-exists">Ganti</span><input type="file" name="foto"></span>
-                      <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Buang</a>
-                    </div>
-                  </div>
+                  <label for="">Tgl Lahir</label><br>
+                  <input type="date" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="tempat_tgl_lahir" placeholder="Tempat, Tanggal Lahir">
-                </div>
-                <div class="form-group">
+                  <label for="">Jenis Kelamin</label><br>
                   <select class="selectpicker" data-style="btn btn-info" name="jenis_kelamin" >
                     <option value="laki-laki">Laki-laki</option>
                     <option value="perempuan">Perempuan</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="">kategori</label><br>
+                  <select class="selectpicker" data-style="btn btn-info" name="kategori" >
+                    <option value="ibu hamil">Ibu Hamil</option>
+                    <option value="anak-anak">Anak-anak</option>
+                    <option value="balita">Balita</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -151,21 +136,12 @@
               <div class="form-group">
                 <input type="text" class="form-control" name="kecamatan" placeholder="kecamatan">
               </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="agama" placeholder="Agama">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="status_perkawinan" placeholder="Status Perkawinan">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="pekerjaan" placeholder="Pekerjaan">
-              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer justify-content-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
       </div>
     </form>
   </div>

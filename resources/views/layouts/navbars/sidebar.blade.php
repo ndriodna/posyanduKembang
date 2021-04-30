@@ -21,13 +21,13 @@
                 </ul>
               </li>
               @role('Admin')
-              <li class=""><a class="nav-link" href="{{route('residents.index')}}"><i class="far fa-square"></i> <span>Data Pendaftaran</span></a></li>
-              <li class=""><a class="nav-link" href="{{route('families.index')}}"><i class="far fa-square"></i> <span>Data</span></a></li>
+              <li class=""><a class="nav-link" href="{{route('pengunjung.index')}}"><i class="far fa-square"></i> <span>Pendaftaran</span></a></li>
+              <li class=""><a class="nav-link" href="#"><i class="far fa-square"></i> <span>Data</span></a></li>
               @endrole
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Item</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{route('brands.index')}}">Profile</a></li>
+                  <li><a class="nav-link" href="{{route('blog.index')}}">Blog</a></li>
 
                 </ul>
               </li>

@@ -7,33 +7,27 @@
     <div class="col-lg-12 md-8 sm-4">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Brand</h4>
+          <h4 class="card-title">Blog</h4>
         </div>
         <div class="card-body">
-          Username
-          <h5> {{$users->name}}</h5>
-         @foreach($users->familie as $families)
-         Anggota
-         @foreach($families->resident as $anggota)
-         <h5>{{$anggota->nama}}</h5>
-         @endforeach
-         @endforeach
             <div class="col-sm-4">
-              <a href="{{route('brands.create')}}" class="btn btn-success">Buat</a>
+              <a href="{{route('blog.create')}}" class="btn btn-success">Buat Postingan</a>
             </div>
             <br>
           <div class="table-responsive">
-            <table class="table" id="residentTable">
+            <table class="table" id="DataTable">
               <thead>
                 <th>Title</th>
+                <th>Tags</th>
                 <th>Description</th>
                 <th>Action</th>
               </thead>
               <tbody>
-                @foreach ($brands as $brand)
+                @foreach ($blogs as $blog)
                 <tr>
-                  <td>{{$brand->title}}</td>
-                  <td>{{$brand->desc}}</td>
+                  <td>{{$blog->title}}</td>
+                  <td>#</td>
+                  <td>{!!$blog->desc!!}</td>
                   <td class="col-1">
                       <div class="btn-group">
                         <div class="dropdown ">
@@ -60,10 +54,10 @@
                           <i class="fa fa-trash fa-lg"></i>
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <form id="delete-form-{{$brand->id}}" action="{{ route('brands.destroy',$brand->id) }}" method="POST" >
+                            <form id="delete-form-{{$blog->id}}" action="{{ route('blog.destroy',$blog->id) }}" method="POST" >
                              @csrf
                              @method('DELETE')
-                             <a href="#" class="dropdown-item" onclick="deleteItem({{$brand->id}})">Hapus KK</a>
+                             <a href="#" class="dropdown-item" onclick="deleteItem({{$blog->id}})">Hapus KK</a>
                            </form>
                           </div>
                         </div>

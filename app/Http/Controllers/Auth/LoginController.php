@@ -28,16 +28,16 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    protected function redirectTo()
-    {
-      if (auth()->user()->role_id == '1') {
-        return '/home';
-      }
-      elseif (auth()->user()->role_id == '2') {
-       return '/home';
-      }
-      return '/dashboard2';
-    }
+    // protected function redirectTo()
+    // {
+    //   if (auth()->user()->role_id == '1') {
+    //     return '/home';
+    //   }
+    //   elseif (auth()->user()->role_id == '2') {
+    //    return '/home';
+    //   }
+    //   return '/dashboard2';
+    // }
 
     public function username()
     {

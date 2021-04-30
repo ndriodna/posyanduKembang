@@ -26,7 +26,7 @@
       <div class="card-body">
         
         <div class="table-responsive">
-         <table class="table table-striped table-bordered data-table bg-white text-dark card-body" id="residentTable">
+         <table class="table table-striped table-bordered data-table bg-white text-dark card-body" id="DataTable">
           <thead>
             <tr>
               <th>#</th>

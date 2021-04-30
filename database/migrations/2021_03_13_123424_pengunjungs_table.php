@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ResidentsTable extends Migration
+class PengunjungsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,17 @@ class ResidentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('residents', function (Blueprint $table) {
+        Schema::create('pengunjungs', function (Blueprint $table) {
             $table->id();
             $table->string('nik', 20);
-            $table->string('slug', 20);
             $table->string('nama', 50);
-            $table->text('foto')->nullable();
-            $table->text('tempat_tgl_lahir');
+            $table->date('tgl_lahir');
             $table->enum('jenis_kelamin',['laki-laki','perempuan']);
+            $table->enum('kategori',['ibu hamil','anak-anak','balita']);
             $table->text('alamat')->nullable();
             $table->string('rt_rw', 20)->nullable();
             $table->string('kel_desa', 50)->nullable();
             $table->string('kecamatan', 50)->nullable();
-            $table->string('agama', 20)->nullable();
-            $table->string('status_perkawinan', 20)->nullable();
-            $table->string('pekerjaan', 50)->nullable();
             $table->timestamps();
         });
     }

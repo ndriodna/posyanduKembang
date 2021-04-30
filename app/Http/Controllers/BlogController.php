@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Brand;
+use App\Blog;
 use App\User;
-use App\Familie;
 use Auth;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +17,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::all();
-        $families = Familie::all();
+        $blogs = Blog::all();
         $users = User::find(Auth::user()->id);
-        return view('brands.index', compact('brands','families','users'));
+        return view('blog.index', compact('blogs','users'));
     }
 
     /**
@@ -31,8 +29,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        $families = Familie::all();
-        return view('brands.create', compact('families'));
+        return view('blog.create');
     }
 
     /**
@@ -43,14 +40,13 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        $brands = Brand::create([
+        $blog = Blog::create([
           'user_id' => auth::id(),
-          'familie_id' => $request->familie_id,
           'title' => $request->title,
-          'slug' => SlugService::createSlug(Brand::class, 'slug',$request->title),
+          'slug' => SlugService::createSlug(Blog::class, 'slug',$request->title),
           'desc' => $request->desc,
         ]);
-        return redirect()->route('brands.index')->with('success', 'Berhasil');
+        return redirect()->route('blog.index')->with('success', 'Berhasil');
 
     }
 

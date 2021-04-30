@@ -1,6 +1,5 @@
   <!DOCTYPE html>
   <html>
-
   <head>
       <title>Admin</title>
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -105,7 +104,7 @@
 
       <script type="text/javascript">
           $(document).ready(function() {
-              $('#residentTable').DataTable({
+              $('#DataTable').DataTable({
                   order: [
                       [2, 'desc'],
                       [0, 'asc']

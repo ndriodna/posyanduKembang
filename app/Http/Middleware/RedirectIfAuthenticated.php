@@ -18,14 +18,17 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check() && Auth::user()->role_id == '1') {
-            return redirect(RouteServiceProvider::HOME);
-        } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == '2') {
-            return redirect(RouteServiceProvider::HOME);
-          } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == '3') {
-              return redirect('/dashboard2');
-          }else{
+        // if (Auth::guard($guard)->check() && Auth::user()->role_id == '1') {
+        //     return redirect(RouteServiceProvider::HOME);
+        // } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == '2') {
+        //     return redirect(RouteServiceProvider::HOME);
+        //   } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == '3') {
+        //       return redirect('/dashboard2');
+        //   }else{
+        //   }
+          if (Auth::guard($guard)->check()) {
+            return redirect('/home');
+        }
             return $next($request);
-          }
     }
 }

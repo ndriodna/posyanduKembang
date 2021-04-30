@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Brand extends Model
+class Blog extends Model
 {
     use Sluggable;
     protected $guarded = [];
