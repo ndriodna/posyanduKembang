@@ -100,12 +100,17 @@
         @endif
         <form class="form" method="POST" action="{{route('pencatatan.store')}}" enctype="multipart/form-data">
           @csrf
-          <h3 class="description text-center text-success">pencatatan</h3>
+          <h3 class="description text-center text-success">Pencatatan</h3>
           <div class="card-body">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                  <input type="number" class="form-control" name="no_bpjs" placeholder="Masukan NO BPJS">
+                  <label for="">Nama</label> <br>
+                  <select name="pendaftaran_id" id="" class="selectpicker">
+                    @foreach($pendaftarans as $pendaftaran)
+                    <option value="{{$pendaftaran->id}}">{{$pendaftaran->nama}}</option>
+                    @endforeach
+                  </select>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" name="nama" placeholder="Nama">
