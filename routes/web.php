@@ -30,7 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['middleware' => ['role:Admin']], function (){
 
-    Route::resource('pengunjung', 'PengunjungController');
+    Route::resource('pendaftaran', 'PendaftaranController');
+    Route::resource('pencatatan', 'PencatatanController');
 		Route::resource('user', 'UserController');
 		Route::resource('roles', 'RoleController');
 

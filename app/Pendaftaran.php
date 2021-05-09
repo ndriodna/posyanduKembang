@@ -4,10 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pengunjung extends Model
+class Pendaftaran extends Model
 {
-
     protected $guarded = [];
-
-  
 }
