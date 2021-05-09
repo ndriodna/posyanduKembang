@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pencatatan;
+use App\Pendaftaran;
 use Illuminate\Http\Request;
 
 class PencatatanController extends Controller
@@ -14,7 +15,9 @@ class PencatatanController extends Controller
      */
     public function index()
     {
-        //
+        $pendaftarans = Pendaftaran::all();
+        $pencatatans = Pencatatan::all();
+        return view('pencatatan.index', compact('pendaftarans','pencatatans'));
     }
 
     /**
