@@ -57,13 +57,22 @@
                       </div>
                       <div class="btn-group">
                         <div class="dropdown">
+                          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-plus-square fa-lg"></i>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a href="{{route('addNote',$pendaftaran->id)}}" class="dropdown-item">Buat Catatan</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="btn-group">
+                        <div class="dropdown">
                           <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-pen-square fa-lg"></i>
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a href="{{route('pendaftaran.edit',$pendaftaran->id)}}" class="dropdown-item">Ubah Data</a>
                           </div>
-
                         </div>
                       </div>
                       <a class=" btn btn-info" href="{{route('pendaftaran.show',$pendaftaran->id)}}"><i class="fa fa-eye fa-lg"></i></a>

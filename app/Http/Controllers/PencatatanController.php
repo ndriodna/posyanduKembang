@@ -38,7 +38,16 @@ class PencatatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pencatatan = pencatatan::create([
+          'pendaftaran_id' => $request->pendaftaran_id,
+          'umur' => $request->umur,
+          'bb_kg' => $request->bb_kg,
+          'tb_cm' => $request->tb_cm,
+          'lingkar_kepala' => $request->lingkar_kepala,
+          'ntob' => $request->ntob,
+          'keterangan' => $request->keterangan,
+        ]);
+        return redirect()->route('pencatatan.index');
     }
 
     /**
@@ -49,7 +58,8 @@ class PencatatanController extends Controller
      */
     public function show(Pencatatan $pencatatan)
     {
-        //
+      $pendaftaran = Pendaftaran::all();
+      return view('pencatatan.show', compact('pendaftaran','pencatatan'));
     }
 
     /**
@@ -72,7 +82,17 @@ class PencatatanController extends Controller
      */
     public function update(Request $request, Pencatatan $pencatatan)
     {
-        //
+        $pencatatan->update([
+          'pendaftaran_id' => $request->pendaftaran_id,
+          'umur' => $request->umur,
+          'bb_kg' => $request->bb_kg,
+          'tb_cm' => $request->tb_cm,
+          'lingkar_kepala' => $request->lingkar_kepala,
+          'ntob' => $request->ntob,
+          'keterangan' => $request->keterangan,
+        ]);
+        return redirect()->route('pencatatan.index');
+
     }
 
     /**
@@ -83,6 +103,8 @@ class PencatatanController extends Controller
      */
     public function destroy(Pencatatan $pencatatan)
     {
-        //
+        $pencatatan->delete();
+        return redirect()->route('pencatatan.index');
+
     }
 }

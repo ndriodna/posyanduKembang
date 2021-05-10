@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pendaftaran;
+use App\Pencatatan;
 use App\Http\Requests\PendaftaranValidate;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,12 @@ class PendaftaranController extends Controller
         //
     }
 
+    public function addNote($id)
+    {
+        $pendaftaran = Pendaftaran::findorFail($id);
+        $pencatatans = Pencatatan::all();
+        return view('pencatatan.create', compact('pendaftaran','pencatatans'));
+    }
     /**
      * Store a newly created resource in storage.
      *
