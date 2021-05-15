@@ -23,6 +23,8 @@
               @role('Admin')
               <li class=""><a class="nav-link" href="{{route('pendaftaran.index')}}"><i class="far fa-square"></i> <span>Pendaftaran</span></a></li>
               <li class=""><a class="nav-link" href="{{route('pencatatan.index')}}"><i class="far fa-square"></i> <span>Pencatatan</span></a></li>
+              <li class=""><a class="nav-link" href="{{route('penyuluhan.index')}}"><i class="far fa-square"></i> <span>Penyuluhan</span></a></li>
+              <li class=""><a class="nav-link" href="{{route('pelayanan.index')}}"><i class="far fa-square"></i> <span>Pelayanan</span></a></li>
               @endrole
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Item</span></a>

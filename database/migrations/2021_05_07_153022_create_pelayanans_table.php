@@ -17,6 +17,7 @@ class CreatePelayanansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pendaftaran_id');
             $table->text('jenis_pelayanan');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

@@ -168,6 +168,8 @@ $('#mystuff').change(function(){
   $(selector).collapse('show');
 });
       </script>
+        @stack('js')
+      
   </body>
 
   </html>

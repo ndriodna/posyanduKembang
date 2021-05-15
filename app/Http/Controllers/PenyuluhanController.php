@@ -14,7 +14,8 @@ class PenyuluhanController extends Controller
      */
     public function index()
     {
-        //
+        $penyuluhans = Penyuluhan::all();
+        return view('penyuluhan.index',compact('penyuluhans'));
     }
 
     /**
@@ -35,7 +36,17 @@ class PenyuluhanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'waktu_tempat' => 'required|string',
+            'materi' => 'required|string',
+            'peserta' => 'required|string',
+        ]);
+        Penyuluhan::create([
+            'waktu_tempat' => $request->waktu_tempat,
+            'materi' => $request->materi,
+            'peserta' => $request->peserta
+        ]);
+        return redirect()->route('penyuluhan.index');
     }
 
     /**
@@ -57,7 +68,7 @@ class PenyuluhanController extends Controller
      */
     public function edit(Penyuluhan $penyuluhan)
     {
-        //
+        return view('penyuluhan.edit',compact('penyuluhan'));
     }
 
     /**
@@ -69,7 +80,12 @@ class PenyuluhanController extends Controller
      */
     public function update(Request $request, Penyuluhan $penyuluhan)
     {
-        //
+        $penyuluhan->update([
+            'waktu_tempat' => $request->waktu_tempat,
+            'materi' => $request->materi,
+            'peserta' => $request->peserta
+        ]);
+        return redirect()->route('penyuluhan.index');
     }
 
     /**
@@ -80,6 +96,7 @@ class PenyuluhanController extends Controller
      */
     public function destroy(Penyuluhan $penyuluhan)
     {
-        //
+        $penyuluhan->delete();
+        return redirect()->route('penyuluhan.index');
     }
 }

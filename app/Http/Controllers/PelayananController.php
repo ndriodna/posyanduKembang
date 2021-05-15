@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pelayanan;
+use App\Pendaftaran;
 use Illuminate\Http\Request;
 
 class PelayananController extends Controller
@@ -14,7 +15,15 @@ class PelayananController extends Controller
      */
     public function index()
     {
-        //
+        $pelayanans = Pelayanan::all();
+        $pendaftarans = Pendaftaran::all();
+        return view('pelayanan.index',compact('pelayanans','pendaftarans'));
+    }
+
+    public function pendaftaranDetail($id)
+    {
+        $detail = Pendaftaran::find($id);
+        return response()->json($detail);
     }
 
     /**

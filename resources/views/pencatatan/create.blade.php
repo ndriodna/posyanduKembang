@@ -18,8 +18,8 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="">Umur</label><br>
-                  <input type="text" class="form-control" name="umur" placeholder="Umur">
+                  <label for="">Umur/Bulan</label><br>
+                  <input type="text" class="form-control" name="umur" value="{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}}" readonly>
                 </div>
               <div class="form-group">
                 <label for="">Berat Badan</label><br>

@@ -31,6 +31,7 @@
                 <th>TB</th>
                 <th>Lingkar Kepala</th>
                 <th>ntob</th>
+                <th>Tgl</th>
                 <th>Action</th>
               </thead>
               <tbody>
@@ -42,6 +43,7 @@
                   <td>{{$pencatatan->tb_cm}}</td>
                   <td>{{$pencatatan->lingkar_kepala}}</td>
                   <td>{{$pencatatan->ntob}}</td>
+                  <td>{{date('d-m-Y',strtotime($pencatatan->created_at))}}</td>
                   <td class="col-auto">
                       <div class="btn-group">
                         <div class="dropdown">

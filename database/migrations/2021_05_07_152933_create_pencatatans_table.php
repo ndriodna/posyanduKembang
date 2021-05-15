@@ -21,7 +21,7 @@ class CreatePencatatansTable extends Migration
             $table->integer('tb_cm');
             $table->integer('lingkar_kepala');
             $table->enum('ntob', ['naik','turun','tidak_hadir','baru']);
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

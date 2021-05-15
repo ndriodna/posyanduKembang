@@ -15,7 +15,6 @@ class CreatePenyuluhansTable extends Migration
     {
         Schema::create('penyuluhans', function (Blueprint $table) {
             $table->id();
-            $table->date('tgl');
             $table->text('waktu_tempat');
             $table->text('materi');
             $table->text('peserta');
