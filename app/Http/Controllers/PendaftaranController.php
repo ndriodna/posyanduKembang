@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Pendaftaran;
 use App\Pencatatan;
 use App\Http\Requests\PendaftaranValidate;

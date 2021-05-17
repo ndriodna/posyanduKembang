@@ -155,7 +155,7 @@
       dataType: 'json',
       success: function (response) {
         if (response != null) {
-          $('#tgl_lahir').val(response.tgl_lahir)
+          $('#tgl_lahir').val(response.umur)
         }
       }
     })

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use App\User;
+use App\Tag;
 use Auth;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+      $blogs = Blog::all();
+        return view('blog.create', compact('blogs'));
     }
 
     /**
@@ -46,6 +48,23 @@ class BlogController extends Controller
           'slug' => SlugService::createSlug(Blog::class, 'slug',$request->title),
           'desc' => $request->desc,
         ]);
+        if($blog){
+        $tagNames = explode(',',$request->get('tags'));
+        $tagIds = [];
+        foreach($tagNames as $tagName)
+        {
+            //$blog->tags()->create(['name'=>$tagName]);
+            //Or to take care of avoiding duplication of Tag
+            //you could substitute the above line as
+            $tag = Tag::firstOrCreate(['name'=>$tagName]);
+            if($tag)
+            {
+              $tagIds[] = $tag->id;
+            }
+
+        }
+        $blog->tag()->attach($tagIds);
+        }
         return redirect()->route('blog.index')->with('success', 'Berhasil');
 
     }
@@ -53,10 +72,10 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(Blog $blog)
     {
         //
     }
@@ -64,34 +83,63 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(Blog $blog)
     {
-        //
+        $tags = Tag::all();
+        return view('blog.edit',compact('tags','blog'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Brand  $brand
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(Request $request, Blog $blog)
     {
-        //
+      $blog->update([
+        'title' => $request->title,
+        'slug' => null,
+        'desc' => $request->desc,
+      ]);
+      $blog->tag()->sync($request->tagss);
+
+                  if($blog){
+      $tagNames = explode(',',$request->get('tags'));
+      $tagIds = [];
+      foreach($tagNames as $tagName)
+      {
+          //$blog->tags()->create(['name'=>$tagName]);
+          //Or to take care of avoiding duplication of Tag
+          //you could substitute the above line as
+          $tag = Tag::firstOrCreate(['name'=>$tagName]);
+          if($tag)
+          {
+            $tagIds[] = $tag->id;
+          }
+
+      }
+      $blog->tag()->attach($tagIds);
+      }
+      return redirect()->route('blog.index')->with('success', 'Berhasil');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy($id)
     {
-        //
+        $blogs = Blog::findorfail($id);
+        $blogs->tag()->detach();
+        $blogs->delete();
+        return redirect()->route('blog.index');
     }
 }

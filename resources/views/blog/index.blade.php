@@ -26,42 +26,26 @@
                 @foreach ($blogs as $blog)
                 <tr>
                   <td>{{$blog->title}}</td>
-                  <td>#</td>
+                  <td>@foreach($blog->tag as $data)
+        					<span class="badge badge-success">{{$data->name}}</span>
+        				@endforeach</td>
                   <td>{!!$blog->desc!!}</td>
-                  <td class="col-1">
-                      <div class="btn-group">
-                        <div class="dropdown ">
-                          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-plus-square fa-lg"></i>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton ">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="btn-group">
-                        <div class="dropdown">
-                          <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-pen-square fa-lg"></i>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          </div>
-                        </div>
-                      </div>
-                          <a class=" btn btn-info" href="#"><i class="fa fa-eye fa-lg"></i></a>
-                      <div class="btn-group">
-                        <div class="dropdown ">
-                          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-trash fa-lg"></i>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <form id="delete-form-{{$blog->id}}" action="{{ route('blog.destroy',$blog->id) }}" method="POST" >
-                             @csrf
-                             @method('DELETE')
-                             <a href="#" class="dropdown-item" onclick="deleteItem({{$blog->id}})">Hapus KK</a>
-                           </form>
-                          </div>
-                        </div>
-                      </div>
+                  <td class="">
+                    <div class="btn-group">
+    					<a href="{{ route('blog.show',$blog->slug) }}"class="btn btn-info">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        <a href="{{ route('blog.edit',$blog->id) }}" rel="tooltip" class="btn btn-success">
+                            <i class="fa fa-pen-square"></i>
+                        </a>
+                        <form id="delete-form-{{$blog->id}}" action="{{ route('blog.destroy',$blog->id) }}" method="POST">
+                        @csrf
+                          @method('DELETE')
+                        <a href="#" type="button" onclick="deleteItem({{$blog->id}})" rel="tooltip" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                      </form>
+    					</div>
                   </td>
                 </tr>
               @endforeach

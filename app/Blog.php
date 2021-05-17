@@ -21,4 +21,8 @@ class Blog extends Model
     {
       return $this->belongsTo('App\User');
     }
+
+    public function tag(){
+      return $this->belongsToMany('App\Tag');
+    }
 }

@@ -18,6 +18,9 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
       {{-- jasny fileinput --}}
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
+      {{-- tag --}}
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" />
       <!-- Template CSS -->
       <link rel="stylesheet" href="{{asset('assets')}}/css/style.css">
       <link rel="stylesheet" href="{{asset('assets')}}/css/components.css">
@@ -43,13 +46,14 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
       <!-- Template JS File -->
       <script src="{{asset('assets')}}/js/scripts.js"></script>
       <script src="{{asset('assets')}}/js/custom.js"></script>
       <script src="{{asset('assets')}}/js/stisla.js"></script>
-      {{-- <script src="{{asset('assets')}}/js/tags.js"></script> --}}
-      {{-- <script src="{{asset('assets')}}/js/page/forms-advanced-forms.js"></script> --}}
+      <script src="{{asset('assets')}}/js/tags.js"></script>
+      <script src="{{asset('assets')}}/js/page/forms-advanced-forms.js"></script>
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
@@ -169,7 +173,7 @@ $('#mystuff').change(function(){
 });
       </script>
         @stack('js')
-      
+
   </body>
 
   </html>

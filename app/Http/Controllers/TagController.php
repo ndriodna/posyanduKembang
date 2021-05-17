@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Pelayanan;
-use App\Pendaftaran;
+use App\Tag;
 use Illuminate\Http\Request;
 
-class PelayananController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +14,7 @@ class PelayananController extends Controller
      */
     public function index()
     {
-        $pelayanans = Pelayanan::all();
-        $pendaftarans = Pendaftaran::all();
-        return view('pelayanan.index',compact('pelayanans','pendaftarans'));
-    }
-
-    public function pendaftaranDetail($id)
-    {
-        $detail = Pencatatan::find($id);
-        return response()->json($detail);
+        //
     }
 
     /**
@@ -50,10 +41,10 @@ class PelayananController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pelayanan  $pelayanan
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Pelayanan $pelayanan)
+    public function show(Tag $tag)
     {
         //
     }
@@ -61,10 +52,10 @@ class PelayananController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pelayanan  $pelayanan
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pelayanan $pelayanan)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -73,10 +64,10 @@ class PelayananController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pelayanan  $pelayanan
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pelayanan $pelayanan)
+    public function update(Request $request, Tag $tag)
     {
         //
     }
@@ -84,10 +75,10 @@ class PelayananController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pelayanan  $pelayanan
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pelayanan $pelayanan)
+    public function destroy(Tag $tag)
     {
         //
     }

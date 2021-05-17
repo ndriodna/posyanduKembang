@@ -142,6 +142,10 @@
                   <input type="date" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir">
                 </div>
                 <div class="form-group">
+                  <label for="">Umur/Bulan</label><br>
+                  <input type="text" class="form-control" name="umur" >
+                </div>
+                <div class="form-group">
                   <label for="">Jenis Kelamin</label><br>
                   <select class="selectpicker" data-style="btn btn-info" name="jenis_kelamin" >
                     <option value="laki-laki">Laki-laki</option>
