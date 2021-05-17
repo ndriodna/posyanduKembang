@@ -8,11 +8,11 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Tag extends Model
 {
     protected $guarded = [];
-    use Sluggable;
-    
+    use sluggable;
+
     public function sluggable(){
-       return ['slug'=>['source'=>'name','onUpdate'=>true]];
-   }
+        return ['slug'=>['source'=>'name','onUpdate'=>true]];
+    }
     public function blog(){
       return $this->belongsToMany('App\Blog');
     }

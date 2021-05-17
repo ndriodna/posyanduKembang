@@ -7,5 +7,4 @@ class Pendaftaran extends Model
 {
     protected $guarded = [];
 
-  
 }

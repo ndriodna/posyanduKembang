@@ -31,7 +31,8 @@ class BlogController extends Controller
     public function create()
     {
       $blogs = Blog::all();
-        return view('blog.create', compact('blogs'));
+      $tags = Tag::all();
+        return view('blog.create', compact('blogs','tags'));
     }
 
     /**
@@ -48,6 +49,8 @@ class BlogController extends Controller
           'slug' => SlugService::createSlug(Blog::class, 'slug',$request->title),
           'desc' => $request->desc,
         ]);
+        $blog->tag()->attach($request->tags_input);
+
         if($blog){
         $tagNames = explode(',',$request->get('tags'));
         $tagIds = [];
@@ -65,6 +68,7 @@ class BlogController extends Controller
         }
         $blog->tag()->attach($tagIds);
         }
+
         return redirect()->route('blog.index')->with('success', 'Berhasil');
 
     }
