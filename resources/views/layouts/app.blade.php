@@ -112,7 +112,8 @@
                   order: [
                       [2, 'desc'],
                       [0, 'asc']
-                  ]
+                  ],
+                  fixedColumns: true
               });
           });
       </script>

@@ -18,12 +18,8 @@
         <img src="http://via.placeholder.com/100x100">
         @endif
         <div class="form-row p-2">
-         <div class="col-md-4">Nama</div>
+         <div class="col-md-4">Username</div>
          <div class="col-md-8">{{$user->name}}</div>
-       </div>
-       <div class="form-row p-2">
-         <div class="col-md-4">Email</div>
-         <div class="col-md-8">{{$user->email}}</div>
        </div>
        <div class="form-row p-2">
          <div class="col-md-4">Role</div>
@@ -33,16 +29,6 @@
           @endforeach
         </div>
       </div>
-      <div class="form-row p-2">
-       <div class="col-md-4">Pengguna Akun</div>
-       <div class="col-md-8">
-        @foreach($families as $familie)
-        @foreach($familie->resident as $pp)
-        {{$pp->nama}} <br>
-        @endforeach
-        @endforeach
-      </div>
-    </div>
   </div>
 </div>
 </div>

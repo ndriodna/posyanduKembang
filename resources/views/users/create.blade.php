@@ -10,29 +10,15 @@
 						@csrf
 						<h3 class="description text-center text-success">Buat Akun</h3>
 						<div class="form-group">
-							<label class="form-control-label">Nama</label>
+							<label class="form-control-label">Username</label>
 							<input class="form-control" type="text" name="name" required>
 							<p class="text-danger">{{ $errors->first('name') }}</p>
-						</div>
-						<div class="form-group">
-							<label class="form-control-label">Email</label>
-							<input class="form-control" type="email" name="email" required>
-							<p class="text-danger">{{ $errors->first('email') }}</p>
 						</div>
 						<div class="form-group">
 							<label class="form-control-label">Password</label>
 							<input class="form-control" type="password" name="password" required>
 							<p class="text-danger">{{ $errors->first('password') }}</p>
 						</div>
-						<div class="form-group">
-                  <label for="">No KK</label><br>
-                  <select class="selectpicker" data-style="btn btn-info" name="no_kk" data-live-search="true">
-                  	<option value=""></option>
-                    @foreach($families as $familie)
-                    <option value="{{$familie->id}}">{{$familie->no_kk}} -</option>
-                    @endforeach
-                  </select>
-                </div>
 						<div class="form-group">
 							<label class="form-control-label">Role</label><br>
 							<select name="role" class="selectpicker" data-style="btn btn-info" required>

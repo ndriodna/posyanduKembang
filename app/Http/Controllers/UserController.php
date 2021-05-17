@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Familie;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -32,9 +31,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $families = Familie::all();
         $roles = Role::all();
-        return view('users.create',compact('families','roles'));
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -53,7 +51,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255|min:3|unique:users',
-            'email' => 'required|string|unique:users',
+            // 'email' => 'required|string|unique:users',
             'password' => 'required|min:6',
             'role' => 'required|string|exists:roles,name',
             'img' => 'nullable|image|mimes:jpg,png,jpeg'
@@ -63,9 +61,7 @@ class UserController extends Controller
             if ($request->hasFile('img')) {
                 $img = $this->saveFile($request->name,$request->file('img'));
             }
-           $user = User::firstOrCreate([
-                'email' => $request->email
-            ],
+           $user = User::firstOrCreate(
             [
                 'name' => $request->name,
                 'password' => bcrypt($request->password),
@@ -73,9 +69,6 @@ class UserController extends Controller
             ]);
             $user->assignRole($request->role);
 
-            if ($request->has('no_kk')) {
-            $user->familie()->attach($request->no_kk);
-            }
             return redirect()->route('user.index');
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -90,9 +83,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $families = Familie::all();
         $user = User::find($id);
-        return view('users.show',compact('user','families'));
+        return view('users.show',compact('user'));
     }
 
     public function showAuthUser()
@@ -124,7 +116,6 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255|min:3',
-            'email' => 'required|string',
             'password' => 'nullable|min:6',
             'img' => 'nullable|image|mimes:jpg,png,jpeg'
         ]);
@@ -138,7 +129,6 @@ class UserController extends Controller
             }
             $user->update([
                 'name' => $request->name,
-                'email' => $request->email,
                 'img' => $img,
                 'password' => $password
             ]);
@@ -158,7 +148,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         Storage::delete($user->img);
-        $user->familie()->detach();
         $user->delete();
         return redirect(route('user.index'));
     }
