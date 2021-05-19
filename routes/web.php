@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('pendaftaran', 'PendaftaranController');
     Route::resource('pencatatan', 'PencatatanController');
     Route::get('/buat/pencatatan/{id}', 'PendaftaranController@addNote')->name('addNote');
+    Route::get('/buat/pelayanan/{id}', 'PelayananController@addPelayanan')->name('addPelayanan');
     Route::resource('penyuluhan', 'PenyuluhanController');
     Route::resource('pelayanan', 'PelayananController');
     Route::get('pelayanan/detail/{id}', 'PelayananController@pendaftaranDetail')->name('getDetail');

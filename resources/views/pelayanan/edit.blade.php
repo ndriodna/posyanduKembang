@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-sm-8">
 
-    <form class="form" method="POST" action="{{route('pelayanan.store')}}" enctype="multipart/form-data">
+    <form class="form" method="POST" action="{{route('pelayanan.update',$pelayanan->id)}}" enctype="multipart/form-data">
       @csrf
       <br>
       <h3 class="description text-info">Pelayanan</h3>
@@ -18,11 +18,11 @@
             </div>
             <div class="form-group">
               <label for="">Jenis Pelayanan</label> <br>
-              <input type="text" class="form-control" name="jenis_pelayanan">
+              <input type="text" class="form-control" name="jenis_pelayanan" value="{{$pelayanan->jenis_pelayanan}}">
             </div>
             <div class="form-group">
               <label for="">Keterangan</label> <br>
-              <textarea class="form-control my-editor" name="keterangan" rows="8" cols="80"></textarea>
+              <textarea class="form-control my-editor" name="keterangan" rows="8" cols="80">{!!$pelayanan->keterangan!!}</textarea>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary">Simpan</button>

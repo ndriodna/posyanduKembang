@@ -10,7 +10,11 @@ class Pelayanan extends Model
 
     public function pendaftaran()
     {
-    	return $this->belongsTo('App\pendaftaran');
+    	return $this->belongsTo('App\Pendaftaran');
+    }
+
+    public function pencatatan(){
+    	return $this->belongsTo('App\Pencatatan');
     }
 
     public function age()

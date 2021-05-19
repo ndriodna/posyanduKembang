@@ -50,6 +50,7 @@ class PencatatanController extends Controller
           'tgl' => $request->tgl,
           'keterangan' => $request->keterangan,
         ]);
+        $pencatatan->pendaftaran()->attach($request->pendaftaran_id);
         return redirect()->route('pencatatan.index');
     }
 
@@ -95,6 +96,7 @@ class PencatatanController extends Controller
           'tgl' => $request->tgl,
           'keterangan' => $request->keterangan,
         ]);
+        $pencatatan->pendaftaran()->sync($request->pendaftaran_id);
         return redirect()->route('pencatatan.index');
 
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pelayanan;
 use App\Pendaftaran;
+use App\Pencatatan;
 use Illuminate\Http\Request;
 
 class PelayananController extends Controller
@@ -17,7 +18,8 @@ class PelayananController extends Controller
     {
         $pelayanans = Pelayanan::all();
         $pendaftarans = Pendaftaran::all();
-        return view('pelayanan.index',compact('pelayanans','pendaftarans'));
+        $pencatatans = Pencatatan::all();
+        return view('pelayanan.index',compact('pelayanans','pendaftarans','pencatatans'));
     }
 
     public function pendaftaranDetail($id)
@@ -31,11 +33,17 @@ class PelayananController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Pendaftaran $pendaftaran)
+    public function create()
     {
-        return view('pelayanan.create',compact('pendaftaran'));
+        // return view('pelayanan.create',compact('pendaftaran'));
     }
 
+    public function addPelayanan($id)
+    {
+      $pendaftaran = Pendaftaran::findorfail($id);
+        $pencatatan = Pencatatan::all();
+        return view('pelayanan.create',compact('pendaftaran','pencatatan'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +52,12 @@ class PelayananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pelayanan = Pelayanan::create([
+          'pendaftaran_id' => $request->pendaftaran_id,
+          'jenis_pelayanan' => $request->jenis_pelayanan,
+          'keterangan' => $request->keterangan,
+        ]);
+        return redirect()->route('pelayanan.index');
     }
 
     /**
@@ -66,7 +79,9 @@ class PelayananController extends Controller
      */
     public function edit(Pelayanan $pelayanan)
     {
-        //
+      $pendaftaran = Pendaftaran::all();
+        $pencatatan = Pencatatan::all();
+        return view('pelayanan.create',compact('pelayanan','pendaftaran','pencatatan'));
     }
 
     /**
@@ -78,7 +93,12 @@ class PelayananController extends Controller
      */
     public function update(Request $request, Pelayanan $pelayanan)
     {
-        //
+      $pelayanan->update([
+        'pendaftaran_id' => $request->pendaftaran_id,
+        'jenis_pelayanan' => $request->jenis_pelayanan,
+        'keterangan' => $request->keterangan,
+      ]);
+      return redirect()->route('pelayanan.index');
     }
 
     /**

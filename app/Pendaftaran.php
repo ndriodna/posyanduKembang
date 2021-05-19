@@ -7,4 +7,7 @@ class Pendaftaran extends Model
 {
     protected $guarded = [];
 
+    public function pencatatan(){
+      return $this->belongsToMany('App\Pencatatan');
+    }
 }

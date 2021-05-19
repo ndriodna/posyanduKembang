@@ -38,10 +38,15 @@
                 @foreach ($pencatatans as $pencatatan)
                 <tr>
                   <td>{{date('d-m-Y',strtotime($pencatatan->tgl))}}</td>
-                  <td>{{$pencatatan->pendaftaran->nama}}</td>
-                  @foreach($pendaftarans as $pendaftaran)
-                  <td>{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}}</td>
+                  <td>@foreach ($pencatatan->pendaftaran as $data)
+                    {{$data->nama}}
+                  @endforeach</td>
+                  <td>
+                    @foreach ($pencatatan->pendaftaran as $data)
+
+                    {{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}}
                   @endforeach
+                  </td>
                   <td>{{$pencatatan->bb_kg}}</td>
                   <td>{{$pencatatan->tb_cm}}</td>
                   <td>{{$pencatatan->lingkar_kepala}}</td>
