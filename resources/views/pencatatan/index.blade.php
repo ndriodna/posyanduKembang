@@ -25,25 +25,27 @@
           <div class="table-responsive">
             <table class="table" id="DataTable">
               <thead>
+                <th>Tgl timbang</th>
                 <th>Nama</th>
-                <th>Umur</th>
+                <th>Umur(Bln)</th>
                 <th>BB</th>
                 <th>TB</th>
-                <th>Lingkar Kepala</th>
+                <th>LK</th>
                 <th>ntob</th>
-                <th>Tgl</th>
                 <th>Action</th>
               </thead>
               <tbody>
                 @foreach ($pencatatans as $pencatatan)
                 <tr>
+                  <td>{{date('d-m-Y',strtotime($pencatatan->tgl))}}</td>
                   <td>{{$pencatatan->pendaftaran->nama}}</td>
-                  <td>{{$pencatatan->umur}}</td>
+                  @foreach($pendaftarans as $pendaftaran)
+                  <td>{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}}</td>
+                  @endforeach
                   <td>{{$pencatatan->bb_kg}}</td>
                   <td>{{$pencatatan->tb_cm}}</td>
                   <td>{{$pencatatan->lingkar_kepala}}</td>
                   <td>{{$pencatatan->ntob}}</td>
-                  <td>{{date('d-m-Y',strtotime($pencatatan->created_at))}}</td>
                   <td class="col-auto">
                       <div class="btn-group">
                         <div class="dropdown">

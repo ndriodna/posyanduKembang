@@ -23,8 +23,8 @@ class CreatePendaftaransTable extends Migration
             $table->enum('jenis_kelamin',['laki-laki','perempuan']);
             $table->text('alamat')->nullable();
             $table->string('rt_rw', 20)->nullable();
-            $table->integer('berat_badan_lahir');
-            $table->integer('panjang_badan_lahir');
+            $table->float('bb_lahir',8,2);
+            $table->float('tb_lahir',8,2);
             $table->timestamps();
         });
     }

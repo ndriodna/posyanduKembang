@@ -16,11 +16,11 @@ class CreatePencatatansTable extends Migration
         Schema::create('pencatatans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pendaftaran_id');
-            $table->integer('umur');
-            $table->integer('bb_kg');
-            $table->integer('tb_cm');
-            $table->integer('lingkar_kepala');
+            $table->float('bb_kg',8,2);
+            $table->float('tb_cm',8,2);
+            $table->float('lingkar_kepala',8,2);
             $table->enum('ntob', ['naik','turun','tidak_hadir','baru']);
+            $table->date('tgl')->nullable();
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });

@@ -25,6 +25,7 @@
       <link rel="stylesheet" href="{{asset('assets')}}/css/style.css">
       <link rel="stylesheet" href="{{asset('assets')}}/css/components.css">
       <link rel="stylesheet" href="{{asset('assets')}}/css/tags.css">
+      @stack('css')
   </head>
 
   <body>

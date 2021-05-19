@@ -18,6 +18,7 @@ class CreatePenyuluhansTable extends Migration
             $table->text('waktu_tempat');
             $table->text('materi');
             $table->text('peserta');
+            $table->date('tgl')->nullable();
             $table->timestamps();
         });
     }

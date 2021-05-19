@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Pencatatan;
 use App\Pendaftaran;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class PencatatanController extends Controller
 {
     /**
@@ -38,13 +38,16 @@ class PencatatanController extends Controller
      */
     public function store(Request $request)
     {
+        if (empty($request->tgl)) {
+            $request->tgl = Carbon::now();
+        }
         $pencatatan = pencatatan::create([
           'pendaftaran_id' => $request->pendaftaran_id,
-          'umur' => $request->umur,
           'bb_kg' => $request->bb_kg,
           'tb_cm' => $request->tb_cm,
           'lingkar_kepala' => $request->lingkar_kepala,
           'ntob' => $request->ntob,
+          'tgl' => $request->tgl,
           'keterangan' => $request->keterangan,
         ]);
         return redirect()->route('pencatatan.index');
@@ -58,7 +61,7 @@ class PencatatanController extends Controller
      */
     public function show(Pencatatan $pencatatan)
     {
-      $pendaftaran = Pendaftaran::all();
+      $pendaftaran = Pendaftaran::find($pencatatan);
       return view('pencatatan.show', compact('pendaftaran','pencatatan'));
     }
 
@@ -70,7 +73,8 @@ class PencatatanController extends Controller
      */
     public function edit(Pencatatan $pencatatan)
     {
-        //
+        $pendaftaran = Pendaftaran::all();
+        return view('pencatatan.edit',compact('pencatatan','pendaftaran'));
     }
 
     /**
@@ -84,11 +88,11 @@ class PencatatanController extends Controller
     {
         $pencatatan->update([
           'pendaftaran_id' => $request->pendaftaran_id,
-          'umur' => $request->umur,
           'bb_kg' => $request->bb_kg,
           'tb_cm' => $request->tb_cm,
           'lingkar_kepala' => $request->lingkar_kepala,
           'ntob' => $request->ntob,
+          'tgl' => $request->tgl,
           'keterangan' => $request->keterangan,
         ]);
         return redirect()->route('pencatatan.index');

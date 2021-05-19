@@ -13,6 +13,7 @@
 						<div class="col-sm-4">
 							<a href="{{route('user.create')}}" class="btn btn-success m-3"><i class="fas fa-plus-square"></i> Tambah</a>
 						</div><br>
+						<div class="table-responsive">
 						<table class="table table-striped table-bordered data-table bg-white tex-dark" id="DataTable">
 							<thead>
 								<tr>
@@ -41,8 +42,9 @@
 
 											@foreach($data->getRoleNames() as $role)
 											@if($role == "Admin")
+											@if($data->id != 1)
 											<button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-											@else
+											@endif
 											@endif
 											@endforeach
 										</form>
@@ -51,6 +53,7 @@
 								@endforeach
 							</tbody>
 						</table>
+					</div>
 					</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@
         </div>
         <div class="card-body">
           <div class="col-sm-4">
-            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#createModal">Tambah Data</a>
           </div><br>
           <div class="table-responsive">
             <table class="table" id="DataTable">
@@ -34,7 +34,7 @@
               <tbody>
                 @foreach ($penyuluhans as $penyuluhan)
                 <tr>
-                  <td>{{date('d-m-y',strtotime($penyuluhan->created_at))}}</td>
+                  <td>{{date('d-m-y',strtotime($penyuluhan->tgl))}}</td>
                   <td>{{$penyuluhan->waktu_tempat}}</td>
                   <td>{{$penyuluhan->materi}}</td>
                   <td>{{$penyuluhan->peserta}}</td>
@@ -101,7 +101,7 @@
         @endif
         <form class="form" method="POST" action="{{route('penyuluhan.store')}}" enctype="multipart/form-data">
           @csrf
-          <h3 class="description text-center text-success">Penyuluhan</h3>
+          <h3 class="description text-center text-primary">Penyuluhan</h3>
           <div class="card-body">
             <div class="row">
               <div class="col-12">
@@ -116,6 +116,11 @@
                 <div class="form-group">
                   <label for="">Peserta</label> <br>
                   <input type="text" class="form-control" name="peserta" placeholder="Masukan peserta">
+                </div>
+                 <div class="form-group">
+                  <label for="">Tanggal Penyuluhan</label>
+                  <input type="date" class="form-control" name="tgl">
+                <span class="text-danger">kosongkan bila tanggal sekarang</span>
                 </div>
               </div>
             </div>

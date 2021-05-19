@@ -21,7 +21,7 @@
         </div>
         <div class="card-body">
           <div class="col-sm-4">
-            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#createModal">Tambah Data</a>
           </div><br>
           <div class="table-responsive">
             <table class="table" id="DataTable">
@@ -121,29 +121,29 @@
         @endif
         <form class="form" method="POST" action="{{route('pendaftaran.store')}}" enctype="multipart/form-data">
           @csrf
-          <h3 class="description text-center text-success">Pendaftaran</h3>
+          <h3 class="description text-center text-info">Pendaftaran</h3>
           <div class="card-body">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
+                  <label for="">No BPJS</label> <br>
                   <input type="number" class="form-control" name="no_bpjs" placeholder="Masukan NO BPJS">
                 </div>
                 <div class="form-group">
+                  <label for="">Nama</label> <br>
                   <input type="text" class="form-control" name="nama" placeholder="Nama">
                 </div>
                 <div class="form-group">
+                  <label for="">Nama Bapak</label> <br>
                   <input type="text" class="form-control" name="nama_bpk" placeholder="Nama Bapak">
                 </div>
                 <div class="form-group">
+                  <label for="">Nama Ibu</label> <br>
                   <input type="text" class="form-control" name="nama_ibu" placeholder="Nama Ibu">
                 </div>
                 <div class="form-group">
                   <label for="">Tgl Lahir</label><br>
                   <input type="date" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir">
-                </div>
-                <div class="form-group">
-                  <label for="">Umur/Bulan</label><br>
-                  <input type="text" class="form-control" name="umur" >
                 </div>
                 <div class="form-group">
                   <label for="">Jenis Kelamin</label><br>
@@ -153,16 +153,20 @@
                   </select>
                 </div>
                 <div class="form-group">
+                  <label for="">Alamat</label> <br>
                  <textarea class="form-control" name="alamat" placeholder="Alamat" rows="4"></textarea>
                </div>
                <div class="form-group">
+                  <label for="">RT/RW</label> <br>
                 <input type="text" class="form-control" name="rt_rw" placeholder="RT/RW">
               </div>
               <div class="form-group">
-                <input type="number" class="form-control" name="berat_badan_lahir" placeholder="Berat Badan Lahir">
+                  <label for="">Berat Badan Lahir</label> <br>
+                <input type="number" class="form-control" name="bb_lahir" placeholder="Berat Badan Lahir" step=".01">
               </div>
               <div class="form-group">
-                <input type="number" class="form-control" name="panjang_badan_lahir" placeholder="Panjang Badan Lahir">
+                <label for="">Panjang Badan Lahir</label> <br>
+                <input type="number" class="form-control" name="tb_lahir" placeholder="Panjang Badan Lahir" step=".01">
               </div>
             </div>
           </div>

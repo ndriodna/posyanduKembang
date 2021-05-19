@@ -25,7 +25,11 @@
               <input type="text" class="form-control" name="peserta" placeholder="Masukan peserta" value="{{$penyuluhan->peserta}}">
             </div>
             <div class="form-group">
-             <button type="submit" class="btn btn-success">Ubah</button>
+                <label for="">Tanggal penyuluhan</label>
+                <input type="date" name="tgl" class="form-control" value="{{ date('Y-m-d',strtotime($penyuluhan->tgl)) }}"/>
+              </div>
+            <div class="form-group">
+             <button type="submit" class="btn btn-primary">Ubah</button>
            </div>
          </form>
        </div>

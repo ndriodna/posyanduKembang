@@ -36,15 +36,20 @@ class PenyuluhanController extends Controller
      */
     public function store(Request $request)
     {
+        if (empty($request->tgl)) {
+            $request->tgl = Carbon::now();
+        }
         $request->validate([
             'waktu_tempat' => 'required|string',
             'materi' => 'required|string',
             'peserta' => 'required|string',
+            'tgl' => 'required|date'
         ]);
         Penyuluhan::create([
             'waktu_tempat' => $request->waktu_tempat,
             'materi' => $request->materi,
-            'peserta' => $request->peserta
+            'peserta' => $request->peserta,
+            'tgl' => $request->tgl
         ]);
         return redirect()->route('penyuluhan.index');
     }
@@ -83,7 +88,8 @@ class PenyuluhanController extends Controller
         $penyuluhan->update([
             'waktu_tempat' => $request->waktu_tempat,
             'materi' => $request->materi,
-            'peserta' => $request->peserta
+            'peserta' => $request->peserta,
+            'tgl' => $request->tgl
         ]);
         return redirect()->route('penyuluhan.index');
     }

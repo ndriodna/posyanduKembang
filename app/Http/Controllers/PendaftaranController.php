@@ -77,8 +77,9 @@ class PendaftaranController extends Controller
      * @param  \App\Pendaftaran  $pendaftaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pendaftaran $pendaftaran)
+    public function update(PendaftaranValidate $request, Pendaftaran $pendaftaran)
     {
+        $request->validated();
         $pendaftaran->update($this->PendaftaranStore());
         return redirect()->route('pendaftaran.index');
     }
@@ -106,8 +107,8 @@ class PendaftaranController extends Controller
           'jenis_kelamin' => request('jenis_kelamin'),
           'alamat' => request('alamat'),
           'rt_rw' => request('rt_rw'),
-          'berat_badan_lahir' => request('berat_badan_lahir'),
-          'panjang_badan_lahir' => request('panjang_badan_lahir')
+          'bb_lahir' => request('bb_lahir'),
+          'tb_lahir' => request('tb_lahir')
       ];
     }
 }

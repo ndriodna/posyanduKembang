@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12 md-6 sm-12">
@@ -25,16 +26,15 @@
           <div class="form-group">
             <label class="form-control-label">Nama Bapak</label>
             <input class="form-control" type="text" name="nama_bpk" value="{{$pendaftaran->nama_bpk}}">
-            <p class="text-danger">{{ $errors->first('nama_bpk') }}</p>
           </div>
           <div class="form-group">
             <label class="form-control-label">Nama Ibu</label>
             <input class="form-control" type="text" name="nama_ibu" value="{{$pendaftaran->nama_ibu}}">
-            <p class="text-danger">{{ $errors->first('nama_ibu') }}</p>
           </div>
           <div class="form-group">
             <label class="form-control-label">Tanggal Lahir</label>
             <input type="date" class="form-control" name="tgl_lahir" value="{{$pendaftaran->tgl_lahir}}">
+              <p class="text-danger">{{ $errors->first('tgl_lahir') }}</p>
           </div>
           <div class="form-group">
             <label class="form-control-label">Jenis Kelamin</label><br>
@@ -53,14 +53,17 @@
           </div>
           <div class="form-group">
             <label class="form-control-label">Berat Badan Lahir</label>
-            <input type="number" class="form-control" name="berat_badan_lahir" placeholder="Berat Badan Lahir" value="{{$pendaftaran->berat_badan_lahir}}">
+            <input type="number" class="form-control" step=".01" name="bb_lahir" placeholder="Berat Badan Lahir" value="{{$pendaftaran->bb_lahir}}">
+              <p class="text-danger">{{ $errors->first('bb_lahir') }}</p>
           </div>
           <div class="form-group">
             <label class="form-control-label">Panjang Badan Lahir</label>
-            <input type="number" class="form-control" name="panjang_badan_lahir" placeholder="Panjang Badan Lahir" value="{{$pendaftaran->panjang_badan_lahir}}">
+            <input type="number" class="form-control" step=".01" name="tb_lahir" placeholder="Panjang Badan Lahir" value="{{$pendaftaran->tb_lahir}}">
+              <p class="text-danger">{{ $errors->first('tb_lahir') }}</p>
+
           </div>
           <div class="form-group">
-           <button type="submit" class="btn btn-success">Ubah</button>
+           <button type="submit" class="btn btn-warning">Ubah</button>
          </div>
        </form>
      </div>
@@ -68,4 +71,5 @@
  </div>
 </div>
 </div>
+
 @endsection

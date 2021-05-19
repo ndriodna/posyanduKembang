@@ -15,7 +15,7 @@ Kembali</a>
             <div class="col-lg-4 sm-12">
               <h5 class="">NO BPJS </h5>
             </div>
-            <div class="col-lg-6 sm-12">
+            <div class="col-lg-8 sm-12">
               <h5 class="" >{{$pendaftaran->no_bpjs}}</h5>
             </div>
           </div>
@@ -80,7 +80,7 @@ Kembali</a>
               <h6 class="">Berat Badan Lahir</h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pendaftaran->berat_badan_lahir}} Kg</h6>
+              <h6 class="" >{{$pendaftaran->bb_lahir}} Kg</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -88,7 +88,7 @@ Kembali</a>
               <h6 class="">Panjang Badan Lahir </h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pendaftaran->panjang_badan_lahir}} CM</h6>
+              <h6 class="" >{{$pendaftaran->tb_lahir}} CM</h6>
             </div>
           </div>
      </div>

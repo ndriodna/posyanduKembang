@@ -104,8 +104,8 @@ Kembali</a>
          <div class="col-lg-4 sm-12">
            <h5 class="">Umur</h5>
          </div>
-         <div class="col-lg-6 sm-12">
-           <h5 class="" >{{$pencatatan->umur}}</h5>
+         <div class="col-lg-8 sm-12">
+           <h5 class="" >{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pencatatan->pendaftaran->tgl_lahir))}} Bulan</h5>
          </div>
        </div>
        <div class="row mb-3">

@@ -5,8 +5,8 @@
 		<div class="col-lg-6 md-6 sm-12">
 			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus mollitia exercitationem repellendus. Repudiandae, voluptatem, nemo? Quis commodi dolor placeat, reiciendis unde, id accusamus sunt omnis ipsam nobis, tempora et consectetur.</p>
 		</div>
-		<div class="col-lg-4 md-4 sm-12">
-	<img src="{{asset('assets/svg/front_page.svg')}}" alt="" width="500" style="fill: #47C363">
+		<div class="col-lg-6 md-6 sm-12">
+	<img src="{{asset('assets/svg/front_page.svg')}}" alt="" class="img-fluid" width="400" style="fill: #47C363">
 		</div>
 	</div>
 	<div class="row mt-5">

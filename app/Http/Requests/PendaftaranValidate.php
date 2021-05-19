@@ -32,8 +32,8 @@ class PendaftaranValidate extends FormRequest
             'jenis_kelamin' => 'required',
             'alamat' => 'nullable',
             'rt_rw' => 'nullable',
-            'berat_badan_lahir' => 'required|integer',
-            'panjang_badan_lahir' => 'required|integer'
+            'bb_lahir' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'tb_lahir' => ['required', 'regex:/^\d+(\.\d{1,2})?$/']
         ];
     }
 }

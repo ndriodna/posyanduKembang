@@ -31,9 +31,9 @@ class PelayananController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Pendaftaran $pendaftaran)
     {
-        //
+        return view('pelayanan.create',compact('pendaftaran'));
     }
 
     /**

@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3 mb-5 bg-body rounded">
 	<div class="container">
-		<a class="navbar-brand" href="#">Posyandu Kembang Sepatu</a>
+		<a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('assets/logo-posyandu-rev.png')}}" alt="" class="img-fluid" width="180"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

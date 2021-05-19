@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
           <div class="col-sm-4">
-            <a href="{{route('blog.create')}}" class="btn btn-success">Buat Postingan</a>
+            <a href="{{route('blog.create')}}" class="btn btn-primary">Buat Postingan</a>
           </div>
           <br>
           <div class="table-responsive">
@@ -27,7 +27,7 @@
                 <tr>
                   <td>{{$blog->title}}</td>
                   <td>@foreach($blog->tag as $data)
-                   <span class="badge badge-success">{{$data->name}}</span>
+                   <span class="badge badge-primary">{{$data->name}}</span>
                  @endforeach</td>
                  <td>{!!Str::limit($blog->desc,50)!!}</td>
                  <td class="">
