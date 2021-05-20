@@ -1,12 +1,12 @@
 <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand mb-2 mt-2">
-            <a href="{{route('home')}}" class="p-3"><img src="../assets/logo.png" alt="logo" width="70" class="shadow p-2 rounded-circle bg-white">
+            <a href="{{route('home')}}" class="p-3"><img src="{{asset('assets/logo.png')}}" alt="logo" width="70" class="shadow p-2 rounded-circle bg-white">
             </a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{route('home')}}">
-              <img src="{{url('/assets/logo.png')}}" alt="logo" width="40" class="shadow rounded-circle bg-white p-1">
+              <img src="{{url('assets/logo.png')}}" alt="logo" width="40" class="shadow rounded-circle bg-white p-1">
             </a>
           </div>
           <ul class="sidebar-menu">

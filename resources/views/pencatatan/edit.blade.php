@@ -21,8 +21,7 @@
                 </div>
                 <div class="form-group">
                   <label for="">Umur / Bulan</label><br>
-                  <input type="text" class="form-control" name="umur" value="
-                  {{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}}" readonly>
+                  <input type="text" class="form-control" name="umur" value="{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}}" readonly>
                 </div>
                  <div class="form-group">
                 <label for="">Berat Badan lahir / Kg</label><br>

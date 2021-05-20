@@ -10,4 +10,9 @@ class Pendaftaran extends Model
     public function pencatatan(){
       return $this->belongsToMany('App\Pencatatan');
     }
+
+    /*ngambil hanya 1 data terbaru berdasarkan tanggal*/
+     public function pencatatanOne(){
+      return $this->belongsToMany('App\Pencatatan')->take(1)->latest('tgl');
+    }
 }

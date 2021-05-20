@@ -4,15 +4,15 @@
 
 <div class="container-fluid mt-8">
   @if ($errors->any())
-        {{-- {{ $errors ? dd($errors) : null }} --}}
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+  {{-- {{ $errors ? dd($errors) : null }} --}}
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $message)
+      <li>{{ $message }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
   <div class="row">
     <div class="col-lg-12 md-8 sm-4">
       <div class="card">
@@ -43,83 +43,54 @@
                   <td>{{$pendaftaran->rt_rw}}</td>
                   <td class="col-auto">
                     <div class="btn-group">
-                      <div class="dropdown ">
-                        {{--   @if ($pendaftaran->familie->isEmpty())
-                          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fa fa-plus-square fa-lg"></i>
-                          </button>
-                          @endif --}}
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton ">
-                            {{-- <a href="{{route('buatkk',$pendaftaran->id)}}" class="dropdown-item">Phase 2</a> --}}
-                            {{-- <a href="{{route('selectkk',$pendaftaran->slug)}}" class="dropdown-item" >Pilih KK</a> --}}
-                          </div>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a href="{{route('addNote',$pendaftaran->id)}}" class="dropdown-item">Buat Catatan</a>
                         </div>
                       </div>
-                      @if ($pendaftaran->pencatatan->isEmpty())
-                        <div class="btn-group">
-                          <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fa fa-plus-square fa-lg"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a href="{{route('addNote',$pendaftaran->id)}}" class="dropdown-item">Buat Catatan</a>
-                            </div>
-                          </div>
-                        </div>
-                      @else
-                        <div class="btn-group">
-                          <div class="dropdown">
-                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Catatan Sudah Ada
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            @foreach ($pendaftaran->pencatatan as $data)
-                              <a href="{{route('pencatatan.show',$data->id)}}" class="dropdown-item">Lihat Catatan</a>
-                            @endforeach
-                            </div>
-                          </div>
-                        </div>
-                    @endif
-
-                      <div class="btn-group">
-                        <div class="dropdown">
-                          <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-pen-square fa-lg"></i>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a href="{{route('pendaftaran.edit',$pendaftaran->id)}}" class="dropdown-item">Ubah Data</a>
-                          </div>
+                    </div>
+                    <div class="btn-group">
+                      <div class="dropdown">
+                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-pen-square fa-lg"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a href="{{route('pendaftaran.edit',$pendaftaran->id)}}" class="dropdown-item">Ubah Data</a>
                         </div>
                       </div>
-                      <a class=" btn btn-info" href="{{route('pendaftaran.show',$pendaftaran->id)}}"><i class="fa fa-eye fa-lg"></i></a>
-                      <div class="btn-group">
-                        <div class="dropdown ">
-                          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-trash fa-lg"></i>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <form id="delete-form-{{$pendaftaran->id}}" action="{{ route('pendaftaran.destroy',$pendaftaran->id) }}" method="POST" >
-                             @csrf
-                             @method('DELETE')
-                             <a href="#" class="dropdown-item" onclick="deleteItem({{$pendaftaran->id}})">Hapus</a>
-                           </form>
-                         </div>
-                       </div>
-                     </div>
-                   </td>
-                 </tr>
-                 @endforeach
-               </tbody>
-             </table>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+                    </div>
+                    <a class=" btn btn-info" href="{{route('pendaftaran.show',$pendaftaran->id)}}"><i class="fa fa-eye fa-lg"></i></a>
+                    <div class="btn-group">
+                      <div class="dropdown ">
+                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-trash fa-lg"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <form id="delete-form-{{$pendaftaran->id}}" action="{{ route('pendaftaran.destroy',$pendaftaran->id) }}" method="POST" >
+                            @csrf
+                            @method('DELETE')
+                            <a href="#" class="dropdown-item" onclick="deleteItem({{$pendaftaran->id}})">Hapus</a>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
- {{-- modal --}}
- <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- modal --}}
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg " role="document">
     <div class="modal-content">
       <div class="modal-body">
@@ -143,11 +114,11 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="">No BPJS</label> <br>
-                  <input type="number" class="form-control" name="no_bpjs" placeholder="Masukan NO BPJS">
+                  <input type="number" class="form-control" name="no_bpjs" placeholder="Masukan NO BPJS" required>
                 </div>
                 <div class="form-group">
                   <label for="">Nama</label> <br>
-                  <input type="text" class="form-control" name="nama" placeholder="Nama">
+                  <input type="text" class="form-control" name="nama" placeholder="Nama" required>
                 </div>
                 <div class="form-group">
                   <label for="">Nama Bapak</label> <br>
@@ -159,7 +130,7 @@
                 </div>
                 <div class="form-group">
                   <label for="">Tgl Lahir</label><br>
-                  <input type="date" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir">
+                  <input type="date" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir" required>
                 </div>
                 <div class="form-group">
                   <label for="">Jenis Kelamin</label><br>
@@ -170,30 +141,30 @@
                 </div>
                 <div class="form-group">
                   <label for="">Alamat</label> <br>
-                 <textarea class="form-control" name="alamat" placeholder="Alamat" rows="4"></textarea>
-               </div>
-               <div class="form-group">
+                  <textarea class="form-control" name="alamat" placeholder="Alamat" rows="4"></textarea>
+                </div>
+                <div class="form-group">
                   <label for="">RT/RW</label> <br>
-                <input type="text" class="form-control" name="rt_rw" placeholder="RT/RW">
-              </div>
-              <div class="form-group">
+                  <input type="text" class="form-control" name="rt_rw" placeholder="RT/RW">
+                </div>
+                <div class="form-group">
                   <label for="">Berat Badan Lahir</label> <br>
-                <input type="number" class="form-control" name="bb_lahir" placeholder="Berat Badan Lahir" step=".01">
-              </div>
-              <div class="form-group">
-                <label for="">Panjang Badan Lahir</label> <br>
-                <input type="number" class="form-control" name="tb_lahir" placeholder="Panjang Badan Lahir" step=".01">
+                  <input type="number" class="form-control" name="bb_lahir" placeholder="Berat Badan Lahir" step=".01" required>
+                </div>
+                <div class="form-group">
+                  <label for="">Panjang Badan Lahir</label> <br>
+                  <input type="number" class="form-control" name="tb_lahir" placeholder="Panjang Badan Lahir" step=".01" required>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="submit" class="btn btn-primary">Simpan</button>
-      </div>
-    </form>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 </div>
 
 @endsection

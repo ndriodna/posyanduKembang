@@ -12,69 +12,68 @@
     </form>
   </div>
   <div class="row row-cols-1 row-cols-md-12 g-4 p-1" >
-  <ul class="list-group list-group-horizontal" id="myList">
-    @foreach($pendaftarans as $pendaftaran)
-    <li class="list-group">
-      <div class="col-auto">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">{{$pendaftaran->nama}}</h3>
-          </div>
-          <div class="card-body">
-            <div class="row mb-3">
-           <div class="col-6">No BPJS</div>
-           <div class="col-6">{{$pendaftaran->no_bpjs}}</div>
+    <ul class="list-group list-group-horizontal" id="myList">
+      @foreach($pendaftarans as $pendaftaran)
+      <li class="list-group">
+        <div class="col-auto">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">{{$pendaftaran->nama}}</h3>
             </div>
-            <div class="row mb-3">
-           <div class="col-6">Jenis Kelamin</div>
-           <div class="col-6">{{$pendaftaran->jenis_kelamin}}</div>
-            </div>
-            <div class="row mb-3">
-           <div class="col-6">Nama orang tua</div>
-           <div class="col-6">
-            {{!empty($pendaftaran->nama_bpk) ? $pendaftaran->nama_bpk : "-"}} & {{!empty($pendaftaran->nama_ibu) == true ?$pendaftaran->nama_ibu : "-"}}
-          </div>
-            </div>
-            <div class="row mb-3">
-           <div class="col-6">Umur</div>
-           <div class="col-6">{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}} Bulan</div>
-            </div>
-            @foreach($pendaftaran->pencatatan as $data)
-            @if ($data->pendaftaran_id == null)
-              <p>Belum ada Catatan</p>
-            @else
+            <div class="card-body">
               <div class="row mb-3">
-             <div class="col-6">Tgl terakhir timbang</div>
-             <div class="col-6">
-               {{$data->tgl}}
+               <div class="col-6"><h6>No BPJS</h6></div>
+               <div class="col-6"><h6>{{$pendaftaran->no_bpjs}}</h6></div>
              </div>
-              </div>
-              <div class="row mb-3">
-             <div class="col-6">NTOB</div>
-             <div class="col-6">{{$data->ntob}}</div>
-              </div>
-              <div class="row mb-3">
-             <div class="col-6">Berat Badan terakhir</div>
-             <div class="col-6">{{$data->bb_kg}}</div>
-              </div>
-              <div class="row mb-3">
-             <div class="col-6">Tinggi Badan terakhir</div>
-             <div class="col-6">{{$data->tb_cm}}</div>
-              </div>
-            @endif
-         <div class="">
-           <a href="{{route('addPelayanan',$pendaftaran->id)}}" class="btn btn-primary float-right"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
-         </div>
-       @endforeach
+             <div class="row mb-3">
+               <div class="col-6"><h6>Jenis Kelamin</h6></div>
+               <div class="col-6"><h6>{{$pendaftaran->jenis_kelamin}}</h6></div>
+             </div>
+             <div class="row mb-3">
+               <div class="col-6"><h6>Nama orang tua</h6></div>
+               <div class="col-6"><h6>
+                {{!empty($pendaftaran->nama_bpk) ? $pendaftaran->nama_bpk : "-"}} & {{!empty($pendaftaran->nama_ibu) == true ?$pendaftaran->nama_ibu : "-"}}</h6></div>
+            </div>
+            <div class="row mb-3">
+             <div class="col-6"><h6>Umur</h6></div>
+             <div class="col-6"><h6>{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}} Bulan</h6></div>
+           </div>
+           @forelse($pendaftaran->pencatatanOne as $data)
+           @if (!empty($data))
+           <div class="row mb-3">
+             <div class="col-6"><h6>Tgl terakhir timbang</h6></div>
+             <div class="col-6">
+               <h6>{{date('d-m-Y',strtotime($data->tgl))}}</h6>
+             </div>
+           </div>
+           <div class="row mb-3">
+             <div class="col-6"><h6>NTOB</h6></div>
+             <div class="col-6"><h6>{{$data->ntob}}</h6></div>
+           </div>
+           <div class="row mb-3">
+             <div class="col-6"><h6>Berat Badan terakhir</h6></div>
+             <div class="col-6"><h6>{{$data->bb_kg}}</h6></div>
+           </div>
+           <div class="row mb-3">
+             <div class="col-6"><h6>Tinggi Badan terakhir</h6></div>
+             <div class="col-6"><h6>{{$data->tb_cm}}</h6></div>
+           </div>
+           @endif
+           @empty
+           <p class="text-center">Belum Memiliki Catatan</p>
+           @endforelse
+           <div class="">
+             <a href="{{route('addPelayanan',$pendaftaran->id)}}" class="btn btn-primary float-right"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+           </div>
 
          </div>
        </div>
      </div>
-    </li>
-  @endforeach
-  </ul>
+   </li>
+   @endforeach
+ </ul>
 
- </div>
+</div>
 </div>
 
 
@@ -99,14 +98,14 @@
 </script>
 
 <script>
-     $(document).ready(function(){
-     $("#myInput").on("keyup", function() {
+ $(document).ready(function(){
+   $("#myInput").on("keyup", function() {
      var value = $(this).val().toLowerCase();
      $("#myList li").filter(function() {
-     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
      });
-     });
-     });
-     </script>
+   });
+ });
+</script>
 @endpush
 @endsection

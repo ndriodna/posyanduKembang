@@ -99,15 +99,23 @@ Kembali</a>
  <div class="col-lg-6 md-6 sm-12">
    <div class="card shadow p-3">
      <div class="card-header text-center">
-       <h5>Data Baru</h5>
+       <h5>Data Riwayat Pencatatan</h5>
      </div>
      <div class="card-body">
-       <div class="row mb-3">
+      <div class="row mb-3">
          <div class="col-lg-4 sm-12">
-           <h5 class="">Umur</h5>
+           <h6 class="">Tgl Timbang </h6>
          </div>
          <div class="col-lg-8 sm-12">
-           <h5 class="" >{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}} Bulan</h5>
+           <h6 class="" >{{date('d-m-Y',strtotime($pencatatan->tgl))}}</h6>
+         </div>
+       </div>
+       <div class="row mb-3">
+         <div class="col-lg-4 sm-12">
+           <h6 class="">Umur</h6>
+         </div>
+         <div class="col-lg-8 sm-12">
+           <h6 class="" >{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}} Bulan</h6>
          </div>
        </div>
        <div class="row mb-3">
