@@ -55,16 +55,32 @@
                           </div>
                         </div>
                       </div>
-                      <div class="btn-group">
-                        <div class="dropdown">
-                          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-plus-square fa-lg"></i>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a href="{{route('addNote',$pendaftaran->id)}}" class="dropdown-item">Buat Catatan</a>
+                      @if ($pendaftaran->pencatatan->isEmpty())
+                        <div class="btn-group">
+                          <div class="dropdown">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-plus-square fa-lg"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a href="{{route('addNote',$pendaftaran->id)}}" class="dropdown-item">Buat Catatan</a>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      @else
+                        <div class="btn-group">
+                          <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Catatan Sudah Ada
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @foreach ($pendaftaran->pencatatan as $data)
+                              <a href="{{route('pencatatan.show',$data->id)}}" class="dropdown-item">Lihat Catatan</a>
+                            @endforeach
+                            </div>
+                          </div>
+                        </div>
+                    @endif
+
                       <div class="btn-group">
                         <div class="dropdown">
                           <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -5,29 +5,32 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
-        <form class="form" method="POST" action="{{route('pencatatan.store')}}" enctype="multipart/form-data">
+        <form class="form" method="POST" action="{{route('pencatatan.update',$pencatatan->id)}}" enctype="multipart/form-data">
           @csrf
+          @method('PUT')
           <h3 class="description text-center text-success">Edit Pencatatan</h3>
           <div class="card-body">
             <div class="row">
               <div class="col-12">
+                @foreach ($pencatatan->pendaftaran as $data)
                 <div class="form-group">
                   <label for="">Nama</label> <br>
                   <select name="pendaftaran_id" id="" class="selectpicker">
-                    <option value="{{$pencatatan->pendaftaran->id}}">{{$pencatatan->pendaftaran->nama}}</option>
+                      <option value="{{$data->id}}">{{$data->nama}}</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="">Umur / Bulan</label><br>
-                  <input type="text" class="form-control" name="umur" value="{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pencatatan->pendaftaran->tgl_lahir))}}" readonly>
+                  <input type="text" class="form-control" name="umur" value="
+                  {{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}}" readonly>
                 </div>
                  <div class="form-group">
                 <label for="">Berat Badan lahir / Kg</label><br>
-                <input type="number" class="form-control" value="{{$pencatatan->pendaftaran->bb_lahir}}" readonly>
+                <input type="number" class="form-control" value="{{$data->bb_lahir}}" readonly>
               </div>
                <div class="form-group">
                 <label for="">Tinggi Badan lahir / CM</label>
-                <input type="number" class="form-control" value="{{$pencatatan->pendaftaran->tb_lahir}}" readonly>
+                <input type="number" class="form-control" value="{{$data->tb_lahir}}" readonly>
               </div>
               <div class="form-group">
                 <label for="">Berat Badan / Kg</label><br>
@@ -49,12 +52,14 @@
               </div>
               <div class="form-group">
                 <label for="">keterangan</label>
-                <textarea name="keterangan" class="form-control" rows="8" cols="80"></textarea>
+                <textarea name="keterangan" class="form-control" rows="8" cols="80">{!!$pencatatan->keterangan!!}</textarea>
               </div>
               <div class="form-group">
                 <label for="">Tanggal Timbang</label>
                 <input type="date" name="tgl" class="form-control" value="{{ date('Y-m-d',strtotime($pencatatan->tgl)) }}"/>
               </div>
+            @endforeach
+
             </div>
           </div>
         </div>

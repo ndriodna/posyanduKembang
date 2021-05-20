@@ -42,7 +42,6 @@ class PencatatanController extends Controller
             $request->tgl = Carbon::now();
         }
         $pencatatan = pencatatan::create([
-          'pendaftaran_id' => $request->pendaftaran_id,
           'bb_kg' => $request->bb_kg,
           'tb_cm' => $request->tb_cm,
           'lingkar_kepala' => $request->lingkar_kepala,
@@ -88,7 +87,6 @@ class PencatatanController extends Controller
     public function update(Request $request, Pencatatan $pencatatan)
     {
         $pencatatan->update([
-          'pendaftaran_id' => $request->pendaftaran_id,
           'bb_kg' => $request->bb_kg,
           'tb_cm' => $request->tb_cm,
           'lingkar_kepala' => $request->lingkar_kepala,
@@ -109,6 +107,7 @@ class PencatatanController extends Controller
      */
     public function destroy(Pencatatan $pencatatan)
     {
+        $pencatatan->pendaftaran()->detach();
         $pencatatan->delete();
         return redirect()->route('pencatatan.index');
 

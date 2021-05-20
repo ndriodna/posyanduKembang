@@ -5,6 +5,8 @@
       <a href="{{route('pencatatan.index')}}" class="btn btn-success m-2"><i class="fa fa-arrow-left" aria-hidden="true"></i>
 Kembali</a>
   <div class="row">
+    @foreach ($pencatatan->pendaftaran as $data)
+
     <div class="col-lg-6 md-6 sm-12">
       <div class="card shadow p-3">
         <div class="card-header text-center">
@@ -16,7 +18,7 @@ Kembali</a>
               <h5 class="">NO BPJS </h5>
             </div>
             <div class="col-lg-6 sm-12">
-              <h5 class="" >{{$pencatatan->pendaftaran->no_bpjs}}</h5>
+              <h5 class="" >{{$data->no_bpjs}}</h5>
             </div>
           </div>
           <div class="row mb-3">
@@ -24,7 +26,7 @@ Kembali</a>
               <h6 class="">Nama Anak </h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pencatatan->pendaftaran->nama}}</h6>
+              <h6 class="" >{{$data->nama}}</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -32,7 +34,7 @@ Kembali</a>
               <h6 class="">Nama Bapak </h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pencatatan->pendaftaran->nama_bpk ? $pencatatan->pendaftaran->nama_bpk : '-'}}</h6>
+              <h6 class="" >{{$data->nama_bpk ? $data->nama_bpk : '-'}}</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -40,7 +42,7 @@ Kembali</a>
               <h6 class="">Nama Ibu </h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pencatatan->pendaftaran->nama_ibu ? $pencatatan->pendaftaran->nama_ibu : '-'}}</h6>
+              <h6 class="" >{{$data->nama_ibu ? $data->nama_ibu : '-'}}</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -48,7 +50,7 @@ Kembali</a>
               <h6 class="">Tanggal Lahir </h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{date('d F Y', strtotime($pencatatan->pendaftaran->tgl_lahir))}}</h6>
+              <h6 class="" >{{date('d F Y', strtotime($data->tgl_lahir))}}</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -56,7 +58,7 @@ Kembali</a>
               <h6 class="">Jenis Kelamin</h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pencatatan->pendaftaran->jenis_kelamin}}</h6>
+              <h6 class="" >{{$data->jenis_kelamin}}</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -64,7 +66,7 @@ Kembali</a>
               <h6 class="">Alamat</h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pencatatan->pendaftaran->alamat}}</h6>
+              <h6 class="" >{{$data->alamat}}</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -72,7 +74,7 @@ Kembali</a>
               <h6 class="">RT/RW</h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pencatatan->pendaftaran->rt_rw}}</h6>
+              <h6 class="" >{{$data->rt_rw}}</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -80,7 +82,7 @@ Kembali</a>
               <h6 class="">Berat Badan Lahir</h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pencatatan->pendaftaran->berat_badan_lahir}} Kg</h6>
+              <h6 class="" >{{$data->berat_badan_lahir}} Kg</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -88,7 +90,7 @@ Kembali</a>
               <h6 class="">Panjang Badan Lahir </h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$pencatatan->pendaftaran->panjang_badan_lahir}} CM</h6>
+              <h6 class="" >{{$data->panjang_badan_lahir}} CM</h6>
             </div>
           </div>
      </div>
@@ -105,7 +107,7 @@ Kembali</a>
            <h5 class="">Umur</h5>
          </div>
          <div class="col-lg-8 sm-12">
-           <h5 class="" >{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pencatatan->pendaftaran->tgl_lahir))}} Bulan</h5>
+           <h5 class="" >{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}} Bulan</h5>
          </div>
        </div>
        <div class="row mb-3">
@@ -151,6 +153,8 @@ Kembali</a>
   </div>
 </div>
 </div>
+@endforeach
+
 </div>
 </div>
 @endsection

@@ -15,7 +15,6 @@ class CreatePencatatansTable extends Migration
     {
         Schema::create('pencatatans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pendaftaran_id');
             $table->float('bb_kg',8,2);
             $table->float('tb_cm',8,2);
             $table->float('lingkar_kepala',8,2);
