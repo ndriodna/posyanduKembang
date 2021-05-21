@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Rekap;
+use App\Pendaftaran;
+use App\Pencatatan;
+use App\Pelayanan;
 use Illuminate\Http\Request;
 
 class RekapController extends Controller
@@ -14,7 +17,10 @@ class RekapController extends Controller
      */
     public function index()
     {
-        return view('rekap.index');
+        $pendaftaran = Pendaftaran::all();
+        $pencatatan = Pencatatan::all();
+        $pelayanan = Pelayanan::all();
+        return view('rekap.index',compact('pendaftaran','pencatatan','pelayanan'));
     }
 
     /**
