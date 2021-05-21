@@ -16,10 +16,11 @@
       @foreach($pendaftarans as $pendaftaran)
       <li class="list-group">
         <div class="col-auto">
-          <div class="card">
+          <div class="card shadow p-2">
             <div class="card-header">
-              <h3 class="card-title">{{$pendaftaran->nama}}</h3>
+              <h5>Data anak</h5>
             </div>
+              <h5 class="text-center">{{$pendaftaran->nama}}</h5>
             <div class="card-body">
               <div class="row mb-3">
                <div class="col-6"><h6>No BPJS</h6></div>
@@ -38,6 +39,7 @@
              <div class="col-6"><h6>Umur</h6></div>
              <div class="col-6"><h6>{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}} Bulan</h6></div>
            </div>
+           <hr>
            @forelse($pendaftaran->pencatatanOne as $data)
            @if (!empty($data))
            <div class="row mb-3">

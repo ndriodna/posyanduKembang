@@ -56,7 +56,7 @@ class PendaftaranController extends Controller
      */
     public function show(Pendaftaran $pendaftaran)
     {
-        $pencatatans = Pencatatan::latest('tgl');
+        $pencatatans = Pencatatan::all();
         return view('pendaftaran.show',compact('pendaftaran','pencatatans'));
     }
 

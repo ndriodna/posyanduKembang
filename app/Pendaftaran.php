@@ -8,7 +8,7 @@ class Pendaftaran extends Model
     protected $guarded = [];
 
     public function pencatatan(){
-      return $this->belongsToMany('App\Pencatatan');
+      return $this->belongsToMany('App\Pencatatan')->latest('tgl');
     }
 
     /*ngambil hanya 1 data terbaru berdasarkan tanggal*/

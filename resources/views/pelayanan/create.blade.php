@@ -4,35 +4,9 @@
 
       <h3 class="description text-info">Pelayanan</h3>
 <div class="row">
-  <div class="col-lg-8 md-8 sm-12">
-    <div class="card shadow">
-    <form class="form" method="POST" action="{{route('pelayanan.store')}}" enctype="multipart/form-data">
-      @csrf
-      <div class="card-body">
-        <div class="form-group">
-          <label for="">Nama</label> <br>
-          <select class="selectpicker" data-style="btn btn-info" name="pendaftaran_id" >
-            <option value="{{$pendaftaran->id}}">{{$pendaftaran->nama}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="">Jenis Pelayanan</label> <br>
-          <input type="text" class="form-control" name="jenis_pelayanan">
-        </div>
-        <div class="form-group">
-          <label for="">Keterangan</label> <br>
-          <textarea class="form-control my-editor" name="keterangan" rows="8" cols="80"></textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Simpan</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-  <div class="col-lg-4 md-4 sm-12">
+<div class="col-lg-5 md-5 sm-12">
     <div class="col-auto">
-      <div class="card shadow">
+      <div class="card shadow p-2">
         <div class="card-header">
           <h5>Data Anak</h5>
         </div>
@@ -78,12 +52,41 @@
        </div>
        @endif
        @empty
-       <p class="text-center">Belum Memiliki Catatan</p>
+       <p class="text-center">Belum Memiliki Riwaya Catatan</p>
        @endforelse
      </div>
    </div>
  </div>
 </div>
+
+  <div class="col-lg-7 md-7 sm-12">
+    <div class="card shadow">
+      <h5 class="text-center p-3">Form Pelayanan</h5>
+    <form class="form" method="POST" action="{{route('pelayanan.store')}}" enctype="multipart/form-data">
+      @csrf
+      <div class="card-body">
+        <div class="form-group">
+          <label for="">Nama</label> <br>
+          <select class="selectpicker" data-style="btn btn-info" name="pendaftaran_id" >
+            <option value="{{$pendaftaran->id}}">{{$pendaftaran->nama}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Jenis Pelayanan</label> <br>
+          <input type="text" class="form-control" name="jenis_pelayanan">
+        </div>
+        <div class="form-group">
+          <label for="">Keterangan</label> <br>
+          <textarea class="form-control my-editor" name="keterangan" rows="8" cols="80"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+  
 </div>
 
 @endsection

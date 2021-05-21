@@ -35,9 +35,15 @@ class PelayananController extends Controller
      */
     public function create()
     {
-        // return view('pelayanan.create',compact('pendaftaran'));
+        
     }
 
+    public function listPelayanan()
+    {
+        $pelayanan = Pelayanan::all();
+        return view('pelayanan.list',compact('pelayanan'));
+    }
+    
     public function addPelayanan($id)
     {
       $pendaftaran = Pendaftaran::findorfail($id);
@@ -79,9 +85,9 @@ class PelayananController extends Controller
      */
     public function edit(Pelayanan $pelayanan)
     {
-      $pendaftaran = Pendaftaran::all();
-        $pencatatan = Pencatatan::all();
-        return view('pelayanan.create',compact('pelayanan','pendaftaran','pencatatan'));
+      $pendaftaran = Pendaftaran::first();
+        $pencatatan = Pencatatan::first();
+        return view('pelayanan.edit',compact('pelayanan','pendaftaran','pencatatan'));
     }
 
     /**
@@ -98,7 +104,7 @@ class PelayananController extends Controller
         'jenis_pelayanan' => $request->jenis_pelayanan,
         'keterangan' => $request->keterangan,
       ]);
-      return redirect()->route('pelayanan.index');
+      return redirect()->route('pelayanan.create');
     }
 
     /**

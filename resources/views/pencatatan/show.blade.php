@@ -9,9 +9,7 @@ Kembali</a>
 
     <div class="col-lg-6 md-6 sm-12">
       <div class="card shadow p-3">
-        <div class="card-header text-center">
-          <h5>Data Anak</h5>
-        </div>
+          <h5 class="text-center p-2">Data Anak</h5>
         <div class="card-body">
           <div class="row mb-3">
             <div class="col-lg-4 sm-12">
@@ -82,7 +80,7 @@ Kembali</a>
               <h6 class="">Berat Badan Lahir</h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$data->berat_badan_lahir}} Kg</h6>
+              <h6 class="" >{{$data->bb_lahir}} Kg</h6>
             </div>
           </div>
           <div class="row mb-3">
@@ -90,7 +88,7 @@ Kembali</a>
               <h6 class="">Panjang Badan Lahir </h6>
             </div>
             <div class="col-lg-8 sm-12">
-              <h6 class="" >{{$data->panjang_badan_lahir}} CM</h6>
+              <h6 class="" >{{$data->tb_lahir}} CM</h6>
             </div>
           </div>
      </div>
@@ -98,9 +96,7 @@ Kembali</a>
  </div>
  <div class="col-lg-6 md-6 sm-12">
    <div class="card shadow p-3">
-     <div class="card-header text-center">
-       <h5>Data Riwayat Pencatatan</h5>
-     </div>
+       <h5 class="text-center p-2">Riwayat Pencatatan</h5>
      <div class="card-body">
       <div class="row mb-3">
          <div class="col-lg-4 sm-12">

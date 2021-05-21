@@ -7,9 +7,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 md-6 sm-12">
       <div class="card shadow p-3">
-        <div class="card-header text-center">
-          <h5>Data Anak</h5>
-        </div>
+          <h5 class="text-center p-2">Data Anak</h5>
         <div class="card-body">
           <div class="row mb-3">
             <div class="col-lg-6 sm-12">
@@ -98,10 +96,10 @@
   <hr>
   <h4 class="text-center p-3">Data Riwayat Pencatatan</h4>
   <div class="row">
-  @foreach($pendaftaran->pencatatan as $pencatatan)
+  @forelse($pendaftaran->pencatatan as $pencatatan)
     <div class="col-lg-4 md-4 sm-12">
-      <div class="card shadow">
-        <div class="card-header"><h5>{{$pendaftaran->nama}}</h5></div>
+      <div class="card shadow p-3">
+        <h5 class="text-center p-2">{{$pendaftaran->nama}}</h5>
         <div class="card-body">
           <div class="row mb-3">
            <div class="col-lg-6 sm-12">
@@ -154,7 +152,9 @@
        </div>
      </div>
    </div>
- @endforeach
+   @empty
+   <p class="text-center">Belum ada pencatatan</p>
+ @endforelse
  </div>
 </div>
 @endsection
