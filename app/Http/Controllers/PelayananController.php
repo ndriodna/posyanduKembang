@@ -43,7 +43,7 @@ class PelayananController extends Controller
         $pelayanan = Pelayanan::all();
         return view('pelayanan.list',compact('pelayanan'));
     }
-    
+
     public function addPelayanan($id)
     {
       $pendaftaran = Pendaftaran::findorfail($id);
@@ -115,6 +115,7 @@ class PelayananController extends Controller
      */
     public function destroy(Pelayanan $pelayanan)
     {
-        //
+        $pelayanan->delete();
+        return redirect()->route('pelayanan.list');
     }
 }
