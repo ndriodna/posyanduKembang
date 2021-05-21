@@ -36,7 +36,7 @@
                   @endrole
                 </ul>
               </li>
-              <li class=""><a class="nav-link" href="{{route('penyuluhan.index')}}"><i class="fas fa-file-alt"></i> <span>Rekap</span></a></li>
+              <li class=""><a class="nav-link" href="{{route('rekap.index')}}"><i class="fas fa-file-alt"></i> <span>Rekap</span></a></li>
 
               @endrole
               <li class="nav-item dropdown">

@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('pelayanan', 'PelayananController');
     Route::get('pelayanan/detail/{id}', 'PelayananController@pendaftaranDetail')->name('getDetail');
 
+		Route::resource('rekap', 'RekapController');
 		Route::resource('user', 'UserController');
     Route::resource('roles', 'RoleController');
 		Route::resource('tags', 'TagController');
