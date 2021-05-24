@@ -23,6 +23,11 @@ class RekapController extends Controller
         return view('rekap.index',compact('pendaftaran','pencatatan','pelayanan'));
     }
 
+    public function rekapDetail($id)
+    {
+        $detail = Pencatatan::find($id)->first();
+        return response()->json($detail);
+    }
     /**
      * Show the form for creating a new resource.
      *
