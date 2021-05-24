@@ -37,7 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pelayanan/list', 'PelayananController@listPelayanan')->name('pelayanan.list');
     Route::resource('penyuluhan', 'PenyuluhanController');
     Route::resource('pelayanan', 'PelayananController');
-    Route::get('rekap/detail/{id}', 'RekapController@rekapDetail')->name('getDetail');
 
 		Route::resource('rekap', 'RekapController');
 		Route::resource('user', 'UserController');

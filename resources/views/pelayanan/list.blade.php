@@ -21,9 +21,10 @@
               </thead>
               <tbody>
                 @foreach ($pelayanan as $data)
+                @foreach($data->pendaftaran as $pendaftaran)
                 <tr>
-                  <td>{{$data->pendaftaran->no_bpjs}}</td>
-                  <td>{{$data->pendaftaran->nama}}</td>
+                  <td>{{$pendaftaran->no_bpjs}}</td>
+                  <td>{{$pendaftaran->nama}}</td>
                   <td>{{$data->jenis_pelayanan}}</td>
                   <td>{!!$data->keterangan!!}</td>
                   <td class="col-auto">
@@ -54,6 +55,7 @@
                     </div>
                   </td>
                 </tr>
+                @endforeach
                 @endforeach
               </tbody>
             </table>

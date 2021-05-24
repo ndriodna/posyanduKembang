@@ -42,7 +42,7 @@
            <h6 class="">TB Lahir</h6>
          </div>
          <div class="col-lg-8 sm-12">
-           <h6 class="" >{{($pendaftaran->tb_lahir)}} Kg</h6>
+           <h6 class="" >{{($pendaftaran->tb_lahir)}} CM</h6>
          </div>
        </div>
        <hr>

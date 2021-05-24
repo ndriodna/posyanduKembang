@@ -41,7 +41,8 @@ class PelayananController extends Controller
     public function listPelayanan()
     {
         $pelayanan = Pelayanan::all();
-        return view('pelayanan.list',compact('pelayanan'));
+        $pendaftaran = Pendaftaran::get();
+        return view('pelayanan.list',compact('pelayanan','pendaftaran'));
     }
 
     public function addPelayanan($id)
@@ -59,10 +60,10 @@ class PelayananController extends Controller
     public function store(Request $request)
     {
         $pelayanan = Pelayanan::create([
-          'pendaftaran_id' => $request->pendaftaran_id,
           'jenis_pelayanan' => $request->jenis_pelayanan,
           'keterangan' => $request->keterangan,
         ]);
+        $pelayanan->pendaftaran()->attach($request->pendaftaran_id);
         return redirect()->route('pelayanan.index');
     }
 
@@ -100,10 +101,10 @@ class PelayananController extends Controller
     public function update(Request $request, Pelayanan $pelayanan)
     {
       $pelayanan->update([
-        'pendaftaran_id' => $request->pendaftaran_id,
         'jenis_pelayanan' => $request->jenis_pelayanan,
         'keterangan' => $request->keterangan,
       ]);
+        $pelayanan->pendaftaran()->sync($request->pendaftaran_id);
       return redirect()->route('pelayanan.create');
     }
 
@@ -115,6 +116,7 @@ class PelayananController extends Controller
      */
     public function destroy(Pelayanan $pelayanan)
     {
+      $pelayanan->pendaftaran()->detach();
         $pelayanan->delete();
         return redirect()->route('pelayanan.list');
     }

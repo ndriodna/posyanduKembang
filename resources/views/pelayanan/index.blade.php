@@ -80,25 +80,6 @@
 
 
 @push('js')
-<script type="text/javascript">
-  $('#detail').change(function() {
-    var id = $(this).val();
-    var url = '{{ route("getDetail", ":id") }}';
-    url = url.replace(':id', id);
-
-    $.ajax({
-      url: url,
-      type: 'get',
-      dataType: 'json',
-      success: function (response) {
-        if (response != null) {
-          $('#tgl_lahir').val(response.umur)
-        }
-      }
-    })
-  })
-</script>
-
 <script>
  $(document).ready(function(){
    $("#myInput").on("keyup", function() {

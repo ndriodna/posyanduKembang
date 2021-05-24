@@ -10,7 +10,7 @@ class Pelayanan extends Model
 
     public function pendaftaran()
     {
-    	return $this->belongsTo('App\Pendaftaran');
+    	return $this->belongsToMany('App\Pendaftaran');
     }
 
     public function pencatatan(){
