@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-  <h3 class="p-2 mb-3">Pencatatan</h3>
+  <h3 class="p-2 mb-3">Pengukuran & Penimbangan</h3>
   <div class="row">
     <div class="col-lg-5 md-5 sm-12">
       <div class="card shadow">
@@ -46,7 +46,7 @@
          </div>
        </div>
        <hr>
-       <div class="text-center p-2 mb-3"><h5>Riwayat Pencatatan</h5></div>
+       <div class="text-center p-2 mb-3"><h5>Riwayat Ukur & Timbang</h5></div>
        @forelse($pendaftaran->pencatatan as $data)
        @if(!empty($data))
        <div class="row mb-3">
@@ -89,7 +89,6 @@
            <h6 class="" >{{($data->ntob)}}</h6>
          </div>
        </div>
-       <a href="#" class="btn btn-primary">a</a>
        <hr>
        @endif
        @empty

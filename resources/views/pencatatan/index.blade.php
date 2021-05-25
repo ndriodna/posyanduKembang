@@ -3,29 +3,17 @@
 @section('content')
 
 <div class="container-fluid mt-8">
-  @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
   <div class="row">
     <div class="col-lg-12 md-8 sm-4">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Pencatatan</h4>
+          <h4 class="card-title">Pengukuran & Penimbangan</h4>
         </div>
         <div class="card-body">
-          {{-- <div class="col-sm-4">
-            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
-          </div><br> --}}
           <div class="table-responsive">
             <table class="table dt-responsive" id="DataTable">
               <thead>
-                <th>Tgl timbang</th>
+                <th>Tgl</th>
                 <th>Nama</th>
                 <th>Umur(Bln)</th>
                 <th>BB</th>

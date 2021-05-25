@@ -96,11 +96,11 @@ Kembali</a>
  </div>
  <div class="col-lg-6 md-6 sm-12">
    <div class="card shadow p-3">
-       <h5 class="text-center p-2">Riwayat Pencatatan</h5>
+       <h5 class="text-center p-2">Riwayat Ukur & Timbang</h5>
      <div class="card-body">
       <div class="row mb-3">
          <div class="col-6">
-           <h6 class="">Tgl Timbang </h6>
+           <h6 class="">Tgl</h6>
          </div>
          <div class="col-6">
            <h6 class="" >{{date('d-m-Y',strtotime($pencatatan->tgl))}}</h6>
@@ -119,7 +119,7 @@ Kembali</a>
            <h6 class="">Berat Badan </h6>
          </div>
          <div class="col-6">
-           <h6 class="" >{{$pencatatan->bb_kg}} KG</h6>
+           <h6 class="" >{{$pencatatan->bb_kg}} Kg</h6>
          </div>
        </div>
        <div class="row mb-3">

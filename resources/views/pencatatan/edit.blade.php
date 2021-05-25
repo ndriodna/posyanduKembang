@@ -8,7 +8,7 @@
         <form class="form" method="POST" action="{{route('pencatatan.update',$pencatatan->id)}}" enctype="multipart/form-data">
           @csrf
           @method('PUT')
-          <h3 class="description text-center text-success">Edit Pencatatan</h3>
+          <h3 class="description text-center text-success">Edit Pengukuran & Penimbangan</h3>
           <div class="card-body">
             <div class="row">
               <div class="col-12">

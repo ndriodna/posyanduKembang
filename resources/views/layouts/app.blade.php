@@ -117,7 +117,8 @@
                       [2, 'desc'],
                       [0, 'asc']
                   ],
-                  fixedColumns: true
+                  fixedColumns: true,
+                  responsive: true
               });
           });
       </script>
