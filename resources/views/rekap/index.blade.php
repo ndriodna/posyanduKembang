@@ -16,6 +16,7 @@
           <div class="table-responsive">
             <table class="table dt-responsive" id="myTable">
               <thead>
+                <th>No</th>
                 <th>Tgl</th>
                 <th>Nama anak</th>
                 <th>OrangTua</th>
@@ -29,9 +30,11 @@
                 <th>Pelayanan</th>
               </thead>
               <tbody>
+                <?php $no=1; ?>
                 @foreach ($pencatatan as $pencatatan)
                 @foreach ($pencatatan->pendaftaran as $data)
                 <tr>
+                  <td>{{$no++}}</td>
                   <td>{{Carbon\Carbon::parse($pencatatan->tgl)->locale('id')->isoFormat('LL')}}</td>
                   <td>{{$data->nama}}</td>
                   <td>{{!empty($data->nama_bpk) ? $data->nama_bpk : $data->nama_ibu}}</td>
@@ -72,17 +75,19 @@
       extend: 'pdfHtml5',
       title: 'Laporan Rekap Posyandu',
       orientation: 'landscape',
-      alignment: 'center',
+      download: 'open',
       exportOptions: {
-                modifier: {
-                    page: 'current'
-                }
-            },
-            customize: function ( doc ) {
-              alignment: 'center';
-              widths: 200
-            }
-          }, 
+        modifier: {
+          page: 'current'
+        },
+        columns: [0,2,4,5,6,7,8,9,10,11]
+      },
+      customize: function ( doc ) {
+        doc.styles.tableBodyEven.alignment = 'center';
+        doc.styles.tableBodyOdd.alignment = 'center';
+        doc.content[1].table.widths = '10%';
+      }
+    }, 
     ]
   } );
 } );
