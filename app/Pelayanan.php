@@ -14,11 +14,6 @@ class Pelayanan extends Model
     }
 
     public function pencatatan(){
-    	return $this->belongsTo('App\Pencatatan');
-    }
-
-    public function age()
-    {
-      return Carbon::parse($this->attributes['tgl_lahir'])->age;
+    	return $this->belongsToMany('App\Pencatatan');
     }
 }

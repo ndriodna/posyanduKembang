@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Pendaftaran;
 use App\Pencatatan;
+use App\Pelayanan;
 use App\Http\Requests\PendaftaranValidate;
 use Illuminate\Http\Request;
 
@@ -57,7 +58,8 @@ class PendaftaranController extends Controller
     public function show(Pendaftaran $pendaftaran)
     {
         $pencatatans = Pencatatan::all();
-        return view('pendaftaran.show',compact('pendaftaran','pencatatans'));
+        $pelayanans = Pelayanan::all();
+        return view('pendaftaran.show',compact('pendaftaran','pencatatans','pelayanans'));
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePelayananPendaftaran extends Migration
+class CreatePelayananPencatatan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePelayananPendaftaran extends Migration
      */
     public function up()
     {
-        Schema::create('pelayanan_pendaftaran', function (Blueprint $table) {
+        Schema::create('pelayanan_pencatatan', function (Blueprint $table) {
             $table->id();
-            $table->integer('pelayanan_id');
-            $table->integer('pendaftaran_id');
+             $table->integer('pelayanan_id');
+            $table->integer('pencatatan_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePelayananPendaftaran extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pelayanan_pendaftaran');
+        Schema::dropIfExists('pelayanan_pencatatan');
     }
 }

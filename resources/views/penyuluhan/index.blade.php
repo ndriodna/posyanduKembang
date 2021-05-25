@@ -23,7 +23,7 @@
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#createModal">Tambah Data</a>
           </div><br>
           <div class="table-responsive">
-            <table class="table" id="DataTable">
+            <table class="table dt-responsive" id="DataTable">
               <thead>
                 <th>Tgl</th>
                 <th>Waktu & Tempat</th>

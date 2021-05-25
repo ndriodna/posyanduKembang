@@ -14,6 +14,6 @@ class Pencatatan extends Model
     }
 
     public function pelayanan(){
-    	return $this->belongsTo('App\Pelayanan');
+    	return $this->belongsToMany('App\Pelayanan');
     }
 }

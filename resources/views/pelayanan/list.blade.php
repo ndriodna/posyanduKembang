@@ -11,20 +11,26 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table" id="DataTable">
+            <table class="table dt-responsive" id="DataTable">
               <thead>
-                <th>BPJS</th>
-                <th>nama</th>
+                <th>Tgl</th>
+                <th>Bpjs</th>
+                <th>Nama</th>
+                <th>Umur</th>
                 <th>Jenis</th>
                 <th>Keterangan</th>
                 <th>Action</th>
               </thead>
               <tbody>
                 @foreach ($pelayanan as $data)
-                @foreach($data->pendaftaran as $pendaftaran)
+                @foreach($data->pencatatan as $pencatatan)
                 <tr>
+                  <td>{{date('d-m-Y',strtotime($pencatatan->tgl))}}</td>
+                  @foreach($pencatatan->pendaftaran as $pendaftaran)
                   <td>{{$pendaftaran->no_bpjs}}</td>
                   <td>{{$pendaftaran->nama}}</td>
+                  <td>{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}}</td>
+                  @endforeach
                   <td>{{$data->jenis_pelayanan}}</td>
                   <td>{!!$data->keterangan!!}</td>
                   <td class="col-auto">
@@ -38,7 +44,7 @@
                         </div>
                       </div>
                     </div>
-                    <a class=" btn btn-info" href="{{route('pelayanan.show',$data->id)}}"><i class="fa fa-eye fa-lg"></i></a>
+                   {{--  <a class=" btn btn-info" href="{{route('pelayanan.show',$data->id)}}"><i class="fa fa-eye fa-lg"></i></a> --}}
                     <div class="btn-group">
                       <div class="dropdown ">
                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

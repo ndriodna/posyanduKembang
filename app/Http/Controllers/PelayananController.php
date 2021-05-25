@@ -41,14 +41,14 @@ class PelayananController extends Controller
     public function listPelayanan()
     {
         $pelayanan = Pelayanan::all();
-        $pendaftaran = Pendaftaran::get();
+        $pendaftaran = Pendaftaran::all();
         return view('pelayanan.list',compact('pelayanan','pendaftaran'));
     }
 
     public function addPelayanan($id)
     {
-      $pendaftaran = Pendaftaran::findorfail($id);
-        $pencatatan = Pencatatan::all();
+        $pencatatan = Pencatatan::findorfail($id);
+        $pendaftaran = Pendaftaran::all();
         return view('pelayanan.create',compact('pendaftaran','pencatatan'));
     }
     /**
@@ -63,8 +63,8 @@ class PelayananController extends Controller
           'jenis_pelayanan' => $request->jenis_pelayanan,
           'keterangan' => $request->keterangan,
         ]);
-        $pelayanan->pendaftaran()->attach($request->pendaftaran_id);
-        return redirect()->route('pelayanan.index');
+        $pelayanan->pencatatan()->attach($request->pencatatan_id);
+        return redirect()->route('pelayanan.list');
     }
 
     /**
@@ -104,8 +104,8 @@ class PelayananController extends Controller
         'jenis_pelayanan' => $request->jenis_pelayanan,
         'keterangan' => $request->keterangan,
       ]);
-        $pelayanan->pendaftaran()->sync($request->pendaftaran_id);
-      return redirect()->route('pelayanan.create');
+        $pelayanan->pencatatan()->sync($request->pencatatan_id);
+      return redirect()->route('pelayanan.list');
     }
 
     /**
@@ -116,7 +116,7 @@ class PelayananController extends Controller
      */
     public function destroy(Pelayanan $pelayanan)
     {
-      $pelayanan->pendaftaran()->detach();
+      $pelayanan->pencatatan()->detach();
         $pelayanan->delete();
         return redirect()->route('pelayanan.list');
     }

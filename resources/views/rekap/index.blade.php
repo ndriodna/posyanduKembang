@@ -11,7 +11,7 @@
           <div class="card-body">
             
             <div class="table-responsive">
-              <table class="table" id="DataTable">
+              <table class="table dt-responsive" id="DataTable">
                 <thead>
                   <th>Tgl Timbang</th>
                   <th>Nama</th>
@@ -26,20 +26,20 @@
                   <th>Pelayanan</th>
                 </thead>
                 <tbody>
-                  @foreach ($pendaftaran as $pendaftaran)
-                    @foreach ($pendaftaran->pencatatan as $data)
+                  @foreach ($pencatatan as $pencatatan)
+                    @foreach ($pencatatan->pendaftaran as $data)
                   <tr>
-                    <td>{{date('F-Y',strtotime($data->tgl))}}</td>
-                    <td>{{$pendaftaran->nama}}</td>
-                    <td>{{!empty($pendaftaran->bpk) ? $pendaftaran->nama_bpk : $pendaftaran->nama_ibu}}</td>
-                    <td>{{$pendaftaran->tgl_lahir}}</td>
-                    <td>{{$pendaftaran->jenis_kelamin}}</td>
-                    <td>{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}}</td>
-                    <td>{{$data->bb_kg}}</td>
-                    <td>{{$data->tb_cm}}</td>
-                    <td>{{$data->lingkar_kepala}}</td>
-                    <td>{{$data->ntob}}</td>
-                    @forelse($pendaftaran->pelayanan as $pel)
+                    <td>{{date('F-Y',strtotime($pencatatan->tgl))}}</td>
+                    <td>{{$data->nama}}</td>
+                    <td>{{!empty($data->nama_bpk) ? $data->nama_bpk : $data->nama_ibu}}</td>
+                    <td>{{$data->tgl_lahir}}</td>
+                    <td>{{$data->jenis_kelamin}}</td>
+                    <td>{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}}</td>
+                    <td>{{$pencatatan->bb_kg}}</td>
+                    <td>{{$pencatatan->tb_cm}}</td>
+                    <td>{{$pencatatan->lingkar_kepala}}</td>
+                    <td>{{$pencatatan->ntob}}</td>
+                    @forelse($pencatatan->pelayanan as $pel)
                     <td>{{$pel->jenis_pelayanan}}</td>
                     @empty
                     <td>-</td>

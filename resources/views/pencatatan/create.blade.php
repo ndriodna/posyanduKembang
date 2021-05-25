@@ -9,86 +9,88 @@
         <div class="card-header" style="margin-bottom: -30px;"><h5>Data Anak</h5></div>
         <div class="card-body">
           <div class="row mb-3">
-           <div class="col-lg-12 sm-12">
+           <div class="col-12">
             <h4 class="text-center">{{$pendaftaran->nama}}</h4>
           </div>
         </div>
         <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">Jenis Kelamin</h6>
          </div>
-         <div class="col-lg-8 sm-12">
+         <div class="col-6">
            <h6 class="" >{{($pendaftaran->jenis_kelamin)}}</h6>
          </div>
        </div>
        <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">Umur</h6>
          </div>
-         <div class="col-lg-8 sm-12">
+         <div class="col-6">
            <h6 class="" >{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}} Bulan</h6>
          </div>
        </div>
        <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">BB Lahir</h6>
          </div>
-         <div class="col-lg-8 sm-12">
+         <div class="col-6">
            <h6 class="" >{{($pendaftaran->bb_lahir)}} Kg</h6>
          </div>
        </div>
        <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">TB Lahir</h6>
          </div>
-         <div class="col-lg-8 sm-12">
+         <div class="col-6">
            <h6 class="" >{{($pendaftaran->tb_lahir)}} CM</h6>
          </div>
        </div>
        <hr>
        <div class="text-center p-2 mb-3"><h5>Riwayat Pencatatan</h5></div>
-       @forelse($pendaftaran->pencatatanOne as $data)
+       @forelse($pendaftaran->pencatatan as $data)
        @if(!empty($data))
        <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">Tgl Timbang terakhir</h6>
          </div>
-         <div class="col-lg-8 sm-12">
-           <h6 class="" >{{($data->tgl)}}</h6>
+         <div class="col-6">
+           <h6 class="" >{{date('d-m-Y',strtotime($data->tgl))}}</h6>
          </div>
        </div>
        <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">BB terakhir</h6>
          </div>
-         <div class="col-lg-8 sm-12">
+         <div class="col-6">
            <h6 class="" >{{($data->bb_kg)}} Kg</h6>
          </div>
        </div>
        <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">TB terakhir</h6>
          </div>
-         <div class="col-lg-8 sm-12">
+         <div class="col-6">
            <h6 class="" >{{($data->tb_cm)}} CM</h6>
          </div>
        </div>
         <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">LK terakhir</h6>
          </div>
-         <div class="col-lg-8 sm-12">
+         <div class="col-6">
            <h6 class="" >{{($data->lingkar_kepala)}} CM</h6>
          </div>
        </div>
        <div class="row mb-3">
-         <div class="col-lg-4 sm-12">
+         <div class="col-6">
            <h6 class="">NTOB</h6>
          </div>
-         <div class="col-lg-8 sm-12">
+         <div class="col-6">
            <h6 class="" >{{($data->ntob)}}</h6>
          </div>
        </div>
+       <a href="#" class="btn btn-primary">a</a>
+       <hr>
        @endif
        @empty
        <p class="text-center">Belum memiliki catatan</p>

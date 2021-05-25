@@ -15,9 +15,4 @@ class Pendaftaran extends Model
      public function pencatatanOne(){
       return $this->belongsToMany('App\Pencatatan')->take(1)->latest('tgl');
     }
-
-    public function pelayanan()
-    {
-      return $this->belongsToMany('App\Pelayanan');
-    }
 }

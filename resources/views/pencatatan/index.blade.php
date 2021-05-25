@@ -23,7 +23,7 @@
             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createModal">Tambah Data</a>
           </div><br> --}}
           <div class="table-responsive">
-            <table class="table" id="DataTable">
+            <table class="table dt-responsive" id="DataTable">
               <thead>
                 <th>Tgl timbang</th>
                 <th>Nama</th>
@@ -43,7 +43,6 @@
                   @endforeach</td>
                   <td>
                     @foreach ($pencatatan->pendaftaran as $data)
-
                     {{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($data->tgl_lahir))}}
                   @endforeach
                   </td>
@@ -52,6 +51,16 @@
                   <td>{{$pencatatan->lingkar_kepala}}</td>
                   <td>{{$pencatatan->ntob}}</td>
                   <td class="col-auto">
+                    <div class="btn-group">
+                      <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fa fa-plus-square fa-lg"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a href="{{route('addPelayanan',$pencatatan->id)}}" class="dropdown-item">Tambah Pelayanan</a>
+                        </div>
+                      </div>
+                    </div>
                       <div class="btn-group">
                         <div class="dropdown">
                           <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,7 +69,6 @@
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a href="{{route('pencatatan.edit',$pencatatan->id)}}" class="dropdown-item">Ubah Data</a>
                           </div>
-
                         </div>
                       </div>
                       <a class=" btn btn-info" href="{{route('pencatatan.show',$pencatatan->id)}}"><i class="fa fa-eye fa-lg"></i></a>

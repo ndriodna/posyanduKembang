@@ -24,7 +24,7 @@
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#createModal">Tambah Data</a>
           </div><br>
           <div class="table-responsive">
-            <table class="table" id="DataTable">
+            <table class="table dt-responsive" id="DataTable">
               <thead>
                 <th>BPJS</th>
                 <th>Nama</th>
@@ -38,7 +38,7 @@
                 <tr>
                   <td>{{$pendaftaran->no_bpjs}}</td>
                   <td>{{$pendaftaran->nama}}</td>
-                  <td>{{$pendaftaran->tgl_lahir}}</td>
+                  <td>{{date('d-m-Y',strtotime($pendaftaran->tgl_lahir))}}</td>
                   <td>{{$pendaftaran->jenis_kelamin}}</td>
                   <td>{{$pendaftaran->rt_rw}}</td>
                   <td class="col-auto">
