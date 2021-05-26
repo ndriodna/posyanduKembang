@@ -30,7 +30,7 @@
                 <th>Pelayanan</th>
               </thead>
               <tbody>
-                <?php $no=1; ?>
+                <?php $no = 1?>
                 @foreach ($pencatatan as $pencatatan)
                 @foreach ($pencatatan->pendaftaran as $data)
                 <tr>
@@ -80,12 +80,12 @@
         modifier: {
           page: 'current'
         },
-        columns: [0,2,4,5,6,7,8,9,10,11]
+        columns: [0,2,3,4,5,6,7,8,9,10,11]
       },
       customize: function ( doc ) {
         doc.styles.tableBodyEven.alignment = 'center';
         doc.styles.tableBodyOdd.alignment = 'center';
-        doc.content[1].table.widths = '10%';
+        doc.content[1].table.widths = '9%';
       }
     }, 
     ]
