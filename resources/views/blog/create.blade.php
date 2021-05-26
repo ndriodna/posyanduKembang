@@ -20,7 +20,7 @@
                       <input type="text" class="form-control tagsinput" name="tags" data-role="tagsinput">
                     </div>
               <div class="form-group">
-                <label>Select Tags</label>
+                <label>Select Tags</label><br>
                 <select class="selectpicker" multiple="" name="tags_input[]">
                     @foreach($tags as $data)
                   <option value="{{$data->id}}">{{$data->name}}</option>

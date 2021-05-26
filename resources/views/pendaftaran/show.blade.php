@@ -46,7 +46,7 @@
               <h6 class="">Tanggal Lahir </h6>
             </div>
             <div class="col-6">
-              <h6 class="" >{{date('d F Y', strtotime($pendaftaran->tgl_lahir))}}</h6>
+              <h6 class="" >{{date('d-m-Y', strtotime($pendaftaran->tgl_lahir))}}</h6>
             </div>
           </div>
           <div class="row mb-3">

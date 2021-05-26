@@ -34,7 +34,7 @@
               <tbody>
                 @foreach ($penyuluhans as $penyuluhan)
                 <tr>
-                  <td>{{date('d-m-y',strtotime($penyuluhan->tgl))}}</td>
+                  <td>{{Carbon\Carbon::parse($penyuluhan->tgl)->locale('id')->isoFormat('LL')}}</td>
                   <td>{{$penyuluhan->waktu_tempat}}</td>
                   <td>{{$penyuluhan->materi}}</td>
                   <td>{{$penyuluhan->peserta}}</td>

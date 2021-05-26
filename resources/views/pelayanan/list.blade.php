@@ -25,7 +25,7 @@
                 @foreach ($pelayanan as $data)
                 @foreach($data->pencatatan as $pencatatan)
                 <tr>
-                  <td>{{date('d-m-Y',strtotime($pencatatan->tgl))}}</td>
+                  <td>{{Carbon\Carbon::parse($pencatatan->tgl)->locale('id')->isoFormat('LL')}}</td>
                   @foreach($pencatatan->pendaftaran as $pendaftaran)
                   <td>{{$pendaftaran->no_bpjs}}</td>
                   <td>{{$pendaftaran->nama}}</td>

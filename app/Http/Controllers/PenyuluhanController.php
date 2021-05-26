@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Penyuluhan;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class PenyuluhanController extends Controller
 {
     /**
@@ -43,7 +43,6 @@ class PenyuluhanController extends Controller
             'waktu_tempat' => 'required|string',
             'materi' => 'required|string',
             'peserta' => 'required|string',
-            'tgl' => 'required|date'
         ]);
         Penyuluhan::create([
             'waktu_tempat' => $request->waktu_tempat,
