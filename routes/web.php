@@ -18,6 +18,7 @@ Auth::routes();
 //     return redirect('/home');
 // });
   Route::get('/', 'FrontController@index');
+  route::get('berita/{slug}/','FrontController@showNews')->name('showNews');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::group(['prefix' => 'laravel-filemanager'], function () {

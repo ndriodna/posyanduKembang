@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\Tag;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\SEOTools;
 class FrontController extends Controller
 {
     /**
@@ -16,6 +21,10 @@ class FrontController extends Controller
     {
         $beritas = Blog::all();
         $tag = Tag::all();
+        OpenGraph::setDescription('???');
+        OpenGraph::setUrl('http://??.com');
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(url('storage/images/bg/character/Traveler.jpg'), ['height' => 500, 'width' => 500]);
         return view('front.content.home',compact('beritas','tag'));
     }
 
@@ -24,6 +33,21 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function showNews($slug)
+     {
+         $beritas = Blog::where('slug', $slug)->first();
+         $tags = Tag::all();
+         SEOMeta::setTitle($beritas->title);
+         $p = strip_tags($beritas->desc);
+         OpenGraph::setDescription($p);
+         SEOMeta::addMeta('article:section', $beritas->tags);
+          SEOMeta::addKeyword(['???', '???', '????']);
+         OpenGraph::addProperty('type', 'article');
+         OpenGraph::addProperty('locale', 'pt-br');
+         OpenGraph::addProperty('locale:alternate', ['pt-pt', 'en-us']);
+         return view('front.content.news',compact('beritas','tags'));
+     }
+
     public function create()
     {
         //

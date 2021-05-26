@@ -11,7 +11,7 @@
 	<div class="row justify-content" style="margin-bottom: 100px;">
 		<div class="col-lg-6 md-6 sm-12 mt-2">
 			<h3>Posyandu Kembang Sepatu</h3>
-			<p class="" style="font-size: 18px;">Salah satu program utama posyandu adalah menyelenggarakan pemeriksaan bayi dan balita secara rutin. Hal ini penting dilakukan untuk memantau tumbuh kembang anak dan mendeteksi sejak dini bila anak mengalami gangguan tumbuh kembang. 
+			<p class="" style="font-size: 18px;">Salah satu program utama posyandu adalah menyelenggarakan pemeriksaan bayi dan balita secara rutin. Hal ini penting dilakukan untuk memantau tumbuh kembang anak dan mendeteksi sejak dini bila anak mengalami gangguan tumbuh kembang.
 			<br>pelayanan yang diselenggarakan posyandu untuk balita mencakup penimbangan berat badan, pengukuran tinggi badan dan lingkar kepala anak, evaluasi tumbuh kembang, serta penyuluhan dan konseling tumbuh kembang.</p>
 		</div>
 		<div class="col-lg-6 md-6 sm-12">
@@ -59,7 +59,7 @@
 			<img src="{{asset('assets/svg/Drawkit-Vector-Illustration-Medical-06.svg')}}" class="img-fluid" alt="" width="450">
 		</div>
 		<div class="col-lg-6 md-6 sm-12">
-			<p class="pt-5 mt-5 font-weight-light" style="font-size: 22px;">Posyandu dapat memberikan pelayanan berupa. 
+			<p class="pt-5 mt-5 font-weight-light" style="font-size: 22px;">Posyandu dapat memberikan pelayanan berupa.
 				<ul class="font-weight-light" style="font-size: 20px;">
 					<li>Pemberian Imunisasi</li>
 					<li>Pemeriksaan Ibu Hamil</li>
@@ -88,7 +88,7 @@
 				<span class="badge badge-primary">{{$tag->name}}</span>
 			@endforeach
 					<hr>
-				<a href="#" class="btn btn-primary float-right">Baca Selengkapnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+				<a href="{{route('showNews',$berita->slug)}}" class="btn btn-primary float-right">Baca Selengkapnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 				</div>
 			</div>
 		</div>
