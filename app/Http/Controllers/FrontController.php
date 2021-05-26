@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Blog;
+use App\Tag;
 class FrontController extends Controller
 {
     /**
@@ -13,7 +14,9 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('front.content.home');
+        $beritas = Blog::all();
+        $tag = Tag::all();
+        return view('front.content.home',compact('beritas','tag'));
     }
 
     /**
