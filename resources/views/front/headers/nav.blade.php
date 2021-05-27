@@ -20,7 +20,7 @@
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Visi & Misi</a></li>
-            <li>
+          {{--   <li>
 							@foreach ($beritas as $berita)
 								@foreach ($berita->tag as $data)
 									@if ($data->name == "GG")
@@ -28,7 +28,7 @@
 									@endif
 								@endforeach
 							@endforeach
-						</li>
+						</li> --}}
           </ul>
         </li>
         <li class="nav-item">
