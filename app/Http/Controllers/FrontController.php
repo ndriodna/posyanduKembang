@@ -19,7 +19,7 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $beritas = Blog::all();
+        $beritas = Blog::orderBy('created_at','DESC')->limit(3)->get();
         $tag = Tag::all();
         OpenGraph::setDescription('???');
         OpenGraph::setUrl('http://??.com');
@@ -33,7 +33,13 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function showNews($slug)
+    public function showNews()
+    {
+        $beritas = Blog::all();
+        $tag = Tag::all();
+        return view('front.content.news',compact('beritas','tag'));
+    }
+     public function showNewsDetail($slug)
      {
          $beritas = Blog::where('slug', $slug)->first();
          $tags = Tag::all();
@@ -45,9 +51,20 @@ class FrontController extends Controller
          OpenGraph::addProperty('type', 'article');
          OpenGraph::addProperty('locale', 'pt-br');
          OpenGraph::addProperty('locale:alternate', ['pt-pt', 'en-us']);
-         return view('front.content.news',compact('beritas','tags'));
+         return view('front.content.newsDetail',compact('beritas','tags'));
      }
 
+     public function showByTag($slug)
+     {
+         $tag = Tag::where('slug', $slug)->first();
+         $berita = Blog::all();
+         return view('front.content.tag',compact('tag','berita'));
+     }
+
+     public function credits()
+     {
+         return view('front.content.credits');
+     }
     public function create()
     {
         //

@@ -18,7 +18,10 @@ Auth::routes();
 //     return redirect('/home');
 // });
   Route::get('/', 'FrontController@index');
-  route::get('berita/{slug}/','FrontController@showNews')->name('showNews');
+  route::get('berita/','FrontController@showNews')->name('showNews');
+  route::get('berita/{slug}/','FrontController@showNewsDetail')->name('showNewsDetail');
+  route::get('berita/tag/{slug}/','FrontController@showByTag')->name('showByTag');
+  Route::get('credits/', 'FrontController@credits')->name('credits');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::group(['prefix' => 'laravel-filemanager'], function () {

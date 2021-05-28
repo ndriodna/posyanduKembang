@@ -10,25 +10,19 @@
           <a class="nav-link" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Agenda</a>
+          {{-- pengennya show by tag atau ada saran lagi klo by id takutnya nanti pas tehapus sma org sana --}}
+          <a class="nav-link" href="{{route('showNews')}}">Agenda</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
             Profile Posyandu
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+          {{-- pengennya show by tag atau ada saran lagi klo by id takutnya nanti pas tehapus sma org sana --}}
+            <li><a class="dropdown-item" href="{{route('showNews')}}">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Visi & Misi</a></li>
-          {{--   <li>
-							@foreach ($beritas as $berita)
-								@foreach ($berita->tag as $data)
-									@if ($data->name == "GG")
-									<a class="dropdown-item" href="#">{{$data->name}}</a>
-									@endif
-								@endforeach
-							@endforeach
-						</li> --}}
+          {{-- pengennya show by tag atau ada saran lagi klo by id takutnya nanti pas tehapus sma org sana --}}
+            <li><a class="dropdown-item" href="{{route('showNews')}}">Visi & Misi</a></li>
           </ul>
         </li>
         <li class="nav-item">
