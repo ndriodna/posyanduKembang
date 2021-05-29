@@ -6,7 +6,7 @@ img {
   height: auto;
 }
 </style>
-  <div class="p-2">
+  <div class="p-3">
     <h3 class="text-center">Tag: <span class="badge badge-primary">{{$tag->name}}</span></h3>
   </div>
 <div class="container ">
@@ -23,7 +23,7 @@ img {
         <span class="badge badge-primary">{{$tag->name}}</span>
       @endforeach
           <hr>
-        <a href="{{route('showNews',$data->slug)}}" class="btn btn-primary float-right">Baca Selengkapnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="{{route('showNewsDetail',$data->slug)}}" class="btn btn-primary float-right">Baca Selengkapnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>

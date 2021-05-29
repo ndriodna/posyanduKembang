@@ -20,7 +20,8 @@ img {
      <h5>Tag</h5>
      @foreach($tags as $tag)
      {{-- $tag->slug nda mau klo pake $tag->name mau --}}
-     <a href="{{route('showByTag',$tag->name)}}" class="badge badge-primary ">{{$tag->name}}</a>
+     {{-- {{dd($tag->slug)}} --}}
+     <a href="{{route('showByTag',$tag->id)}}" class="badge badge-primary ">{{$tag->name}}</a>
      @endforeach
    </div>
  </div>

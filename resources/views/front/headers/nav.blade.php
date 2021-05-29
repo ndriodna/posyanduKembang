@@ -11,7 +11,7 @@
         </li>
         <li class="nav-item">
           {{-- pengennya show by tag atau ada saran lagi klo by id takutnya nanti pas tehapus sma org sana --}}
-          <a class="nav-link" href="{{route('showNews')}}">Agenda</a>
+          <a class="nav-link" href="{{route('showByTag',5)}}">Agenda</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">

@@ -19,7 +19,7 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $beritas = Blog::orderBy('created_at','DESC')->limit(3)->get();
+        $beritas = Blog::orderBy('created_at','DESC')->limit(5)->get();
         $tag = Tag::all();
         OpenGraph::setDescription('???');
         OpenGraph::setUrl('http://??.com');
@@ -42,7 +42,7 @@ class FrontController extends Controller
      public function showNewsDetail($slug)
      {
          $beritas = Blog::where('slug', $slug)->first();
-         $tags = Tag::all();
+         $tags = Tag::get();
          SEOMeta::setTitle($beritas->title);
          $p = strip_tags($beritas->desc);
          OpenGraph::setDescription($p);
@@ -54,9 +54,9 @@ class FrontController extends Controller
          return view('front.content.newsDetail',compact('beritas','tags'));
      }
 
-     public function showByTag($slug)
+     public function showByTag($id)
      {
-         $tag = Tag::where('slug', $slug)->first();
+         $tag = Tag::where('id', $id)->first();
          $berita = Blog::all();
          return view('front.content.tag',compact('tag','berita'));
      }

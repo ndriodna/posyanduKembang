@@ -1,18 +1,11 @@
 @extends('front.app')
 @section('content')
-@push('css')
-<style>
-	.textPelayanan{
-		font-size: 50px;
-	}
-</style>
-@endpush
 <div class="container">
 	<div class="row justify-content" style="margin-bottom: 100px;">
 		<div class="col-lg-6 md-6 sm-12 mt-2">
-			<h3>Posyandu Kembang Sepatu</h3>
-			<p class="" style="font-size: 18px;">Salah satu program utama posyandu adalah menyelenggarakan pemeriksaan bayi dan balita secara rutin. Hal ini penting dilakukan untuk memantau tumbuh kembang anak dan mendeteksi sejak dini bila anak mengalami gangguan tumbuh kembang.
-			<br>pelayanan yang diselenggarakan posyandu untuk balita mencakup penimbangan berat badan, pengukuran tinggi badan dan lingkar kepala anak, evaluasi tumbuh kembang, serta penyuluhan dan konseling tumbuh kembang.</p>
+			<h2 class="text-danger">Posyandu Kembang Sepatu</h2>
+			<p class="font-weight-light" style="font-size: 18px;">Salah satu program utama posyandu adalah menyelenggarakan pemeriksaan bayi dan balita secara rutin.
+			<br>Pelayanan yang diselenggarakan posyandu untuk balita mencakup penimbangan berat badan, pengukuran tinggi badan dan lingkar kepala anak, evaluasi tumbuh kembang, serta penyuluhan dan konseling tumbuh kembang.</p>
 		</div>
 		<div class="col-lg-6 md-6 sm-12">
 	<img src="{{asset('assets/svg/front_page.svg')}}" alt="" class="float-right img-fluid" width="600">
@@ -27,7 +20,7 @@
 			<img src="{{asset('assets/svg/Drawkit-Vector-Illustration-Medical-15.svg')}}" class="img-fluid" alt="" width="350">
 		</div>
 		<div class="col-lg-6 md-6 sm-12">
-			<p class="pt-5 mt-5 font-weight-light" style="font-size: 22px;">Balita dan Bayi yang hadir bersama dengan orang tua harus mendaftar terlebih dahulu Setelah mendaftarkan nama balita dan bayi menunggu giliran di panggil ke meja penimbangan</p>
+			<p class="pt-5 mt-5 font-weight-light" style="font-size: 22px;">Balita dan Bayi yang hadir bersama dengan orang tua harus mendaftar terlebih dahulu. <br> Setelah mendaftarkan nama balita dan bayi menunggu giliran di panggil ke meja penimbangan.</p>
 		</div>
 	</div>
 	<div class="row p-5">
@@ -43,7 +36,7 @@
 			<img src="{{asset('assets/svg/Drawkit-Vector-Illustration-Medical-16.svg')}}" class="img-fluid" alt="" width="350">
 		</div>
 		<div class="col-lg-6 md-6 sm-12">
-			<p class="pt-5 mt-5 font-weight-light" style="font-size: 22px;">Setelah dilakukanya penimbangan kader mengisi KMS berdasarkan hasil penimbangan yang dilakukan. Kemudian menentukan data hasil penimbangan NTOB. Data tersebut disimpan kedalam sistem aplikasi </p>
+			<p class="pt-5 mt-5 font-weight-light" style="font-size: 22px;">Setelah dilakukanya penimbangan kader mengisi KMS berdasarkan hasil penimbangan yang dilakukan. <br>Kemudian menentukan data hasil penimbangan NTOB. Data tersebut disimpan kedalam sistem aplikasi </p>
 		</div>
 	</div>
 	<div class="row p-5">
