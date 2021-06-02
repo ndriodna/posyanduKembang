@@ -16,8 +16,9 @@
 						</div>
 						<div class="form-group">
 							<label class="form-control-label">Password</label>
-							<input class="form-control" type="password" name="password" required>
+							<input class="form-control" id="password" type="password" name="password" required>
 							<p class="text-danger">{{ $errors->first('password') }}</p>
+							<input type="checkbox" class="mt-2" id="toggle-password"> Tampilkan password
 						</div>
 						<div class="form-group">
 							<label class="form-control-label">Role</label><br>
@@ -54,4 +55,18 @@
 	</div>
 	
 </div>
+
+@push('js')
+<script type="text/javascript">
+	$("#toggle-password").on('click', function() {
+		var input = $("#password");
+		if (input.attr("type") === "password") {
+			input.attr("type", "text");
+		} else {
+			input.attr("type", "password");
+		}
+
+	});
+</script>
+@endpush
 @endsection

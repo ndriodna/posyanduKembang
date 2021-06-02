@@ -28,9 +28,11 @@ Route::group(['middleware' => 'auth'], function () {
       \UniSharp\LaravelFilemanager\Lfm::routes();
   });
   Route::get('/home', 'HomeController@index')->name('home');
-	Route::get('/dashboard-user', 'HomeController@user');
+  Route::get('/dashboard-user', 'HomeController@user');
+	Route::get('/help', 'HomeController@helpPage')->name('help');
 	Route::get('/user/show','UserController@showAuthUser')->name('user.showAuthUser');
   Route::resource('blog', 'BlogController');
+  Route::resource('tags', 'TagController');
 
 	Route::group(['middleware' => ['role:Admin']], function (){
 
@@ -45,7 +47,6 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('rekap', 'RekapController');
 		Route::resource('user', 'UserController');
     Route::resource('roles', 'RoleController');
-		Route::resource('tags', 'TagController');
 
 	});
 

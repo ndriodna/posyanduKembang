@@ -32,7 +32,8 @@
                   <td>{{Carbon\Carbon::now()->diffInMonths(\Carbon\Carbon::parse($pendaftaran->tgl_lahir))}}</td>
                   @endforeach
                   <td>{{$data->jenis_pelayanan}}</td>
-                  <td>{!!$data->keterangan!!}</td>
+                  {{-- <td>{!!$data->keterangan!!}</td> --}}
+                 <td>{!!strip_tags($data->keterangan)!!}</td>
                   <td class="col-auto">
                     <div class="btn-group">
                       <div class="dropdown">

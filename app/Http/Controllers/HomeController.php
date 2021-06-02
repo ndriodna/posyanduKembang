@@ -28,4 +28,9 @@ class HomeController extends Controller
     {
         return view('dashboard2');
     }
+
+    public function helpPage()
+    {
+        return view('help');
+    }
 }

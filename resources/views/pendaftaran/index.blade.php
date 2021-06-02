@@ -48,7 +48,7 @@
                           <i class="fa fa-plus-square fa-lg"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a href="{{route('addNote',$pendaftaran->id)}}" class="dropdown-item">Buat Catatan</a>
+                          <a href="{{route('addNote',$pendaftaran->id)}}" class="dropdown-item">Tambah Ukur & Timbang</a>
                         </div>
                       </div>
                     </div>

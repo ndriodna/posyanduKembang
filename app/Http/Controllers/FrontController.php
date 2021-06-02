@@ -19,12 +19,12 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $beritas = Blog::orderBy('created_at','DESC')->limit(5)->get();
+        $beritas = Blog::orderBy('created_at','DESC')->limit(3)->get();
         $tag = Tag::all();
-        OpenGraph::setDescription('???');
-        OpenGraph::setUrl('http://??.com');
+        OpenGraph::setDescription('Posyandu Kembang Sepatu didirikan pada tahun 1986 atas prakars warga RT 70,71, dan 72 Jl. sultan Sulaiman Kel. sidodadi kec. samarinda ulu');
+        OpenGraph::setUrl('https://posyandu-kembangsepatu.xyz/');
         OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(url('storage/images/bg/character/Traveler.jpg'), ['height' => 500, 'width' => 500]);
+        OpenGraph::addImage(asset('assets/logo-new.png'), ['height' => 500, 'width' => 500]);
         return view('front.content.home',compact('beritas','tag'));
     }
 

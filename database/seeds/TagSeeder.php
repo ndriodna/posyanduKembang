@@ -29,7 +29,14 @@ class TagSeeder extends Seeder
         [
             'id' => 3,
             'name' => 'Agenda',
-            'slug' => 'Agenda',
+            'slug' => 'berita',
+            'created_at' => now(),
+            'updated_at' => now()
+        ],
+        [
+            'id' => 4,
+            'name' => 'Berita',
+            'slug' => 'berita',
             'created_at' => now(),
             'updated_at' => now()
         ]

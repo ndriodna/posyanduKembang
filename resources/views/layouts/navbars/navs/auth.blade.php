@@ -23,5 +23,8 @@
         </form>
         </div>
       </li>
+      <li>
+        <a href="{{route('help')}}"><i class="fas fa-question-circle text-white" style="font-size: 20px;"></i></a>
+      </li>
     </ul>
   </nav>

@@ -40,13 +40,9 @@
 											<a href="{{route('user.edit',$data->id)}}" class="btn btn-warning"><i class="fas fa-pen-square"></i></a>
 											<a class=" btn btn-info" href="{{route('user.show',$data->id)}}"><i class="fa fa-eye fa-lg"></i></a>
 
-											@foreach($data->getRoleNames() as $role)
-											@if($role == "Admin")
 											@if($data->id != 1)
 											<button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
 											@endif
-											@endif
-											@endforeach
 										</form>
 									</td>
 								</tr>

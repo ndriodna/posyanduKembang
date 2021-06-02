@@ -61,7 +61,7 @@ class PenyuluhanController extends Controller
      */
     public function show(Penyuluhan $penyuluhan)
     {
-        //
+        return view('penyuluhan.show',compact('penyuluhan'));
     }
 
     /**

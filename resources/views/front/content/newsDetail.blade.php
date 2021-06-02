@@ -11,9 +11,10 @@ img {
    <div class="col-lg-10 md-10 sm-12">
      <h4>{{$beritas->title}}</h4>
      <hr>
-     @foreach($beritas->tag as $data)
-     <span class="badge badge-primary">{{$data->name}}</span>
-     @endforeach
+       @foreach($beritas->tag as $data)
+       <span class="badge badge-primary">{{$data->name}}</span>
+       @endforeach <br>
+        <span class="text-secondary" style="font-size:14px">{{Carbon\Carbon::parse($beritas->created_at)->locale('id')->diffForHumans()}}</span> <hr>
      {!!$beritas->desc!!}
    </div>
    <div class="col-lg-2 md-2 sm-12">

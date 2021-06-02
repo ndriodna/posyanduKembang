@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
+<style type="text/css">
+img{
+  max-width: 100%;
+  max-height: 100px;
+}
+</style>
 <div class="container-fluid mt--8">
   <div class="row">
     <div class="col-lg-12 md-8 sm-4">
@@ -29,10 +34,10 @@
                   <td>@foreach($blog->tag as $data)
                    <span class="badge badge-primary">{{$data->name}}</span>
                  @endforeach</td>
-                 <td>{!!Str::limit($blog->desc,50)!!}</td>
+                 <td>{!!Str::limit(strip_tags($blog->desc),50,'...')!!}</td>
                  <td class="">
                   <div class="btn-group">
-                   <a href="{{ route('blog.show',$blog->slug) }}"class="btn btn-info">
+                    <a target="_BLANK" href="{{ route('showNewsDetail',$blog->slug) }}"class="btn btn-info">
                     <i class="fa fa-eye"></i>
                   </a>
                   <a href="{{ route('blog.edit',$blog->id) }}" rel="tooltip" class="btn btn-success">

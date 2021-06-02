@@ -1,5 +1,11 @@
 @extends('front.app')
 @section('content')
+<style type="text/css">
+	.img-News img{
+		max-width: 100%;
+		max-height: 540px;
+	}
+</style>
 <div class="container">
 	<div class="row justify-content" style="margin-bottom: 100px;">
 		<div class="col-lg-6 md-6 sm-12 mt-2">
@@ -67,24 +73,28 @@
 	<div class="container">
 		<div class="p-2">
 		<h3 class="text-center">Berita</h3>
-		<a href="{{route('showNews')}}" class="float-right">Selengkapnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+		</div>
 	<div class="row mt-5">
 			@foreach($beritas as $berita)
 		<div class="col-lg-4 md-4 sm-12">
 			<div class="card shadow p-3 mb-5">
-				<div class="card-body">
+				<div class="card-body img-fluid img-News ">
 				<h5 class="card-title">{{$berita->title}}</h5>
+				<hr>
 			@foreach($berita->tag as $tag)
 				<span class="badge badge-primary p-2">{{$tag->name}}</span>
-			@endforeach
-				<hr>
-					{!!Str::limit($berita->desc,200)!!}
+			@endforeach <br>
+				<span class="text-secondary" style="font-size:14px">{{Carbon\Carbon::parse($berita->created_at)->locale('id')->diffForHumans()}}</span> <hr>
+       {!!Str::limit(strip_tags($berita->desc),200,'...')!!}
 					<br>
-				<a href="{{route('showNewsDetail',$berita->slug)}}" class="btn btn-primary float-right mt-2">Baca Selengkapnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+					<a href="{{route('showNewsDetail',$berita->slug)}}" class="btn btn-primary float-right mt-2">Baca Selengkapnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 				</div>
 			</div>
 		</div>
 			@endforeach
+	</div>
+	<div class="pb-5 text-center">
+		<a href="{{route('showNews')}}" class="btn btn-primary ">Berita Lainnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 	</div>
 </div>
 @endsection

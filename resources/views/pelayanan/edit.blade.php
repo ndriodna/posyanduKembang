@@ -63,12 +63,7 @@
   <form class="form" method="POST" action="{{route('pelayanan.update',$pelayanan->id)}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-      <div class="form-group">
-        <label for="">Nama</label> <br>
-        <select class="selectpicker" data-style="btn btn-info" name="pendaftaran_id" >
-          <option value="{{$pendaftaran->id}}">{{$pendaftaran->nama}}</option>
-        </select>
-      </div>
+        <input type="hidden" name="pencatatan_id" value="{{$pencatatan->id}}">
       <div class="form-group">
         <label for="">Jenis Pelayanan</label> <br>
         <input type="text" class="form-control" name="jenis_pelayanan" value="{{$pelayanan->jenis_pelayanan}}">
