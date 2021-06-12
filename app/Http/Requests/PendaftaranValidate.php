@@ -24,16 +24,16 @@ class PendaftaranValidate extends FormRequest
     public function rules()
     {
         return [
-            'no_bpjs' => 'required',
+            'no_bpjs' => 'nullable',
             'nama' => 'required|string',
             'nama_bpk' => 'nullable',
             'nama_ibu' => 'nullable',
-            'tgl_lahir' => 'required|date',
+            'tgl_lahir' => 'nullable|date',
             'jenis_kelamin' => 'required',
             'alamat' => 'nullable',
             'rt_rw' => 'nullable',
-            'bb_lahir' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
-            'tb_lahir' => ['required', 'regex:/^\d+(\.\d{1,2})?$/']
+            'bb_lahir' => ['nullable', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'tb_lahir' => ['nullable', 'regex:/^\d+(\.\d{1,2})?$/']
         ];
     }
 }

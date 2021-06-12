@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-// Route::get('/', function () {
-//     return redirect('/home');
+// Route::get('/linkmigrate',function(){
+//   Artisan::call('migrate --seed');
+// });
+// Route::get('/clear',function(){
+//     Artisan::call('config:clear');
 // });
   Route::get('/', 'FrontController@index');
   route::get('berita/','FrontController@showNews')->name('showNews');
@@ -34,20 +37,19 @@ Route::group(['middleware' => 'auth'], function () {
   Route::resource('blog', 'BlogController');
   Route::resource('tags', 'TagController');
 
-	Route::group(['middleware' => ['role:Admin']], function (){
+  Route::resource('pendaftaran', 'PendaftaranController');
+  Route::resource('pencatatan', 'PencatatanController');
+  Route::get('/buat/pencatatan/{id}', 'PendaftaranController@addNote')->name('addNote');
+  Route::get('/buat/pelayanan/{id}', 'PelayananController@addPelayanan')->name('addPelayanan');
+  Route::get('/pelayanan/list', 'PelayananController@listPelayanan')->name('pelayanan.list');
+  Route::resource('penyuluhan', 'PenyuluhanController');
+  Route::resource('pelayanan', 'PelayananController');
 
-    Route::resource('pendaftaran', 'PendaftaranController');
-    Route::resource('pencatatan', 'PencatatanController');
-    Route::get('/buat/pencatatan/{id}', 'PendaftaranController@addNote')->name('addNote');
-    Route::get('/buat/pelayanan/{id}', 'PelayananController@addPelayanan')->name('addPelayanan');
-    Route::get('/pelayanan/list', 'PelayananController@listPelayanan')->name('pelayanan.list');
-    Route::resource('penyuluhan', 'PenyuluhanController');
-    Route::resource('pelayanan', 'PelayananController');
+  Route::resource('rekap', 'RekapController');
 
-		Route::resource('rekap', 'RekapController');
+  Route::group(['middleware' => ['role:Admin']], function (){
 		Route::resource('user', 'UserController');
     Route::resource('roles', 'RoleController');
-
-	});
+  });
 
 });

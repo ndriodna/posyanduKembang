@@ -15,7 +15,7 @@
             @method('PUT')
             <div class="form-group">
              <label class="form-control-label">No BPJS</label>
-             <input class="form-control" type="text" name="no_bpjs" value="{{$pendaftaran->no_bpjs}}" readonly>
+             <input class="form-control" type="text" name="no_bpjs" value="{{$pendaftaran->no_bpjs}}">
              <p class="text-danger">{{ $errors->first('no_bpjs') }}</p>
            </div>
            <div class="form-group">

@@ -16,7 +16,6 @@
           <div class="table-responsive">
             <table class="table dt-responsive" id="myTable">
               <thead>
-                <th>No</th>
                 <th>Tgl</th>
                 <th>Nama anak</th>
                 <th>OrangTua</th>
@@ -28,13 +27,12 @@
                 <th>LK</th>
                 <th>NTOB</th>
                 <th>Pelayanan</th>
+                <th>Keterangan</th>
               </thead>
               <tbody>
-                <?php $no = 1?>
                 @foreach ($pencatatan as $pencatatan)
                 @foreach ($pencatatan->pendaftaran as $data)
                 <tr>
-                  <td>{{$no++}}</td>
                   <td>{{Carbon\Carbon::parse($pencatatan->tgl)->locale('id')->isoFormat('LL')}}</td>
                   <td>{{$data->nama}}</td>
                   <td>{{!empty($data->nama_bpk) ? $data->nama_bpk : $data->nama_ibu}}</td>
@@ -45,11 +43,10 @@
                   <td>{{$pencatatan->tb_cm}}</td>
                   <td>{{$pencatatan->lingkar_kepala}}</td>
                   <td>{{$pencatatan->ntob}}</td>
-                  @forelse($pencatatan->pelayanan as $pel)
+                  @foreach($pencatatan->pelayanan as $pel)
                   <td>{{$pel->jenis_pelayanan}}</td>
-                  @empty
-                  <td>-</td>
-                  @endforelse
+                  <td>{{$pel->keterangan}}</td>
+                  @endforeach
                 </tr>
                 @endforeach
                 @endforeach
@@ -80,7 +77,7 @@
         modifier: {
           page: 'current'
         },
-        columns: [0,2,3,4,5,6,7,8,9,10,11]
+        columns: [0,1,2,3,4,5,6,7,8,9,10,11]
       },
       customize: function ( doc ) {
         doc.styles.tableBodyEven.alignment = 'center';

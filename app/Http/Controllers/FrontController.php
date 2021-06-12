@@ -35,7 +35,7 @@ class FrontController extends Controller
      */
     public function showNews()
     {
-        $beritas = Blog::all();
+        $beritas = Blog::orderBy('created_at','DESC')->get();
         $tag = Tag::all();
         return view('front.content.news',compact('beritas','tag'));
     }

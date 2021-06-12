@@ -47,7 +47,7 @@
 	</div>
 	<div class="row p-5">
 		<div class="col-lg-6 md-6 sm-12">
-			<p class="pt-5 mt-5 font-weight-light" style="font-size: 22px;">Kader dapat melakukan penyuluhan mengenai masalah kesehatan yang ada. <br> Penyuhulan dapat dilakukan secara individu maupun secara kelompok serta posyandu menyediakan Vitamin A </p>
+			<p class="pt-5 mt-5 font-weight-light" style="font-size: 22px;">Kader dapat melakukan penyuluhan mengenai masalah kesehatan yang ada. <br> Penyuluhan dapat dilakukan secara individu maupun secara kelompok serta posyandu menyediakan Vitamin A </p>
 		</div>
 		<div class="col-lg-6 md-6 sm-12">
 			<img src="{{asset('assets/svg/Drawkit-Vector-Illustration-Medical-13.svg')}}" class="img-fluid" alt="" width="350">
@@ -82,7 +82,7 @@
 				<h5 class="card-title">{{$berita->title}}</h5>
 				<hr>
 			@foreach($berita->tag as $tag)
-				<span class="badge badge-primary p-2">{{$tag->name}}</span>
+				<span class="badge badge-primary">{{$tag->name}}</span>
 			@endforeach <br>
 				<span class="text-secondary" style="font-size:14px">{{Carbon\Carbon::parse($berita->created_at)->locale('id')->diffForHumans()}}</span> <hr>
        {!!Str::limit(strip_tags($berita->desc),200,'...')!!}

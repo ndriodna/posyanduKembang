@@ -70,7 +70,7 @@
       </div>
       <div class="form-group">
         <label for="">Keterangan</label> <br>
-        <textarea class="form-control my-editor" name="keterangan" rows="8" cols="80">{!!$pelayanan->keterangan!!}</textarea>
+        <textarea class="form-control" name="keterangan" rows="8" cols="80">{{$pelayanan->keterangan}}</textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Simpan</button>

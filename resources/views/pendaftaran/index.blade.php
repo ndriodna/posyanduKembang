@@ -69,11 +69,21 @@
                           <i class="fa fa-trash fa-lg"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          @if ($pendaftaran->pencatatan->isEmpty())
                           <form id="delete-form-{{$pendaftaran->id}}" action="{{ route('pendaftaran.destroy',$pendaftaran->id) }}" method="POST" >
                             @csrf
                             @method('DELETE')
                             <a href="#" class="dropdown-item" onclick="deleteItem({{$pendaftaran->id}})">Hapus</a>
                           </form>
+                        @else
+                          @foreach ($pendaftaran->pencatatan as $data)
+                            <form id="delete-form-{{$data->id}}" action="{{ route('pencatatan.destroy',$data->id) }}" method="POST" >
+                              @csrf
+                              @method('DELETE')
+                              <a href="#" class="dropdown-item p-4" onclick="deleteItem({{$data->id}})">Hapus Riwayat Tgl - {{Carbon\Carbon::parse($data->tgl)->locale('id')->isoFormat('LL')}}</a>
+                            </form>
+                          @endforeach
+                        @endif
                         </div>
                       </div>
                     </div>
@@ -114,7 +124,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="">No BPJS</label> <br>
-                  <input type="number" class="form-control" name="no_bpjs" placeholder="Masukan NO BPJS" required>
+                  <input type="number" class="form-control" name="no_bpjs" placeholder="Masukan NO BPJS">
                 </div>
                 <div class="form-group">
                   <label for="">Nama</label> <br>
@@ -130,7 +140,7 @@
                 </div>
                 <div class="form-group">
                   <label for="">Tgl Lahir</label><br>
-                  <input type="date" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir" required>
+                  <input type="date" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir">
                 </div>
                 <div class="form-group">
                   <label for="">Jenis Kelamin</label><br>
@@ -149,11 +159,11 @@
                 </div>
                 <div class="form-group">
                   <label for="">Berat Badan Lahir</label> <br>
-                  <input type="number" class="form-control" name="bb_lahir" placeholder="Berat Badan Lahir" step=".01" required>
+                  <input type="number" class="form-control" name="bb_lahir" placeholder="Berat Badan Lahir" step=".01">
                 </div>
                 <div class="form-group">
                   <label for="">Panjang Badan Lahir</label> <br>
-                  <input type="number" class="form-control" name="tb_lahir" placeholder="Panjang Badan Lahir" step=".01" required>
+                  <input type="number" class="form-control" name="tb_lahir" placeholder="Panjang Badan Lahir" step=".01">
                 </div>
               </div>
             </div>

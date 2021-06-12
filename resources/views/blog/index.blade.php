@@ -23,7 +23,7 @@ img{
             <table class="table" id="DataTable">
               <thead>
                 <th>Title</th>
-                <th>Tags</th>
+                <th width="250">Tags</th>
                 <th>Description</th>
                 <th>Action</th>
               </thead>
@@ -32,7 +32,7 @@ img{
                 <tr>
                   <td>{{$blog->title}}</td>
                   <td>@foreach($blog->tag as $data)
-                   <span class="badge badge-primary">{{$data->name}}</span>
+                   <span class="badge badge-primary my-1">{{$data->name}}</span>
                  @endforeach</td>
                  <td>{!!Str::limit(strip_tags($blog->desc),50,'...')!!}</td>
                  <td class="">
