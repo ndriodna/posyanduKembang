@@ -15,9 +15,12 @@ class CreatePencatatanPendaftaranTable extends Migration
     {
         Schema::create('pencatatan_pendaftaran', function (Blueprint $table) {
             $table->id();
-            $table->integer('pencatatan_id');
-            $table->integer('pendaftaran_id');
+            $table->unsignedBigInteger('pencatatan_id');
+            $table->unsignedBigInteger('pendaftaran_id');
             $table->timestamps();
+
+            $table->foreign('pencatatan_id')->references('id')->on('pencatatans')->onDelete('cascade');
+            $table->foreign('pendaftaran_id')->references('id')->on('pendaftarans')->onDelete('cascade');
         });
     }
 

@@ -84,6 +84,7 @@
 			@foreach($berita->tag as $tag)
 				<span class="badge badge-primary">{{$tag->name}}</span>
 			@endforeach <br>
+			<span class="text-secondary" style="font-size:14px">Oleh: {{$berita->user->name}}</span> -
 				<span class="text-secondary" style="font-size:14px">{{Carbon\Carbon::parse($berita->created_at)->locale('id')->diffForHumans()}}</span> <hr>
        {!!Str::limit(strip_tags($berita->desc),200,'...')!!}
 					<br>

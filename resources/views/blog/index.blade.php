@@ -25,6 +25,7 @@ img{
                 <th>Title</th>
                 <th width="250">Tags</th>
                 <th>Description</th>
+                <th>Penulis</th>
                 <th>Action</th>
               </thead>
               <tbody>
@@ -35,6 +36,7 @@ img{
                    <span class="badge badge-primary my-1">{{$data->name}}</span>
                  @endforeach</td>
                  <td>{!!Str::limit(strip_tags($blog->desc),50,'...')!!}</td>
+                 <td>{{$blog->user->name}}</td>
                  <td class="">
                   <div class="btn-group">
                     <a target="_BLANK" href="{{ route('showNewsDetail',$blog->slug) }}"class="btn btn-info">

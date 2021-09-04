@@ -15,9 +15,12 @@ class CreatePelayananPencatatan extends Migration
     {
         Schema::create('pelayanan_pencatatan', function (Blueprint $table) {
             $table->id();
-             $table->integer('pelayanan_id');
-            $table->integer('pencatatan_id');
+             $table->unsignedBigInteger('pelayanan_id');
+            $table->unsignedBigInteger('pencatatan_id');
             $table->timestamps();
+
+            $table->foreign('pelayanan_id')->references('id')->on('pelayanans')->onDelete('cascade');
+            $table->foreign('pencatatan_id')->references('id')->on('pencatatans')->onDelete('cascade');
         });
     }
 

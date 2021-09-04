@@ -27,7 +27,7 @@
                 <th>LK</th>
                 <th>NTOB</th>
                 <th>Pelayanan</th>
-                <th>Keterangan</th>
+                <th>Ket</th>
               </thead>
               <tbody>
                 @foreach ($pencatatan as $pencatatan)
@@ -43,10 +43,13 @@
                   <td>{{$pencatatan->tb_cm}}</td>
                   <td>{{$pencatatan->lingkar_kepala}}</td>
                   <td>{{$pencatatan->ntob}}</td>
-                  @foreach($pencatatan->pelayanan as $pel)
+                  @forelse($pencatatan->pelayanan as $pel)
                   <td>{{$pel->jenis_pelayanan}}</td>
                   <td>{{$pel->keterangan}}</td>
-                  @endforeach
+                  @empty
+                  <td>-</td>
+                  <td>-</td>
+                  @endforelse
                 </tr>
                 @endforeach
                 @endforeach
@@ -67,6 +70,7 @@
 <script type="text/javascript">
  $(document).ready(function() {
   $('#myTable').DataTable( {
+    "scrollX": true,
     dom: 'Bfrtip',
     buttons: [{
       extend: 'pdfHtml5',
@@ -83,6 +87,7 @@
         doc.styles.tableBodyEven.alignment = 'center';
         doc.styles.tableBodyOdd.alignment = 'center';
         doc.content[1].table.widths = '9%';
+        doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
       }
     }, 
     ]

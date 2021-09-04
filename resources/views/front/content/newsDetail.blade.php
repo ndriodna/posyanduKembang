@@ -14,6 +14,7 @@ img {
        @foreach($beritas->tag as $data)
        <span class="badge badge-primary">{{$data->name}}</span>
        @endforeach <br>
+       <span class="text-secondary" style="font-size:14px">Oleh: {{$beritas->user->name}}</span> -
         <span class="text-secondary" style="font-size:14px">{{Carbon\Carbon::parse($beritas->created_at)->locale('id')->diffForHumans()}}</span> <hr>
      {!!$beritas->desc!!}
    </div>

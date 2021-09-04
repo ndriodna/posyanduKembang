@@ -39,6 +39,7 @@
                   <td>{{$pencatatan->lingkar_kepala}}</td>
                   <td>{{$pencatatan->ntob}}</td>
                   <td class="col-auto">
+                    @if($pencatatan->pelayanan->isEmpty())
                     <div class="btn-group">
                       <div class="dropdown">
                         <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,6 +50,7 @@
                         </div>
                       </div>
                     </div>
+                    @endif
                       <div class="btn-group">
                         <div class="dropdown">
                           <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

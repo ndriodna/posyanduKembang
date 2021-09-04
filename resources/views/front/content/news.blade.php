@@ -18,7 +18,9 @@ img {
          <span class="badge badge-primary">{{$data->name}}</span>
          @endforeach
          <br>
-        <span class="text-secondary" style="font-size:14px">{{Carbon\Carbon::parse($berita->created_at)->locale('id')->diffForHumans()}}</span> <hr>
+         <span class="text-secondary" style="font-size:14px">Oleh: {{$berita->user->name}}</span> -
+        <span class="text-secondary" style="font-size:14px">{{Carbon\Carbon::parse($berita->created_at)->locale('id')->diffForHumans()}}</span>
+        <hr>
        {!!Str::limit(strip_tags($berita->desc),200,'...')!!}
        <br>
         <a href="{{route('showNewsDetail',$berita->slug)}}" class="btn btn-primary float-right mt-2">Baca Selengkapnya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
